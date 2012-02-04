@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">DrinkLog</string>
+    <string name="register">Register</string>
+    <string name="refer">Reference</string>
+	<string name="finish">Close Application</string>
+	<string name="finish_confirm">Close?</string>         
+	<string name="ok">Yes</string>         
+	<string name="ng">Cancel</string>        
+	<string name="cancel">Cancel</string>
+	<string name="register_title">Title</string>
+	<string name="submit">Submit</string>
+	<string name="register_warning">Warning</string>
+	<string name="input_request">Please input one character or more　at name</string>
+	    
+	<string name="dialog_category">Select Category</string>
+	<string name="dialog_image">Select Image</string>
+   	<string name="dialog_progress">under registering</string>
+   	<string name="dialog_notify">Registered</string>
+
+	<string name="name">Name</string>
+	<string name="vintage">Year</string>
+    <string name="year">year</string>
+    <string name="area">Type</string>
+    <string name="image">Image</string>
+   	<string name="picture">Set Image</string>
+	<string name="modify">Modify</string>
+	<string name="user_canceled">Canceled</string>
+	<string name="get_image_error">Error</string>
+   	<string name="date">Date</string>
+	<string name="date_select">Select</string>
+	<string name="place">Shop</string>
+	<string name="price">Price</string>
+	<string name="evaluate">Evaluate</string>
+    <string name="impression">Impression</string>
+	<string name="register_commit">Register</string>
+	<string name="register_cancel">Cancel</string>
+	<string name="cancel_confirm_title">Confirm</string>
+	<string name="cancel_confirm">Discard?</string>
+	    
+	<string name="whiskey">Whiskey</string>
+	<string name="cocktail">Cocktail</string>
+	<string name="wine">Wine</string>
+	<string name="shochu">Shochu</string>
+	<string name="japanese_sake">Japanese Sake</string>
+	<string name="brandy">Brandy</string>
+	<string name="beer">Beer</string>
+	<string name="rum">Rum</string>
+	<string name="other">Other</string>
+
+   	<string-array name="image_setting_array">
+	    <item>Select from Gallery</item>
+	    <item>Take Picture</item>
+	</string-array>
+	
+   	<string-array name="category_array">
+	    <item>Whiskey</item>
+	    <item>Cocktail</item>
+	    <item>Wine</item>
+	    <item>Shochu</item>
+	    <item>Japanese Sake</item>
+	    <item>Brandy</item>
+	    <item>Beer</item>
+	    <item>Rum</item>
+   	    <item>Other</item>
+	</string-array> 
+
+	<string-array name="area_array">
+	    <item></item>
+	    <item>Scotch(Speyside)</item>
+	    <item>Scotch(Highland)</item>
+	    <item>Scotch(Lowland)</item>
+	    <item>Scotch(Islay)</item>
+	    <item>Scotch(Islands)</item>
+	    <item>Scotch(Campbeltown)</item>
+	 	<item>Scotch(Blended,Other)</item>
+	 	<item>Irish</item>
+	    <item>Japanese</item>
+	    <item>American(Bourbon)</item>
+   	    <item>American(Other)</item>
+   	    <item>Canadian</item>
+   	    <item>Other</item>
+	</string-array> 
+
+	<string-array name="whiskey_array">
+	    <item></item>
+	    <item>GrenRivet</item>
+	    <item>GrenMorange</item>
+	    <item>Grenfiddich</item>
+   	    <item>Other</item>
+	</string-array> 
+
+</resources>

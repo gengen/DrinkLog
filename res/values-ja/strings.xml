@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">飲みログくん</string>
+    <string name="register">飲みログを作る</string>
+    <string name="refer">飲みログを見る</string>
+	<string name="finish">アプリの終了</string>
+	<string name="finish_confirm">アプリを終了しますか？</string>         
+	<string name="ok">はい</string>
+	<string name="ng">いいえ</string>
+	<string name="submit">確定</string>
+	<string name="cancel">キャンセル</string>
+	<string name="register_title">名前</string>
+	<string name="register_warning">アラーム</string>
+	<string name="input_request">「名前」は1文字以上入力してください</string>
+
+    <string name="dialog_category">種類を選択</string>
+   	<string name="dialog_image">画像を選択</string>
+   	<string name="dialog_progress">登録中</string>
+   	<string name="dialog_notify">登録しました</string>
+
+   	<string name="name">名前</string>
+	<string name="vintage">年数</string>
+	<string name="year">年</string>
+   	<string name="area">品種</string>
+   	<string name="image">画像</string>
+	<string name="picture">画像登録</string>
+	<string name="modify">画像変更</string>
+	<string name="user_canceled">キャンセルしました</string>
+	<string name="get_image_error">画像を取得できませんでした</string>
+	<string name="date">日付</string>
+	<string name="date_select">修正</string>
+	<string name="place">店・場所</string>
+	<string name="price">価格</string>
+	<string name="evaluate">評価</string>
+	<string name="impression">感想</string>
+	<string name="register_commit">登録</string>
+	<string name="register_cancel">キャンセル</string>
+	<string name="cancel_confirm_title">確認</string>
+	<string name="cancel_confirm">破棄してタイトルに戻りますか？</string>
+	
+	<string name="whiskey">ウィスキー</string>
+	<string name="cocktail">カクテル</string>
+	<string name="wine">ワイン</string>
+	<string name="shochu">焼酎</string>
+	<string name="japanese_sake">日本酒</string>
+	<string name="brandy">ブランデー</string>
+	<string name="beer">ビール</string>
+	<string name="rum">ラム</string>
+	<string name="other">その他</string>
+	    
+  	<string-array name="image_setting_array">
+	    <item>ギャラリーから選択</item>
+	    <item>カメラで撮影</item>
+	</string-array>
+	    
+   	<string-array name="category_array">
+	    <item>ウィスキー</item>
+	    <item>カクテル</item>
+	    <item>ワイン</item>
+	    <item>焼酎</item>
+	    <item>日本酒</item>
+	    <item>ブランデー</item>
+	    <item>ビール</item>
+	    <item>ラム</item>
+   	    <item>その他</item>
+	</string-array>
+	    
+	<string-array name="area_array">
+	    <item></item>
+	    <item>スコッチ（スペイサイド）</item>
+	    <item>スコッチ（ハイランド）</item>
+	    <item>スコッチ（ローランド）</item>
+	    <item>スコッチ（アイラ）</item>
+	    <item>スコッチ（アイランズ）</item>
+	    <item>スコッチ（キャンベルタウン）</item>
+	 	<item>スコッチ（ブレンディッド、その他）</item>
+	 	<item>アイリッシュ</item>
+	    <item>ジャパニーズ</item>
+	    <item>アメリカン（バーボン）</item>
+   	    <item>アメリカン（その他）</item>
+   	    <item>カナディアン</item>
+   	    <item>その他</item>
+	</string-array> 
+	
+	<string-array name="whiskey_array">
+	    <item></item>
+	    <item>グレンリベット</item>
+	    <item>グレンモーレンジ</item>
+	    <item>グレンフィディック</item>
+   	    <item>その他</item>
+	</string-array>
+
+</resources>
