@@ -46,7 +46,6 @@
 	<string name="japanese_sake">日本酒</string>
 	<string name="brandy">ブランデー</string>
 	<string name="beer">ビール</string>
-	<string name="rum">ラム</string>
 	<string name="other">その他</string>
 	    
   	<string-array name="image_setting_array">
@@ -62,7 +61,6 @@
 	    <item>日本酒</item>
 	    <item>ブランデー</item>
 	    <item>ビール</item>
-	    <item>ラム</item>
    	    <item>その他</item>
 	</string-array>
 	    

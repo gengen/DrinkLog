@@ -46,7 +46,6 @@
 	<string name="japanese_sake">Japanese Sake</string>
 	<string name="brandy">Brandy</string>
 	<string name="beer">Beer</string>
-	<string name="rum">Rum</string>
 	<string name="other">Other</string>
 
    	<string-array name="image_setting_array">
@@ -62,7 +61,6 @@
 	    <item>Japanese Sake</item>
 	    <item>Brandy</item>
 	    <item>Beer</item>
-	    <item>Rum</item>
    	    <item>Other</item>
 	</string-array> 
 

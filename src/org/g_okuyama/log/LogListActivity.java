@@ -1,11 +1,14 @@
 package org.g_okuyama.log;
 
+import java.util.ArrayList;
+
 import org.g_okuyama.log.R;
 
 import android.app.TabActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.TabHost.OnTabChangeListener;
@@ -29,13 +32,13 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
         
         TabSpec tab1 = tabs.newTabSpec("tab1");
         tab1.setIndicator("date", /*アイコン指定*/null);
-        tab1.setContent(R.id.first_content);
+        tab1.setContent(R.id.log_list_tab1);
         tabs.addTab(tab1);
         tabs.setCurrentTab(0);
         
         TabSpec tab2 = tabs.newTabSpec("tab2");
         tab2.setIndicator("category", /*アイコン指定*/null);
-        tab2.setContent(R.id.second_content);
+        tab2.setContent(R.id.log_list_tab2);
         tabs.addTab(tab2);
     }
     
@@ -47,19 +50,37 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
         String query = "select * from logtable;";
         Cursor c = db.rawQuery(query, null);
         int rowcount = c.getCount();
+        
+        ArrayList<LogListData> loglist = new ArrayList<LogListData>();
 
         if(rowcount == 0){
             //保存データがない場合
         }else{
             c.moveToLast();
             for(int i = 0; i < rowcount; i++){
-                //TODO:表示リスト作成
-                TextView view = (TextView)findViewById(R.id.log_name);
-                view.setText(c.getString(1));
+                /*
+                 * 表示リスト作成
+                 * ・カテゴリイメージ、名前、評価
+                 */
+            	LogListData logitem = new LogListData();
+
+            	c.getString(1/*category*/);
+            	//TODO:カテゴリイメージ表示
+
+            	logitem.setTextData(c.getString(2/*name*/));
+            	String rate = c.getString(10/*evaluate*/);
+            	float f = Float.valueOf(rate);
+            	logitem.setRatingData(f);
+            	loglist.add(logitem);
+
                 c.moveToPrevious();
             }
             c.close();
         }
+        
+        LogArrayAdapter adapter = new LogArrayAdapter(this, android.R.layout.simple_list_item_1, loglist);
+        ListView listview = (ListView)findViewById(R.id.log_list_tab1);
+        listview.setAdapter(adapter);
     }
 
     public void onTabChanged(String arg0) {

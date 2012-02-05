@@ -12,17 +12,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_SQL = 
         "create table logtable"
         + "(rowid integer primary key autoincrement,"
-        + "category text not null,"
-        + "name text not null,"
-        + "year text not null,"
-        + "type text not null,"
-        + "area text not null,"
-        + "image text not null,"
-        + "date text not null,"
-        + "place text not null,"
-        + "price text not null,"
-        + "evaluate text not null,"
-        + "comment text not null)";
+        + "category text not null,"/*1*/
+        + "name text not null,"/*2*/
+        + "year text not null,"/*3*/
+        + "type text not null,"/*4*/
+        + "area text not null,"/*5*/
+        + "image text not null,"/*6*/
+        + "date text not null,"/*7*/
+        + "place text not null,"/*8*/
+        + "price text not null,"/*9*/
+        + "evaluate text not null,"/*10*/
+        + "comment text not null)";/*11*/
 
     public DatabaseHelper(Context context) {
         super(context, "logdb", null, DB_VERSION);
