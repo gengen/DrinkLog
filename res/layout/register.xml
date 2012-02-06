@@ -35,51 +35,7 @@
             android:layout_weight="8">
         </AutoCompleteTextView>
     </LinearLayout>
-
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="70sp"
-       	android:gravity="center">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/vintage"
-            android:layout_weight="2"/>
-        <EditText
-            android:id="@+id/year"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:maxLength="3"
-            android:layout_weight="7">
-        </EditText>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/year"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="70sp"
-        android:gravity="center">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/area"
-            android:layout_weight="2"/>
-        <Spinner
-        	android:id="@+id/spinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="8"/>
-    </LinearLayout>
-
+    
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="70sp"
@@ -105,71 +61,6 @@
             android:layout_weight="3"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70sp"
-        android:gravity="center"
-        android:orientation="horizontal" >
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/date"
-            android:layout_weight="2"/>
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="6" />
-        <Button
-            android:id="@+id/date_select"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/date_select"
-            android:layout_weight="2"/>
-    </LinearLayout>
-
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="70sp"
-       	android:gravity="center">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/place"
-            android:layout_weight="2"/>
-        <EditText
-            android:id="@+id/place"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:maxLength="20"
-            android:layout_weight="8">
-        </EditText>
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="70sp"
-       	android:gravity="center">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/price"
-            android:layout_weight="2"/>
-        <EditText
-            android:id="@+id/price"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:maxLength="10"
-            android:layout_weight="8">
-        </EditText>
-    </LinearLayout>
-    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70sp"
@@ -217,6 +108,27 @@
             >
         </EditText>
     </LinearLayout>    
+        
+    <LinearLayout 
+        android:id="@+id/other_display_layout"
+        android:layout_width="match_parent"
+        android:layout_height="70sp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="その他" />
+        <Button
+            android:id="@+id/log_other"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="その他の項目を設定"
+            android:drawableRight="@android:drawable/ic_menu_more"
+            >
+        </Button>
+    </LinearLayout>
+
     </LinearLayout>
     </ScrollView>
     <LinearLayout

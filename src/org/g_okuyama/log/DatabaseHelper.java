@@ -14,15 +14,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         + "(rowid integer primary key autoincrement,"
         + "category text not null,"/*1*/
         + "name text not null,"/*2*/
-        + "year text not null,"/*3*/
-        + "type text not null,"/*4*/
-        + "area text not null,"/*5*/
-        + "image text not null,"/*6*/
-        + "date text not null,"/*7*/
-        + "place text not null,"/*8*/
-        + "price text not null,"/*9*/
-        + "evaluate text not null,"/*10*/
-        + "comment text not null)";/*11*/
+        + "image text not null,"/*3*/
+        + "evaluate text not null,"/*4*/
+        + "comment text not null,"/*5*/
+        + "year text not null,"/*6*/
+        + "type text not null,"/*7*/
+        + "area text not null,"/*8*/
+        + "date text not null,"/*9*/
+        + "place text not null,"/*10*/
+        + "price text not null)";/*11*/
 
     public DatabaseHelper(Context context) {
         super(context, "logdb", null, DB_VERSION);

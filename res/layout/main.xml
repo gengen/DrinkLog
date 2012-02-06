@@ -22,6 +22,7 @@
         android:layout_weight="1">
     	    <Button
     	    android:id="@+id/register"
+    	    android:drawableLeft="@android:drawable/ic_menu_edit"
         	android:text="@string/register"
 	        android:layout_width="wrap_content"
     	    android:layout_height="wrap_content"
@@ -34,6 +35,7 @@
         android:layout_weight="1">
         <Button
 	        android:id="@+id/refer"
+    	    android:drawableLeft="@android:drawable/ic_menu_search"
     	    android:text="@string/refer"
         	android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"

@@ -31,13 +31,15 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
         tabs.setOnTabChangedListener(this);
         
         TabSpec tab1 = tabs.newTabSpec("tab1");
-        tab1.setIndicator("date", /*アイコン指定*/null);
+        tab1.setIndicator("date", 
+                getResources().getDrawable(android.R.drawable.ic_menu_my_calendar));
         tab1.setContent(R.id.log_list_tab1);
         tabs.addTab(tab1);
         tabs.setCurrentTab(0);
         
         TabSpec tab2 = tabs.newTabSpec("tab2");
-        tab2.setIndicator("category", /*アイコン指定*/null);
+        tab2.setIndicator("category", 
+                getResources().getDrawable(android.R.drawable.ic_menu_agenda));
         tab2.setContent(R.id.log_list_tab2);
         tabs.addTab(tab2);
     }
@@ -68,7 +70,7 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
             	//TODO:カテゴリイメージ表示
 
             	logitem.setTextData(c.getString(2/*name*/));
-            	String rate = c.getString(10/*evaluate*/);
+            	String rate = c.getString(4/*evaluate*/);
             	float f = Float.valueOf(rate);
             	logitem.setRatingData(f);
             	loglist.add(logitem);

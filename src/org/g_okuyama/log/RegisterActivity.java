@@ -27,13 +27,16 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -51,26 +54,39 @@ public class RegisterActivity extends Activity {
     File mSaveFile = null;
     String mLinkStr = null;
     String mCurDate = "unknown";
+    
+    int mYear;
+    int mMonth;
+    int mDay;
 
     boolean mPicFlag = false;
+    //「その他」ボタンが押されたか？
+    boolean mOtherFlag = false;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        this.getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);         
         setContentView(R.layout.register);
         mHelper = new DatabaseHelper(this);
+        
+        Calendar cal1 = Calendar.getInstance();
+        mYear = cal1.get(Calendar.YEAR);
+        mMonth = cal1.get(Calendar.MONTH);
+        mDay = cal1.get(Calendar.DATE);
+        mCurDate = getDate(mYear, mMonth, mDay);
         setLayout();
     }
     
     private void setLayout(){
         setName();
-        setCategory();
         setImage();
-        setDate();
         setEvaluate();
+        setOther();
         setRegister();
     }
-    
+        
     private void setName(){
         ArrayAdapter name_adapter = ArrayAdapter.createFromResource(
                 this, R.array.whiskey_array, android.R.layout.simple_dropdown_item_1line);
@@ -90,14 +106,6 @@ public class RegisterActivity extends Activity {
             }
             
         });
-    }
-    
-    private void setCategory(){
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(
-                this, R.array.area_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
-        spinner.setAdapter(adapter);        
     }
     
     private void setImage(){
@@ -213,14 +221,33 @@ public class RegisterActivity extends Activity {
         }
     }
     
-    private void setDate(){
-        Calendar cal1 = Calendar.getInstance();
-        final int mYear = cal1.get(Calendar.YEAR);
-        final int mMonth = cal1.get(Calendar.MONTH);
-        final int mDay = cal1.get(Calendar.DATE);
+    private void setEvaluate(){
+        RatingBar bar = (RatingBar)findViewById(R.id.rating);
+        bar.setNumStars(RATING_STAR_NUM);
+        //bar.setStepSize(RATING_STEP);
+    }
+    
+    private void setOther(){
+        final LinearLayout otherLayout = (LinearLayout)findViewById(R.id.other_display_layout);
+        Button other = (Button)findViewById(R.id.log_other);
+        other.setOnClickListener(new OnClickListener(){
+            public void onClick(View v) {
+                mOtherFlag = true;
+                //「その他」ボタンのレイアウトを非表示に
+                otherLayout.setVisibility(View.GONE);
+                //その他の項目を動的に追加
+                LinearLayout linear = (LinearLayout)findViewById(R.id.linearLayout1);
+                final LayoutInflater mInflater;
+                mInflater = (LayoutInflater)RegisterActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                mInflater.inflate(R.layout.additional, linear);
+                setCategory();
+                setDate();
+            }
+        });
+    }
 
+    private void setDate(){
         TextView text = (TextView)findViewById(R.id.date);
-        mCurDate = getDate(mYear, mMonth, mDay);
         text.setText(mCurDate);
         
         Button selectBtn = (Button)findViewById(R.id.date_select);
@@ -242,6 +269,14 @@ public class RegisterActivity extends Activity {
         });
     }
     
+    private void setCategory(){
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(
+                this, R.array.area_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
+        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        spinner.setAdapter(adapter);        
+    }
+    
     private String getDate(int year, int mon, int d){        
         String month = Integer.toString(mon + 1);
         if(month.length() == 1){
@@ -254,12 +289,6 @@ public class RegisterActivity extends Activity {
         return Integer.toString(year) + "/" + month + "/" + day;
     }
     
-    private void setEvaluate(){
-        RatingBar bar = (RatingBar)findViewById(R.id.rating);
-        bar.setNumStars(RATING_STAR_NUM);
-        //bar.setStepSize(RATING_STEP);
-    }
-    
     private void setRegister(){
         final Handler handler = new Handler();
         //final ProgressDialog dialog = new ProgressDialog(RegisterActivity.this);
@@ -269,25 +298,7 @@ public class RegisterActivity extends Activity {
             public void onClick(View v) {
                 Thread thread = new Thread() {
                     public void run() {
-                        /*
-                        handler.post(new Runnable(){
-                            public void run() {
-                                dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                                dialog.setMessage(getString(R.string.dialog_progress));
-                                dialog.show();                                
-                            }
-                        });
-                        */
-
                         checkValue();
-
-                        /*
-                        handler.post(new Runnable(){
-                            public void run(){
-                                dialog.dismiss();                                
-                            }
-                        });
-                        */
                         
                         handler.post(new Runnable(){
                             public void run(){
@@ -334,18 +345,23 @@ public class RegisterActivity extends Activity {
         TextView name_view = (TextView)findViewById(R.id.name);
         String name = name_view.getText().toString();
         if(name.length() == 0){
-            new AlertDialog.Builder(RegisterActivity.this)
-                .setTitle(R.string.register_warning)
-                .setMessage(R.string.input_request)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        return;
-                    }
-                }).show();
+            final Handler handler = new Handler();
+            handler.post(new Runnable(){
+                public void run(){            
+                    new AlertDialog.Builder(RegisterActivity.this)
+                    .setTitle(R.string.register_warning)
+                    .setMessage(R.string.input_request)
+                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            return;
+                        }
+                    }).show();
+                }
+            });
         }
         else{
             register(name);
-        }
+        }        
     }
     
     private void register(String name){
@@ -356,34 +372,6 @@ public class RegisterActivity extends Activity {
         //名前
         values.put("name", name);
 
-        //種類
-        //TODO:他種類のケース追加
-        values.put("category", getString(R.string.whiskey));
-        
-        //年数
-        EditText year_text = (EditText)findViewById(R.id.year);
-        String year = year_text.getText().toString();
-        if(year.length() == 0){
-            values.put("year", "none");
-        }
-        else{
-            values.put("year", year);
-        }
-        
-        //タイプ
-        //TODO:他種類のケース追加
-        values.put("type", "none");
-        
-        //地域
-        Spinner area_spinner = (Spinner)findViewById(R.id.spinner);
-        String area = area_spinner.getSelectedItem().toString();
-        if(area.equals("")){
-            values.put("area", "none");
-        }
-        else{
-            values.put("area", area);
-        }
-        
         //画像(image)
         if(mLinkStr == null){
             values.put("image", "none");
@@ -392,29 +380,6 @@ public class RegisterActivity extends Activity {
             values.put("image", mLinkStr);
         }
         
-        //日時(date)
-        values.put("date", mCurDate);
-        
-        //場所(place)
-        EditText place_text = (EditText)findViewById(R.id.place);
-        String place = place_text.getText().toString();
-        if(place.length() == 0){
-            values.put("place", "none");
-        }
-        else{
-            values.put("place", place);
-        }
-        
-        //価格(price)
-        EditText price_text = (EditText)findViewById(R.id.price);
-        String price = price_text.getText().toString();
-        if(place.length() == 0){
-            values.put("price", "none");
-        }
-        else{
-            values.put("price", price);
-        }
-
         //評価(evaluate)
         RatingBar bar = (RatingBar)findViewById(R.id.rating);
         float rate = bar.getRating();
@@ -431,6 +396,79 @@ public class RegisterActivity extends Activity {
             values.put("comment", comment);
         }
         
+        /*********ここから下はオプションなので、「その他」ボタンが押されたかをチェックする********/
+        
+        //種類
+        //TODO:他種類のケース追加
+        values.put("category", getString(R.string.whiskey));
+        
+        //年数
+        if(mOtherFlag){
+            EditText year_text = (EditText)findViewById(R.id.year);
+            String year = year_text.getText().toString();
+            if(year.length() == 0){
+                values.put("year", "none");
+            }
+            else{
+                values.put("year", year);
+            }
+        }
+        else{
+            values.put("year", "none");            
+        }
+        
+        //タイプ
+        //TODO:他種類のケース追加
+        values.put("type", "none");
+        
+        //地域
+        if(mOtherFlag){
+            Spinner area_spinner = (Spinner)findViewById(R.id.spinner);
+            String area = area_spinner.getSelectedItem().toString();
+            if(area.equals("")){
+                values.put("area", "none");
+            }
+            else{
+                values.put("area", area);
+            }
+        }
+        else{
+            values.put("area", "none");            
+        }
+        
+        //日時(date)
+        values.put("date", mCurDate);
+        
+        //場所(place)
+        if(mOtherFlag){
+            EditText place_text = (EditText)findViewById(R.id.place);
+            String place = place_text.getText().toString();
+            if(place.length() == 0){
+                values.put("place", "none");
+            }
+            else{
+                values.put("place", place);
+            }
+        }
+        else{
+            values.put("place", "none");            
+        }
+        
+        //価格(price)
+        if(mOtherFlag){
+            EditText price_text = (EditText)findViewById(R.id.price);
+            String price = price_text.getText().toString();
+            if(price.length() == 0){
+                values.put("price", "none");
+            }
+            else{
+                values.put("price", price);
+            }
+        }
+        else{
+            values.put("price", "none");            
+        }
+
         //DBに登録
         SQLiteDatabase db = mHelper.getWritableDatabase();
         db.insert("logtable", null, values);
