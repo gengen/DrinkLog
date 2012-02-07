@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<resources>  
+  
+   	<string-array name="image_setting_array">
+	    <item>Select from Gallery</item>
+	    <item>Take Picture</item>
+	</string-array>
+	
+   	<string-array name="category_array">
+	    <item>Whiskey</item>
+	    <item>Cocktail</item>
+	    <item>Wine</item>
+	    <item>Shochu</item>
+	    <item>Japanese Sake</item>
+	    <item>Brandy</item>
+	    <item>Beer</item>
+   	    <item>Other</item>
+	</string-array> 
+
+	<string-array name="area_array_wh">
+	    <item></item>
+	    <item>Scotch(Speyside)</item>
+	    <item>Scotch(Highland)</item>
+	    <item>Scotch(Lowland)</item>
+	    <item>Scotch(Islay)</item>
+	    <item>Scotch(Islands)</item>
+	    <item>Scotch(Campbeltown)</item>
+	 	<item>Scotch(Blended,Other)</item>
+	 	<item>Irish</item>
+	    <item>Japanese</item>
+	    <item>American(Bourbon)</item>
+   	    <item>American(Other)</item>
+   	    <item>Canadian</item>
+   	    <item>Other</item>
+	</string-array> 
+
+	<string-array name="name_array_wh">
+	    <item></item>
+	    <item>GrenRivet</item>
+	    <item>GrenMorange</item>
+	    <item>Grenfiddich</item>
+   	    <item>Other</item>
+	</string-array> 
+    
+
+</resources>

@@ -48,45 +48,4 @@
 	<string name="beer">ビール</string>
 	<string name="other">その他</string>
 	    
-  	<string-array name="image_setting_array">
-	    <item>ギャラリーから選択</item>
-	    <item>カメラで撮影</item>
-	</string-array>
-	    
-   	<string-array name="category_array">
-	    <item>ウィスキー</item>
-	    <item>カクテル</item>
-	    <item>ワイン</item>
-	    <item>焼酎</item>
-	    <item>日本酒</item>
-	    <item>ブランデー</item>
-	    <item>ビール</item>
-   	    <item>その他</item>
-	</string-array>
-	    
-	<string-array name="area_array">
-	    <item></item>
-	    <item>スコッチ（スペイサイド）</item>
-	    <item>スコッチ（ハイランド）</item>
-	    <item>スコッチ（ローランド）</item>
-	    <item>スコッチ（アイラ）</item>
-	    <item>スコッチ（アイランズ）</item>
-	    <item>スコッチ（キャンベルタウン）</item>
-	 	<item>スコッチ（ブレンディッド、その他）</item>
-	 	<item>アイリッシュ</item>
-	    <item>ジャパニーズ</item>
-	    <item>アメリカン（バーボン）</item>
-   	    <item>アメリカン（その他）</item>
-   	    <item>カナディアン</item>
-   	    <item>その他</item>
-	</string-array> 
-	
-	<string-array name="whiskey_array">
-	    <item></item>
-	    <item>グレンリベット</item>
-	    <item>グレンモーレンジ</item>
-	    <item>グレンフィディック</item>
-   	    <item>その他</item>
-	</string-array>
-
 </resources>

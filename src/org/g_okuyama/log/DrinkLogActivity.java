@@ -15,11 +15,12 @@ public class DrinkLogActivity extends Activity {
     
     public static final int CATEGORY_WHISKEY = 0;
     public static final int CATEGORY_COCKTAIL = 1;
-    public static final int CATEGORY_SHOCHU = 2;
-    public static final int CATEGORY_SAKE = 3;
-    public static final int CATEGORY_BEER = 4;
-    public static final int CATEGORY_BRANDY = 5;
-    public static final int CATEGORY_OTHER = 6;
+    public static final int CATEGORY_WINE = 2;
+    public static final int CATEGORY_SHOCHU = 3;
+    public static final int CATEGORY_SAKE = 4;
+    public static final int CATEGORY_BEER = 5;
+    public static final int CATEGORY_BRANDY = 6;
+    public static final int CATEGORY_OTHER = 7;
 
     private EditText mEditText = null;
     private int mItemIdx = 0;
@@ -62,7 +63,9 @@ public class DrinkLogActivity extends Activity {
         })
         .setPositiveButton(R.string.submit, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                registerDiary(mItemIdx);
+                Intent intent = new Intent(DrinkLogActivity.this, RegisterActivity.class);
+                intent.putExtra("category", mItemIdx);
+                startActivity(intent);
             }
         })
         .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -72,21 +75,7 @@ public class DrinkLogActivity extends Activity {
         })
        .show();        
     }
-    
-    private void registerDiary(int index){
-        switch(index){
-            case CATEGORY_WHISKEY:
-                Intent intent = new Intent(DrinkLogActivity.this, RegisterActivity.class);
-                startActivity(intent);
-                break;
-                
-                //TODO:ëºéÌóﬁÇÃÉPÅ[ÉXí«â¡
 
-            default:
-                break;
-        }
-    }
-    
     public void finish(){
         new AlertDialog.Builder(this)
         .setTitle(R.string.finish)

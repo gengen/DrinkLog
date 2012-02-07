@@ -54,6 +54,7 @@ public class RegisterActivity extends Activity {
     File mSaveFile = null;
     String mLinkStr = null;
     String mCurDate = "unknown";
+    int mCategory;
     
     int mYear;
     int mMonth;
@@ -67,8 +68,13 @@ public class RegisterActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        Bundle extra = getIntent().getExtras();
+        mCategory = extra.getInt("category");
+        
+        //自動でキーボードを出さないように設定
         this.getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);         
         setContentView(R.layout.register);
+
         mHelper = new DatabaseHelper(this);
         
         Calendar cal1 = Calendar.getInstance();
@@ -88,16 +94,20 @@ public class RegisterActivity extends Activity {
     }
         
     private void setName(){
-        ArrayAdapter name_adapter = ArrayAdapter.createFromResource(
-                this, R.array.whiskey_array, android.R.layout.simple_dropdown_item_1line);
         AutoCompleteTextView view = (AutoCompleteTextView)findViewById(R.id.name);
-        view.setAdapter(name_adapter);
+
+        int id = getCategoryID(mCategory);
+        if(id != -1){
+            ArrayAdapter name_adapter = ArrayAdapter.createFromResource(
+                    this, id, android.R.layout.simple_dropdown_item_1line);
+            view.setAdapter(name_adapter);
+        }
         //TODO:登録されていない名前で登録された場合は、name_adapterに追加する
         
         view.addTextChangedListener(new TextWatcher(){
             public void afterTextChanged(Editable edit) {
                 String name = edit.toString();
-                //TODO:名前から地域を特定
+                //TODO:名前から地域を特定<-余裕あったらでいい
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -106,6 +116,17 @@ public class RegisterActivity extends Activity {
             }
             
         });
+    }
+    
+    private int getCategoryID(int idx){
+        switch(idx){
+            case DrinkLogActivity.CATEGORY_WHISKEY:
+                return R.array.name_array_wh;
+                
+                //TODO:多種類追加
+            default:
+                return -1;
+        }
     }
     
     private void setImage(){
@@ -119,7 +140,7 @@ public class RegisterActivity extends Activity {
             public void onClick(View v) {
                 new AlertDialog.Builder(RegisterActivity.this)
                 .setIcon(android.R.drawable.ic_dialog_info)
-                .setTitle(R.string.dialog_category)
+                .setTitle(R.string.dialog_image)
                 .setItems(setting_list, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if(which == 0){
@@ -235,17 +256,59 @@ public class RegisterActivity extends Activity {
                 mOtherFlag = true;
                 //「その他」ボタンのレイアウトを非表示に
                 otherLayout.setVisibility(View.GONE);
-                //その他の項目を動的に追加
+
+                //その他の項目を動的に追加(種類ごとに異なる)
                 LinearLayout linear = (LinearLayout)findViewById(R.id.linearLayout1);
                 final LayoutInflater mInflater;
                 mInflater = (LayoutInflater)RegisterActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                mInflater.inflate(R.layout.additional, linear);
-                setCategory();
-                setDate();
+                int id = getLayoutID(mCategory);
+                if(id != -1){
+                    mInflater.inflate(id, linear);
+                    setArea();
+                    setDate();
+                }
             }
         });
     }
+    
+    private int getLayoutID(int idx){
+        switch(idx){
+            case DrinkLogActivity.CATEGORY_WHISKEY:
+                return R.layout.add_wh;
+                
+                //TODO:多種類追加
+                
+            default:
+                return -1;
+        }
+    }
 
+    private void setArea(){
+        int id = getAreaID(mCategory);
+        if(id != -1){
+            ArrayAdapter adapter = ArrayAdapter.createFromResource(
+                    this, id, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
+            Spinner spinner = (Spinner)findViewById(R.id.spinner);
+            spinner.setAdapter(adapter);        
+        }
+        else{
+            //TODO:定義されていないとき
+        }
+    }
+    
+    private int getAreaID(int idx){
+        switch(idx){
+            case DrinkLogActivity.CATEGORY_WHISKEY:
+                return R.array.area_array_wh;
+                
+                //TODO:多種類追加
+                
+            default:
+                return -1;
+        }
+    }
+    
     private void setDate(){
         TextView text = (TextView)findViewById(R.id.date);
         text.setText(mCurDate);
@@ -267,14 +330,6 @@ public class RegisterActivity extends Activity {
                 dialog.show();
             }
         });
-    }
-    
-    private void setCategory(){
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(
-                this, R.array.area_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
-        spinner.setAdapter(adapter);        
     }
     
     private String getDate(int year, int mon, int d){        
@@ -365,28 +420,236 @@ public class RegisterActivity extends Activity {
     }
     
     private void register(String name){
-        Log.d(TAG, "enter register()");
-        
-        ContentValues values = new ContentValues();
-        
-        //名前
-        values.put("name", name);
+        switch(mCategory){
+            case DrinkLogActivity.CATEGORY_WHISKEY:
+                putWhData(name);
+                break;
+                
+            case DrinkLogActivity.CATEGORY_COCKTAIL:
+                putCoData(name);
+                break;
+                
+            case DrinkLogActivity.CATEGORY_WINE:
+                putWiData(name);
+                break;
 
-        //画像(image)
+            case DrinkLogActivity.CATEGORY_SHOCHU:
+                putShData(name);
+                break;
+
+            case DrinkLogActivity.CATEGORY_SAKE:
+                putJaData(name);
+                break;
+
+            case DrinkLogActivity.CATEGORY_BRANDY:
+                putBrData(name);
+                break;
+
+            case DrinkLogActivity.CATEGORY_BEER:
+                putBeData(name);
+                break;
+
+            case DrinkLogActivity.CATEGORY_OTHER:
+                putOtData(name);
+                break;
+
+            default:
+                Log.e(TAG, "Unknown Category");
+                break;
+        }
+    }
+    
+    private void putWhData(String name){
+        ContentValues values = new ContentValues();
+
+        values.put("category", getString(R.string.whiskey));
+        
+        putName(values, name);
+        putImage(values);
+        putEvaluate(values);
+        putComment(values);
+        /*以下はその他の項目*/
+        putYear(values);
+        putType(values);
+        putArea(values);
+        putDate(values);
+        putPlace(values);
+        putPrice(values);
+
+        //DBに登録
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        db.insert("logtable", null, values);
+    }
+
+    private void putCoData(String name){
+        ContentValues values = new ContentValues();
+
+        values.put("category", getString(R.string.cocktail));
+        
+        putName(values, name);
+        putImage(values);
+        putEvaluate(values);
+        putComment(values);
+        /*以下はその他の項目*/
+        putType(values);
+        putDate(values);
+        putPlace(values);
+        putPrice(values);
+
+        //DBに登録
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        db.insert("logtable", null, values);        
+    }
+
+    private void putWiData(String name){
+        ContentValues values = new ContentValues();
+
+        values.put("category", getString(R.string.wine));
+        
+        putName(values, name);
+        putImage(values);
+        putEvaluate(values);
+        putComment(values);
+        /*以下はその他の項目*/
+        putYear(values);
+        putType(values);
+        putArea(values);
+        putDate(values);
+        putPlace(values);
+        putPrice(values);
+
+        //DBに登録
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        db.insert("logtable", null, values);
+    }
+
+    private void putShData(String name){
+        ContentValues values = new ContentValues();
+
+        values.put("category", getString(R.string.shochu));
+        
+        putName(values, name);
+        putImage(values);
+        putEvaluate(values);
+        putComment(values);
+        /*以下はその他の項目*/
+        putType(values);
+        putArea(values);
+        putDate(values);
+        putPlace(values);
+        putPrice(values);
+
+        //DBに登録
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        db.insert("logtable", null, values);   
+    }
+    
+    private void putJaData(String name){
+        ContentValues values = new ContentValues();
+
+        values.put("category", getString(R.string.japanese_sake));
+        
+        putName(values, name);
+        putImage(values);
+        putEvaluate(values);
+        putComment(values);
+        /*以下はその他の項目*/
+        putType(values);
+        putArea(values);
+        putDate(values);
+        putPlace(values);
+        putPrice(values);
+
+        //DBに登録
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        db.insert("logtable", null, values);   
+    }
+
+    private void putBrData(String name){
+        ContentValues values = new ContentValues();
+
+        values.put("category", getString(R.string.brandy));
+        
+        putName(values, name);
+        putImage(values);
+        putEvaluate(values);
+        putComment(values);
+        /*以下はその他の項目*/
+        putYear(values);
+        putType(values);
+        putArea(values);
+        putDate(values);
+        putPlace(values);
+        putPrice(values);
+
+        //DBに登録
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        db.insert("logtable", null, values);
+        
+    }
+
+    private void putBeData(String name){
+        ContentValues values = new ContentValues();
+
+        values.put("category", getString(R.string.beer));
+        
+        putName(values, name);
+        putImage(values);
+        putEvaluate(values);
+        putComment(values);
+        /*以下はその他の項目*/
+        putType(values);
+        putArea(values);
+        putDate(values);
+        putPlace(values);
+        putPrice(values);
+
+        //DBに登録
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        db.insert("logtable", null, values);        
+    }
+
+    private void putOtData(String name){
+        ContentValues values = new ContentValues();
+
+        values.put("category", getString(R.string.other));
+        
+        putName(values, name);
+        putImage(values);
+        putEvaluate(values);
+        putComment(values);
+        /*以下はその他の項目*/
+        putDate(values);
+        putPlace(values);
+        putPrice(values);
+
+        //DBに登録
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        db.insert("logtable", null, values);
+        
+    }
+
+    private void putName(ContentValues values, String name){
+        values.put("name", name);
+    }
+    
+    private void putImage(ContentValues values){
         if(mLinkStr == null){
             values.put("image", "none");
         }
         else{
             values.put("image", mLinkStr);
-        }
-        
-        //評価(evaluate)
+        }        
+    }
+    
+    private void putEvaluate(ContentValues values){
         RatingBar bar = (RatingBar)findViewById(R.id.rating);
         float rate = bar.getRating();
         String rate_str = String.valueOf(rate);
-        values.put("evaluate", rate_str);
-        
-        //コメント(comment)
+        values.put("evaluate", rate_str);        
+    }
+    
+    private void putComment(ContentValues values){
         EditText comment_text = (EditText)findViewById(R.id.impression);
         String comment = comment_text.getText().toString();
         if(comment.length() == 0){
@@ -395,14 +658,9 @@ public class RegisterActivity extends Activity {
         else{
             values.put("comment", comment);
         }
-        
-        /*********ここから下はオプションなので、「その他」ボタンが押されたかをチェックする********/
-        
-        //種類
-        //TODO:他種類のケース追加
-        values.put("category", getString(R.string.whiskey));
-        
-        //年数
+    }
+    
+    private void putYear(ContentValues values){
         if(mOtherFlag){
             EditText year_text = (EditText)findViewById(R.id.year);
             String year = year_text.getText().toString();
@@ -415,12 +673,15 @@ public class RegisterActivity extends Activity {
         }
         else{
             values.put("year", "none");            
-        }
-        
-        //タイプ
+        }        
+    }
+    
+    private void putType(ContentValues values){
         //TODO:他種類のケース追加
         values.put("type", "none");
-        
+    }
+    
+    private void putArea(ContentValues values){
         //地域
         if(mOtherFlag){
             Spinner area_spinner = (Spinner)findViewById(R.id.spinner);
@@ -435,11 +696,13 @@ public class RegisterActivity extends Activity {
         else{
             values.put("area", "none");            
         }
-        
-        //日時(date)
-        values.put("date", mCurDate);
-        
-        //場所(place)
+    }
+    
+    private void putDate(ContentValues values){
+        values.put("date", mCurDate);        
+    }
+
+    private void putPlace(ContentValues values){
         if(mOtherFlag){
             EditText place_text = (EditText)findViewById(R.id.place);
             String place = place_text.getText().toString();
@@ -453,8 +716,9 @@ public class RegisterActivity extends Activity {
         else{
             values.put("place", "none");            
         }
-        
-        //価格(price)
+    }
+
+    private void putPrice(ContentValues values){
         if(mOtherFlag){
             EditText price_text = (EditText)findViewById(R.id.price);
             String price = price_text.getText().toString();
@@ -468,10 +732,6 @@ public class RegisterActivity extends Activity {
         else{
             values.put("price", "none");            
         }
-
-        //DBに登録
-        SQLiteDatabase db = mHelper.getWritableDatabase();
-        db.insert("logtable", null, values);
     }
     
     public boolean onKeyDown(int keyCode, KeyEvent event){
