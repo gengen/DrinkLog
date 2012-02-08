@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-		android:orientation="vertical">
+		android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+      	android:layout_marginRight="5dp">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -51,14 +53,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_weight="5"/>
+            android:layout_weight="6"/>
         <Button
             android:id="@+id/picture"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/picture"
-            android:layout_weight="3"/>
+            android:layout_weight="2"/>
     </LinearLayout>
 
     <LinearLayout
@@ -107,23 +109,26 @@
             android:maxLength="100"
             >
         </EditText>
-    </LinearLayout>    
+    </LinearLayout>
+    
+    <View android:id="@+id/Separator" 
+	    android:layout_width="wrap_content" 
+    	android:background="#DCDCDC" 
+      	android:layout_height="1px" 
+      	android:layout_marginTop="10dp">
+   	</View>
         
     <LinearLayout 
         android:id="@+id/other_display_layout"
         android:layout_width="match_parent"
         android:layout_height="70sp"
-        android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="その他" />
+        android:gravity="center"
+        android:paddingTop="15sp">
         <Button
             android:id="@+id/log_other"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="その他の項目を設定"
+            android:text="@string/other_item"
             android:drawableRight="@android:drawable/ic_menu_more"
             >
         </Button>

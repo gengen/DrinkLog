@@ -38,6 +38,7 @@
 	<string name="register_cancel">キャンセル</string>
 	<string name="cancel_confirm_title">確認</string>
 	<string name="cancel_confirm">破棄してタイトルに戻りますか？</string>
+	<string name="other_item">その他の項目を表示</string>
 	
 	<string name="whiskey">ウィスキー</string>
 	<string name="cocktail">カクテル</string>

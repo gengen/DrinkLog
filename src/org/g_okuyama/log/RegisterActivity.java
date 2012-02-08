@@ -249,6 +249,7 @@ public class RegisterActivity extends Activity {
     }
     
     private void setOther(){
+        final View separator = (View)findViewById(R.id.Separator); 
         final LinearLayout otherLayout = (LinearLayout)findViewById(R.id.other_display_layout);
         Button other = (Button)findViewById(R.id.log_other);
         other.setOnClickListener(new OnClickListener(){
@@ -256,6 +257,7 @@ public class RegisterActivity extends Activity {
                 mOtherFlag = true;
                 //「その他」ボタンのレイアウトを非表示に
                 otherLayout.setVisibility(View.GONE);
+                separator.setVisibility(View.GONE);
 
                 //その他の項目を動的に追加(種類ごとに異なる)
                 LinearLayout linear = (LinearLayout)findViewById(R.id.linearLayout1);
