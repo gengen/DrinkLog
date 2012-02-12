@@ -18,8 +18,8 @@ public class DrinkLogActivity extends Activity {
     public static final int CATEGORY_WINE = 2;
     public static final int CATEGORY_SHOCHU = 3;
     public static final int CATEGORY_SAKE = 4;
-    public static final int CATEGORY_BEER = 5;
-    public static final int CATEGORY_BRANDY = 6;
+    public static final int CATEGORY_BRANDY = 5;
+    public static final int CATEGORY_BEER = 6;
     public static final int CATEGORY_OTHER = 7;
 
     private EditText mEditText = null;

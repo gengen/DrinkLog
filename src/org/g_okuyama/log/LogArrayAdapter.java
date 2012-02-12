@@ -25,12 +25,30 @@ public class LogArrayAdapter extends ArrayAdapter<LogListData> {
 	}
 	
 	public View getView(int position, View convertView, ViewGroup parent) {
-		if(convertView == null){
+		/*
+		 * メモリ不足になるかもしれないので、その場合は使いまわす。
+		 * ただし、VISIBLE設定を初期化したほうがよい。
+		 */
+		//if(convertView == null){
 			convertView = mInflater.inflate(R.layout.logitem, null);
-		}
+		//}
 		
 		//現在の行に設定するオブジェクト
 		LogListData data = (LogListData)getItem(position);
+
+		if(!isEnabled(position)){
+			//イメージと評価を非表示にし、区切りとしての日付を入れる
+			ImageView image = (ImageView)convertView.findViewById(R.id.item_image);
+			image.setVisibility(View.INVISIBLE);
+			
+			RatingBar rate = (RatingBar)convertView.findViewById(R.id.item_rating);
+			rate.setVisibility(View.INVISIBLE);
+			
+			TextView text = (TextView)convertView.findViewById(R.id.item_name);
+			text.setText(data.getTextData());
+			return convertView;
+		}
+		
 		//イメージ
 		ImageView image = (ImageView)convertView.findViewById(R.id.item_image);
 		int imageID = data.getImageID();
@@ -81,4 +99,14 @@ public class LogArrayAdapter extends ArrayAdapter<LogListData> {
 		
 		return convertView;
 	}
+
+	@Override  
+	public boolean isEnabled(int position) {
+		if(getItem(position).getImageID() != -9999){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}  
 }

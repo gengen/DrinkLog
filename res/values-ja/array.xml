@@ -35,12 +35,360 @@
 	</string-array> 
 	
 	<string-array name="name_array_wh">
-	    <item></item>
-	    <item>グレンリベット</item>
-	    <item>グレンモーレンジ</item>
-	    <item>グレンフィディック</item>
-   	    <item>その他</item>
-	</string-array>
+<item>アベラワー</item>
+<item>オルタヴェーン</item>
+<item>アンノック(ノックデュー)</item>
+<item>アズ・ウイ・ゲット・イット</item>
+<item>オスロスク</item>
+<item>オルトモア</item>
+<item>バルミニック</item>
+<item>バルヴェニー</item>
+<item>バンフ</item>
+<item>ベンリアック</item>
+<item>ベンリネス</item>
+<item>ベンロマック</item>
+<item>ブレアフィンディー</item>
+<item>ブレイヴァル</item>
+<item>キャパードニク</item>
+<item>カードゥ</item>
+<item>コールバーン</item>
+<item>コンヴァルモア</item>
+<item>クラガンモア</item>
+<item>クレイゲラヒ</item>
+<item>ダルユーイン</item>
+<item>ダラスデュー</item>
+<item>ダルウィニー</item>
+<item>ドラムギッシュ</item>
+<item>ダフタウン</item>
+<item>グレンアルビン</item>
+<item>グレンアラヒー</item>
+<item>グレンバーギー</item>
+<item>グレンクレイグ</item>
+<item>グレンデヴェロン(マクダフ)</item>
+<item>グレンエルギン</item>
+<item>グレンファークラス</item>
+<item>グレンフィディック</item>
+<item>グレングラッサ</item>
+<item>グレングラント</item>
+<item>グレンキース</item>
+<item>グレンリヴェット</item>
+<item>グレンロッシー</item>
+<item>グレンモール</item>
+<item>グレンマレイ</item>
+<item>グレンロセス</item>
+<item>グレンタウチャーズ</item>
+<item>グレンアギー</item>
+<item>グレンユーリー</item>
+<item>インペリアル</item>
+<item>インチガワー</item>
+<item>ノッカンドゥ</item>
+<item>ノックデュー</item>
+<item>リンクウッド</item>
+<item>ロッホデュー（マノックモア）</item>
+<item>ロングモーン</item>
+<item>マッカラン</item>
+<item>マクダフ</item>
+<item>マノックモア</item>
+<item>ミルバーン</item>
+<item>ミルトンダフ</item>
+<item>モートラック</item>
+<item>モストウィー</item>
+<item>オールドバランテュラン</item>
+<item>オード</item>
+<item>ピティヴェアック</item>
+<item>ロイヤル・ブラックラ</item>
+<item>シングルトン</item>
+<item>スペイバーン</item>
+<item>スペイサイド</item>
+<item>ストラスアイラ</item>
+<item>ストラスミル</item>
+<item>タムデュー</item>
+<item>タムナヴーリン</item>
+<item>トマーチン</item>
+<item>トミントール</item>
+<item>トーモア</item>
+<item>アバフェルディ</item>
+<item>バルブレア</item>
+<item>ベンネヴィス</item>
+<item>ベンウィヴィス</item>
+<item>ブレアアソール</item>
+<item>ブローラ</item>
+<item>クラインリシュ</item>
+<item>ダルモア</item>
+<item>エドラダワー</item>
+<item>グレンエイボン</item>
+<item>グレンカダム</item>
+<item>グレンドロナック</item>
+<item>グレネスク</item>
+<item>グレンギリー</item>
+<item>グレンゴイン</item>
+<item>グレンロッキー</item>
+<item>グレンモーレンジ</item>
+<item>グレンタレット</item>
+<item>インチマリン</item>
+<item>ロッホローモンド</item>
+<item>ロッホサイド</item>
+<item>ネザーミル</item>
+<item>ノースポート（ブリーキン）</item>
+<item>オーバン</item>
+<item>オールド　フェッターケアン</item>
+<item>オールド　プルトニー</item>
+<item>ロスデュー（ロッホローモンド）</item>
+<item>ロイヤルロッホナガー</item>
+<item>シングル･シングル･ベレ･バーレイ</item>
+<item>ティーニニック</item>
+<item>タリバーディン</item>
+<item>グレンスコシア</item>
+<item>ヘーゼルバーン</item>
+<item>ロングロウ</item>
+<item>スプリングバンク</item>
+<item>オーヘントシャン</item>
+<item>ブラドノック</item>
+<item>グレンフラグラー</item>
+<item>グレンキンチー</item>
+<item>インヴァリーヴン</item>
+<item>レディバーン</item>
+<item>リンリスゴー</item>
+<item>リトルミル</item>
+<item>ローズバンク</item>
+<item>セント・マグデラン</item>
+<item>アイル・オブ・アラン</item>
+<item>ハイランドパーク</item>
+<item>アイル・オブ・ジュラ</item>
+<item>レダイグ</item>
+<item>オールドマン・オブ・ホイ</item>
+<item>スキャパ</item>
+<item>タリスカー</item>
+<item>トバモリー</item>
+<item>アードベッグ</item>
+<item>アズ・ウイ・ゲット・イット・アイラ</item>
+<item>ボウモア</item>
+<item>ブリックラディ</item>
+<item>ブナハーブン</item>
+<item>カリラ</item>
+<item>フィンラガン</item>
+<item>フレイザース</item>
+<item>アイリーク</item>
+<item>キルホーマン</item>
+<item>キルブライト</item>
+<item>ラガヴーリン</item>
+<item>ラフロイグ</item>
+<item>ラウダブルセレクション</item>
+<item>オクトモア</item>
+<item>ポートシャーロット</item>
+<item>ポートエレン</item>
+<item>ザ･リバー･ラガーン</item>
+<item>Ａ．Ｈ．ハーシュ</item>
+<item>アメリカン スタイル ウイスキー クエッション</item>
+<item>エンシェントエイジ</item>
+<item>ベーカーズ</item>
+<item>バレッツ</item>
+<item>ベーシルヘイデン</item>
+<item>ベローズ</item>
+<item>ベンチマーク</item>
+<item>ビックアルズ</item>
+<item>ＢＪホラディー</item>
+<item>ブラントン</item>
+<item>ブルースクラブ</item>
+<item>ブッカーズ</item>
+<item>バーボンロイヤル</item>
+<item>バーボンシュプリーム</item>
+<item>バーボンバレー</item>
+<item>バッファロートレース</item>
+<item>ビュレット</item>
+<item>ケイデンヘッズ</item>
+<item>クラッシックカスク</item>
+<item>クレメンタイン</item>
+<item>コックオブザウォーク</item>
+<item>カーネルリー</item>
+<item>コーナークリーク</item>
+<item>カズンエルビス</item>
+<item>カウボーイ</item>
+<item>クラウンダービー</item>
+<item>ダコタ</item>
+<item>デビット　ニコルソン</item>
+<item>ダウリング １００</item>
+<item>ドクタールイスシュアポーション</item>
+<item>イーグルレア</item>
+<item>アーリータイムス</item>
+<item>エライジャクレイグ</item>
+<item>エバンウィリアムス</item>
+<item>エズラブルックス</item>
+<item>ファイティングコック</item>
+<item>フォアローゼス</item>
+<item>ゴッズ</item>
+<item>ハンコックリザーブ</item>
+<item>ヘンリーマッケンナ</item>
+<item>ハーシュ</item>
+<item>ホフマン</item>
+<item>ＩＷハーパー</item>
+<item>ジェイコブスウェル</item>
+<item>ジェイルハウスブルース</item>
+<item>ジェファーソンズリザーブ</item>
+<item>ジンビーム</item>
+<item>ジョニードラムス</item>
+<item>ジョシュアブルックス</item>
+<item>ＪＴＳ　ブラウン</item>
+<item>ＪＷダント</item>
+<item>ケンタッキープライド</item>
+<item>ケンタッキータヴァーン</item>
+<item>ケンタッキーヴィンテージ</item>
+<item>ノブクリーク</item>
+<item>メーカーズマーク</item>
+<item>マーティンミルズ</item>
+<item>マコーミック</item>
+<item>マッケンドリック</item>
+<item>ミクターズ</item>
+<item>ミスターバーボン</item>
+<item>ノアーズミル</item>
+<item>オールド　１０１</item>
+<item>オールドバーズタウン</item>
+<item>オールドコモンウエルズ</item>
+<item>オールドクロウ</item>
+<item>オールドディスティラー</item>
+<item>オールドエズラ</item>
+<item>オールドフィッツジェラルド</item>
+<item>オールドフォレスター</item>
+<item>１１４　オールドグランダッド</item>
+<item>オールドグランダッド</item>
+<item>オールドグロームス</item>
+<item>オールドヘブンヒル</item>
+<item>オールドケンタッキー</item>
+<item>オールドマンウィンター</item>
+<item>オールドノーザン</item>
+<item>オールドポーグ</item>
+<item>オールドリップ</item>
+<item>オールドウイスキーリバー</item>
+<item>オールドロイヤル</item>
+<item>オリジナルバレルブランド</item>
+<item>アウトロー</item>
+<item>パピーヴァンウインクルス</item>
+<item>パップス</item>
+<item>パーカーズヘリテージコレクション</item>
+<item>プレサベーション</item>
+<item>ピュアケンタッキー</item>
+<item>レアパーフェクション</item>
+<item>レベッカ</item>
+<item>レッド＆ゴールド</item>
+<item>リッジモント　リザーブ</item>
+<item>リップヴァンウインクル</item>
+<item>ロック＆ロール</item>
+<item>ロック　ヒル　ファーム</item>
+<item>ロッキーマウンテンランチ</item>
+<item>ローワンズクリーク</item>
+<item>ランフォーザローゼス</item>
+<item>サムヒューストン</item>
+<item>スモーキージムズ</item>
+<item>ソサエティーバーボンコニサーズ</item>
+<item>サニーブルックス</item>
+<item>セドフォード</item>
+<item>サラブレッド</item>
+<item>トムムーア</item>
+<item>ベリーオールドバートン</item>
+<item>ベリーオールドセントニック</item>
+<item>ヴァージン</item>
+<item>ヴァージニアジェントルマン</item>
+<item>ワッセンズ</item>
+<item>ワッティー ブーン＆サンス</item>
+<item>ワイルドターキー</item>
+<item>ワイルドウエスト</item>
+<item>ウィレット・エステート・リザーブ</item>
+<item>ＷＬ.ウェラー</item>
+<item>ウッドフォードリザーブ</item>
+<item>イエローローズオブテキサス</item>
+<item>イエローストーン</item>
+<item>ヨーヒップホップ</item>
+<item>バーンハイム オリジナル</item>
+<item>シーグラム７クラウン</item>
+<item>ジョージアムーン</item>
+<item>プラットバレーストーンジャグ</item>
+<item>ジムビーム　ライ</item>
+<item>オールドオーバーホルト</item>
+<item>パイクスヴィル　シュープリーム　ライ</item>
+<item>リップヴァンウインクル　ライ</item>
+<item>テンプルトン　ライ　スモール　バッチ</item>
+<item>ロングホーンクリーク</item>
+<item>ジョージディッケル</item>
+<item>ジャックダニエル</item>
+<item>１００パイパーズ</item>
+<item>アボットチョイス</item>
+<item>B.N.J （ザ・ベイリー・ニコル・ジャーヴィー）</item>
+<item>バランタイン</item>
+<item>ベル</item>
+<item>ブラック＆ホワイト</item>
+<item>キャンベルタウンロッホ</item>
+<item>チーフティンズチョイス</item>
+<item>シーバスリーガル</item>
+<item>カティ・サーク</item>
+<item>デュワーズ</item>
+<item>ダンヒル　オールドマスター</item>
+<item>フェイマス　グラウス</item>
+<item>グランツ</item>
+<item>ホッグスヘッズ</item>
+<item>インバーハウス</item>
+<item>インバーアラン</item>
+<item>アイラ</item>
+<item>アイラミスト</item>
+<item>アイルオブスカイ</item>
+<item>J＆B</item>
+<item>ジョニーウォーカー</item>
+<item>キングスランサム</item>
+<item>ロックランザ</item>
+<item>ミッチェルズ</item>
+<item>オールドパー</item>
+<item>ロブロイ</item>
+<item>ロイヤルハウスホールド</item>
+<item>ロイヤルアイランド</item>
+<item>ロイヤルサルート</item>
+<item>スチュワート・クリーム・オブ・ザ・バーリー</item>
+<item>シンジケート58/6</item>
+<item>ティーチャーズ</item>
+<item>チェイ　ヴェック</item>
+<item>アッシャーズ　グリーンストライプ</item>
+<item>ウシュクベー</item>
+<item>バット６９</item>
+<item>ホワイトホース</item>
+<item>ホワイト＆マッカイ</item>
+<item>アドロップオブアイリッシュ</item>
+<item>ブラックブッシュ</item>
+<item>ブッシュミルズ</item>
+<item>カネマラ</item>
+<item>ダンフィーズ</item>
+<item>グリーンスポット</item>
+<item>イニシュオーウェン</item>
+<item>ジェムソン</item>
+<item>ナッポグー　キャッスル</item>
+<item>リムリック　シャノングレーン</item>
+<item>ロックス　シングルモルト</item>
+<item>ミドルトン　ベリーレア</item>
+<item>マーフィーズ</item>
+<item>レッドブレスト</item>
+<item>シュリーヴ・ナ・グロック</item>
+<item>タラモアデュー</item>
+<item>ターコネル</item>
+<item>アルバータスプリングス</item>
+<item>ブラックベルベット</item>
+<item>カナディアンクラブ</item>
+<item>クラウンローヤル</item>
+<item>オールドカナダ</item>
+<item>パイククリーク</item>
+<item>角瓶</item>
+<item>白州</item>
+<item>響</item>
+<item>トリスウイスキー</item>
+<item>ホワイト</item>
+<item>山崎</item>
+<item>秩父</item>
+<item>宮城峡</item>
+<item>竹鶴</item>
+<item>鶴</item>
+<item>余市</item>
+<item>イチローズモルト</item>
+<item>スケアクロウ</item>
+<item>軽井沢</item>
+<item>北杜</item>
+<item>富士山麓</item>
+</string-array>
     
 
 </resources>

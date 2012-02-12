@@ -35,12 +35,360 @@
 	</string-array> 
 
 	<string-array name="name_array_wh">
-	    <item></item>
-	    <item>GrenRivet</item>
-	    <item>GrenMorange</item>
-	    <item>Grenfiddich</item>
-   	    <item>Other</item>
-	</string-array> 
+<item>Aberlour</item>
+<item>Allt-a-Bhainne</item>
+<item>Ancnoc(Knockdhu)</item>
+<item>As-we-get-it</item>
+<item>Auchroisk</item>
+<item>Aultmore</item>
+<item>Balmenach</item>
+<item>Balvenie</item>
+<item>Banff</item>
+<item>Benriach</item>
+<item>Benrinnes</item>
+<item>Benromack</item>
+<item>Blairfindy</item>
+<item>Braeval</item>
+<item>Caperdonich</item>
+<item>Cardhu</item>
+<item>Coleburn</item>
+<item>Convalmore</item>
+<item>Cragganmore</item>
+<item>Craigellachie</item>
+<item>Dailuaine</item>
+<item>DallasDhu</item>
+<item>Dalwhinnie</item>
+<item>Drumguish</item>
+<item>Dufftown</item>
+<item>GlenAbyn</item>
+<item>Glenallachie</item>
+<item>Glenburgie</item>
+<item>Glencraig</item>
+<item>Glendeveron (Macduff)</item>
+<item>GlenElgin</item>
+<item>Glenfarclas</item>
+<item>Glenfiddich</item>
+<item>Glenglassaugh</item>
+<item>GlenGrant</item>
+<item>GlenKeith</item>
+<item>Glenlivet</item>
+<item>Glenlossie</item>
+<item>GlenMhor</item>
+<item>Glenmoray</item>
+<item>Glenrothes</item>
+<item>Glentauchers</item>
+<item>Glenugie</item>
+<item>Glenury</item>
+<item>Imperial</item>
+<item>Inchgower</item>
+<item>Knockando</item>
+<item>Knockdhu</item>
+<item>Linkwood</item>
+<item>LochDhu(Mannochmore)</item>
+<item>Longmorn</item>
+<item>Macallan</item>
+<item>Macduff</item>
+<item>Mannochmore</item>
+<item>Millburn</item>
+<item>Miltonduff</item>
+<item>Mortlach</item>
+<item>Mosstowie</item>
+<item>Old Ballantruan</item>
+<item>Ord</item>
+<item>Pittyvaich</item>
+<item>RoyalBrackla</item>
+<item>Singleton</item>
+<item>Speyburn</item>
+<item>Speyside</item>
+<item>Strathisla</item>
+<item>Strathmill</item>
+<item>Tamdhu</item>
+<item>Tamnavulin</item>
+<item>Tomatin</item>
+<item>Tomintoul</item>
+<item>Tormore</item>
+<item>Aberfeldy</item>
+<item>Balblair</item>
+<item>BenNevis</item>
+<item>Benwyvis</item>
+<item>BlairAthol</item>
+<item>Brora</item>
+<item>Clynelish</item>
+<item>Dalmore</item>
+<item>Edradour</item>
+<item>GlenAvon</item>
+<item>Glencadam</item>
+<item>Glendronach</item>
+<item>Glenesk</item>
+<item>GlenGarioch</item>
+<item>Glengoyne</item>
+<item>Glenlochy</item>
+<item>Glenmorangie</item>
+<item>Glenturret</item>
+<item>Inchmurrin</item>
+<item>LochLomond</item>
+<item>Lochside</item>
+<item>Nethermill</item>
+<item>Northport(Brechin)</item>
+<item>Oban</item>
+<item>Old Fettercairn</item>
+<item>Old Pulteney</item>
+<item>Rhosdhu (LochLomond)</item>
+<item>RoyalLochnager</item>
+<item>Singe-single-bere-barley</item>
+<item>Teaninich</item>
+<item>Tullibardine</item>
+<item>GlenScotia</item>
+<item>Hazelburn</item>
+<item>Longrow</item>
+<item>Springbank</item>
+<item>Auchentoshan</item>
+<item>Bladnoch</item>
+<item>GlenFlagler</item>
+<item>Glenkinchie</item>
+<item>Inverleven</item>
+<item>Ladyburn</item>
+<item>Linlithgow</item>
+<item>Littlemill</item>
+<item>Rosebank</item>
+<item>St.Magdalene</item>
+<item>Isle of Arran</item>
+<item>HighlandPark</item>
+<item>Jura</item>
+<item>Ledaig</item>
+<item>Old-Man-of-Hoy</item>
+<item>Scapa</item>
+<item>Talisker</item>
+<item>Tobermory</item>
+<item>Ardbeg</item>
+<item>As-we-get-it-Isray</item>
+<item>Bowmore</item>
+<item>Bruichladdich</item>
+<item>Bunnahabhain</item>
+<item>CaolIla</item>
+<item>FinLaggan</item>
+<item>Fraaers</item>
+<item>Ileach</item>
+<item>Kilchoman</item>
+<item>Kilbride</item>
+<item>Lagavulin</item>
+<item>Laphroiig</item>
+<item>Laudable Selection</item>
+<item>Octomore</item>
+<item>Port charltte</item>
+<item>PortEllen</item>
+<item>TheRiverLaggan</item>
+<item>A.H.HIRSCH</item>
+<item>AMERICAN STYLE WHISKEY ? (question)</item>
+<item>ANCIENT AGE</item>
+<item>BAKERS</item>
+<item>BARRET\'S</item>
+<item>BASIL HAYDEN\'S</item>
+<item>BELLOWS</item>
+<item>BENCHMARK</item>
+<item>BIG AL\'S</item>
+<item>BJ HOLLADAY</item>
+<item>BLANTON</item>
+<item>BLUES CLUB</item>
+<item>BOOKERS</item>
+<item>BOURBON ROYAL</item>
+<item>BOURBON SUPREME</item>
+<item>BOURBON VALLEY</item>
+<item>BUFFALO TRACE</item>
+<item>BURRET</item>
+<item>CADENHEADS</item>
+<item>CLASSIC CASK</item>
+<item>CLEMENTINE</item>
+<item>COCK of the WALK</item>
+<item>COLONEL LEE</item>
+<item>CORNER CREEK</item>
+<item>COUSIN ELVIS</item>
+<item>COWBOY</item>
+<item>CROWN DERBY</item>
+<item>DACOTA</item>
+<item>DAVID NICHOLSON</item>
+<item>DOWLING 100</item>
+<item>Dr.RUIES SURE POTION</item>
+<item>EAGLE RARE</item>
+<item>EARLY TIMES</item>
+<item>ELIJAH CRAIG</item>
+<item>EVAN WILLAMS</item>
+<item>EZRA BROOKS</item>
+<item>FIGHTING COCK</item>
+<item>FOUR ROSES</item>
+<item>GODS</item>
+<item>HANCOCKS RESERVE</item>
+<item>HENRY MCKENNA</item>
+<item>HIRSCH</item>
+<item>HOFFMAN</item>
+<item>I.W. HARPER</item>
+<item>JACOB\'S WELL</item>
+<item>JAIL HOUSE BLUE</item>
+<item>JEFFERSON\'S RESERVE</item>
+<item>JIM BEAM\'S</item>
+<item>JOHNNY DRUMS</item>
+<item>JOSHUA BROOKS</item>
+<item>JTS BROWN</item>
+<item>JW DANT</item>
+<item>KENTUCKY PRIDE</item>
+<item>KENTUCKY TAVERN</item>
+<item>KENTUCKY VINTAGE</item>
+<item>KNOB CLEEK</item>
+<item>MAKER\'S MARK</item>
+<item>MARTIN MILLS</item>
+<item>McCORMICK</item>
+<item>McKENDRIC</item>
+<item>MICHTER\'S</item>
+<item>Mr.BOURBON</item>
+<item>NOAR\'S MILL</item>
+<item>OLD 101</item>
+<item>OLD BARDSTOWN</item>
+<item>OLD COMMONWEALTH</item>
+<item>OLD CROW</item>
+<item>OLD DISTILLER</item>
+<item>OLD EZRA</item>
+<item>OLD FITZGERALD</item>
+<item>OLD FORESTER</item>
+<item>114 OLD GRANDAD</item>
+<item>OLD GRANDAD</item>
+<item>OLD GROMMES</item>
+<item>OLD HEAVEN HILL</item>
+<item>OLD KENTUCKY</item>
+<item>OLD MAN WINTER</item>
+<item>OLD NORTHRN</item>
+<item>OLD POGUE</item>
+<item>OLD RIP</item>
+<item>OLD WHISKY RIVER</item>
+<item>OLD ROYAL</item>
+<item>ORIGINAL BARREL BRAND</item>
+<item>OUTLAW</item>
+<item>PAPPY VAN WINKLES</item>
+<item>PAPS</item>
+<item>PARKER\'S HERITAGE COLLECTION</item>
+<item>PRESERVATION</item>
+<item>PURE KENTUCKY</item>
+<item>RARE PERFECTION</item>
+<item>REBECCA</item>
+<item>RED And GOLD</item>
+<item>RIDGEMONT RESERVE</item>
+<item>RIP VAN WINKLE</item>
+<item>ROCK And ROLL</item>
+<item>ROCK HILL FARMS</item>
+<item>ROCKY MOUNTAIN LUNCH</item>
+<item>ROWANS CREEK</item>
+<item>RUN FOR THE ROSES</item>
+<item>SAM HOUSTON</item>
+<item>SMORKEY JIM\'S</item>
+<item>SOCIETY of BOURBON CONNOISSEURS</item>
+<item>SUNNY BROOKS</item>
+<item>THEDFORD</item>
+<item>THOROUGHBRED</item>
+<item>TOM MOORE</item>
+<item>VERY OLD BARTON</item>
+<item>VERY OLD ST.NICK</item>
+<item>VIRGIN</item>
+<item>VIRGINIA GENTLEMAN</item>
+<item>WATHEN\'S</item>
+<item>WATTIE BOONE And SONS</item>
+<item>WILD TURKEY</item>
+<item>WILD WEST</item>
+<item>WILLETT ESTATE RESERVE</item>
+<item>WL.WELLER</item>
+<item>WOOD FORD RESERVE</item>
+<item>YELLOW ROSE OF TEXAS</item>
+<item>YELLOW STONE</item>
+<item>YO HIPHOP</item>
+<item>BERNHEIM ORIGINAL</item>
+<item>SEAGRAMS</item>
+<item>GEORGIA MOON</item>
+<item>PLATTE VALLY STONE JUG</item>
+<item>JIM BEAM\'S RYE</item>
+<item>OLD OVER HOLT</item>
+<item>PIKESVILLE SUPREME RYE</item>
+<item>RIP VAN WINKLE RYE</item>
+<item>TEMPLETON RYE SMALL BATCH</item>
+<item>LONGHORN CREEK</item>
+<item>GEORGE DICKEL</item>
+<item>JACK DANIEL\'S</item>
+<item>100PIPERS</item>
+<item>ABBOT CHOICE</item>
+<item>B.N.J(THE BAILIE NICOL JARVIE)</item>
+<item>Ballantine\'s</item>
+<item>BELL\'S</item>
+<item>Black And White</item>
+<item>CAMBELLTOWN LOCH</item>
+<item>CHIEFTAIN\'S COICE</item>
+<item>CHIVAS REGAL</item>
+<item>CUTTY SARK</item>
+<item>DEWAR\'S</item>
+<item>DUNHILL OLD MASTER</item>
+<item>FAMOUSE GROUSE</item>
+<item>Grant\'s</item>
+<item>HOGS HEADS</item>
+<item>INVER HOUSE</item>
+<item>INVERALLAN</item>
+<item>ISLAY</item>
+<item>ISLAY MIST</item>
+<item>ISLE OF SKYE</item>
+<item>J And B</item>
+<item>JOHNNIE WALKER</item>
+<item>King\'s Ransom</item>
+<item>LOCHRANZA</item>
+<item>MITCHELL\'S</item>
+<item>Old Parr</item>
+<item>ROB ROY</item>
+<item>Royal Household</item>
+<item>Royal Island</item>
+<item>ROYAL SALUTE</item>
+<item>STEWARTS CREAM OF THE BARLEY SCOTCH WHISKY</item>
+<item>SYNDICATE 58/6</item>
+<item>TEACHER\'S</item>
+<item>TE\'BHEAG</item>
+<item>USHER\'S GREEN STRIPE</item>
+<item>USQUAEBACH</item>
+<item>VAT69</item>
+<item>WHITE HORSE</item>
+<item>WHYTE And MACKAY</item>
+<item>A DPOP OF THE IRISH</item>
+<item>BLACK BUSH</item>
+<item>BUSHMILLS</item>
+<item>ConnemaRa</item>
+<item>DUNPHYS</item>
+<item>GREEN SPOT</item>
+<item>INISHOWEN</item>
+<item>JAMESON</item>
+<item>Knappogue Castle</item>
+<item>LIMERICH SHANNON GRAIN</item>
+<item>Locke\'s SINGLE MALT</item>
+<item>MIDLETON VERY RARE</item>
+<item>MURPHYS</item>
+<item>REDBREAST</item>
+<item>SLieve na gCLoc</item>
+<item>Tullamore Dew</item>
+<item>TYRCONNELL</item>
+<item>ALBERTA SPRINGS</item>
+<item>BLACK VELVET</item>
+<item>Canadian Club</item>
+<item>Crown Royal</item>
+<item>OLD CANADA</item>
+<item>Pike Creek DOUBLE BARRELED</item>
+<item>KAKU</item>
+<item>HAKUSHU</item>
+<item>HIBIKI</item>
+<item>Torys</item>
+<item>WHITE</item>
+<item>YAMAZAKI</item>
+<item>CHICHIBU</item>
+<item>MIYAGIKYOUm</item>
+<item>TAKETSURU</item>
+<item>TSURU</item>
+<item>YOICHI</item>
+<item>Ichiro\'s Malt</item>
+<item>SCARECROW</item>
+<item>KARUIZAWA</item>
+<item>HOKUTO</item>
+<item>FUJISANROKU</item>
+</string-array> 
     
 
 </resources>

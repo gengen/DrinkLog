@@ -2,20 +2,29 @@ package org.g_okuyama.log;
 
 import java.util.ArrayList;
 
-import org.g_okuyama.log.R;
-
 import android.app.TabActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 
 public class LogListActivity extends TabActivity implements OnTabChangeListener{
+	public static final String TAG = "DrinkLog";
+	public static final int REQUEST_CODE = 1111;
+	
     DatabaseHelper dbhelper = null;
+    
+    String mDate = "";
+    ArrayList<LogListData> mLogList = null; 
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,7 +62,7 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
         Cursor c = db.rawQuery(query, null);
         int rowcount = c.getCount();
         
-        ArrayList<LogListData> loglist = new ArrayList<LogListData>();
+        mLogList = new ArrayList<LogListData>();
 
         if(rowcount == 0){
             //保存データがない場合
@@ -65,7 +74,20 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
                  * ・カテゴリイメージ、名前、評価
                  */
             	LogListData logitem = new LogListData();
+            	
+            	String curDate = c.getString(9/*date*/);
+            	if(!curDate.equals(mDate)){
+                	//日付入れる
+            		logitem.setImageID(-9999);
+            		logitem.setTextData(curDate);
+            		mDate = curDate;
+            		mLogList.add(logitem);
+            		i--;
+            		continue;
+            	}
 
+            	int dbid = c.getInt(0/*id*/);
+            	logitem.setDBID(dbid);
             	int id = Integer.valueOf(c.getString(1/*category*/));
             	logitem.setImageID(id);
             	logitem.setTextData(c.getString(2/*name*/));
@@ -73,7 +95,7 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
             	if(!rate.equals("")){
             		float f = Float.valueOf(rate);
             		logitem.setRatingData(f);
-            		loglist.add(logitem);
+            		mLogList.add(logitem);
             	}
 
             	c.moveToPrevious();
@@ -81,12 +103,31 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
             c.close();
         }
         
-        LogArrayAdapter adapter = new LogArrayAdapter(this, android.R.layout.simple_list_item_1, loglist);
+        LogArrayAdapter adapter = new LogArrayAdapter(this, android.R.layout.simple_list_item_1, mLogList);
         ListView listview = (ListView)findViewById(R.id.log_list_tab1);
         listview.setAdapter(adapter);
+        
+		listview.setOnItemClickListener(new ClickAdapter());
     }
 
     public void onTabChanged(String arg0) {
         
+    }
+    
+    
+    private class ClickAdapter implements OnItemClickListener{
+        public void onItemClick(AdapterView<?> adapter,
+                View view, int position, long id) {
+        	if(mLogList == null){
+        		return;
+        	}
+        	
+        	Log.d(TAG, "position = " + position);
+
+        	Intent intent = new Intent(LogListActivity.this, LogDetailActivity.class);
+        	LogListData logitem = mLogList.get(position);
+        	intent.putExtra("dbid", logitem.getDBID());
+        	startActivityForResult(intent, REQUEST_CODE);
+        }
     }
 }
