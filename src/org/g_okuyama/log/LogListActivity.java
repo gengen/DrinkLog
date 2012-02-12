@@ -66,16 +66,17 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
                  */
             	LogListData logitem = new LogListData();
 
-            	c.getString(1/*category*/);
-            	//TODO:カテゴリイメージ表示
-
+            	int id = Integer.valueOf(c.getString(1/*category*/));
+            	logitem.setImageID(id);
             	logitem.setTextData(c.getString(2/*name*/));
             	String rate = c.getString(4/*evaluate*/);
-            	float f = Float.valueOf(rate);
-            	logitem.setRatingData(f);
-            	loglist.add(logitem);
+            	if(!rate.equals("")){
+            		float f = Float.valueOf(rate);
+            		logitem.setRatingData(f);
+            		loglist.add(logitem);
+            	}
 
-                c.moveToPrevious();
+            	c.moveToPrevious();
             }
             c.close();
         }

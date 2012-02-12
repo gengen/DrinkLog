@@ -1,18 +1,16 @@
 package org.g_okuyama.log;
 
-import android.graphics.Bitmap;
-
 public class LogListData {
-	private Bitmap mBitmap = null;
+	private int mImageID;
 	private String mName = null;
 	private float mRate = 0;
 	
-	public void setImageData(Bitmap bitmap){
-		mBitmap = bitmap;
+	public void setImageID(int id){
+		mImageID = id;
 	}
 	
-	public Bitmap getImageData(){
-		return mBitmap;
+	public int getImageID(){
+		return mImageID;
 	}
 	
 	public void setTextData(String name){

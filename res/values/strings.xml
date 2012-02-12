@@ -39,6 +39,7 @@
 	<string name="cancel_confirm_title">Confirm</string>
 	<string name="cancel_confirm">Discard?</string>
 	<string name="other_item">Show other items</string>
+	<string name="ref_other_log">Show other logs</string>
 	    
 	<string name="whiskey">Whiskey</string>
 	<string name="cocktail">Cocktail</string>

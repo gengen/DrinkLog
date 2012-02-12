@@ -249,7 +249,6 @@ public class RegisterActivity extends Activity {
     }
     
     private void setOther(){
-        final View separator = (View)findViewById(R.id.Separator); 
         final LinearLayout otherLayout = (LinearLayout)findViewById(R.id.other_display_layout);
         Button other = (Button)findViewById(R.id.log_other);
         other.setOnClickListener(new OnClickListener(){
@@ -257,7 +256,6 @@ public class RegisterActivity extends Activity {
                 mOtherFlag = true;
                 //ÅuÇªÇÃëºÅvÉ{É^ÉìÇÃÉåÉCÉAÉEÉgÇîÒï\é¶Ç…
                 otherLayout.setVisibility(View.GONE);
-                separator.setVisibility(View.GONE);
 
                 //ÇªÇÃëºÇÃçÄñ⁄ÇìÆìIÇ…í«â¡(éÌóﬁÇ≤Ç∆Ç…àŸÇ»ÇÈ)
                 LinearLayout linear = (LinearLayout)findViewById(R.id.linearLayout1);
@@ -424,35 +422,35 @@ public class RegisterActivity extends Activity {
     private void register(String name){
         switch(mCategory){
             case DrinkLogActivity.CATEGORY_WHISKEY:
-                putWhData(name);
+                putWhData(mCategory, name);
                 break;
                 
             case DrinkLogActivity.CATEGORY_COCKTAIL:
-                putCoData(name);
+                putCoData(mCategory, name);
                 break;
                 
             case DrinkLogActivity.CATEGORY_WINE:
-                putWiData(name);
+                putWiData(mCategory, name);
                 break;
 
             case DrinkLogActivity.CATEGORY_SHOCHU:
-                putShData(name);
+                putShData(mCategory, name);
                 break;
 
             case DrinkLogActivity.CATEGORY_SAKE:
-                putJaData(name);
+                putJaData(mCategory, name);
                 break;
 
             case DrinkLogActivity.CATEGORY_BRANDY:
-                putBrData(name);
+                putBrData(mCategory, name);
                 break;
 
             case DrinkLogActivity.CATEGORY_BEER:
-                putBeData(name);
+                putBeData(mCategory, name);
                 break;
 
             case DrinkLogActivity.CATEGORY_OTHER:
-                putOtData(name);
+                putOtData(mCategory, name);
                 break;
 
             default:
@@ -461,11 +459,11 @@ public class RegisterActivity extends Activity {
         }
     }
     
-    private void putWhData(String name){
+    private void putWhData(int category, String name){
         ContentValues values = new ContentValues();
+        initValues(values);
 
-        values.put("category", getString(R.string.whiskey));
-        
+        values.put("category", String.valueOf(category));
         putName(values, name);
         putImage(values);
         putEvaluate(values);
@@ -481,13 +479,14 @@ public class RegisterActivity extends Activity {
         //DBÇ…ìoò^
         SQLiteDatabase db = mHelper.getWritableDatabase();
         db.insert("logtable", null, values);
+        db.close();
     }
 
-    private void putCoData(String name){
+    private void putCoData(int category, String name){
         ContentValues values = new ContentValues();
+        initValues(values);
 
-        values.put("category", getString(R.string.cocktail));
-        
+        values.put("category", String.valueOf(category));
         putName(values, name);
         putImage(values);
         putEvaluate(values);
@@ -501,13 +500,14 @@ public class RegisterActivity extends Activity {
         //DBÇ…ìoò^
         SQLiteDatabase db = mHelper.getWritableDatabase();
         db.insert("logtable", null, values);        
+        db.close();
     }
 
-    private void putWiData(String name){
+    private void putWiData(int category, String name){
         ContentValues values = new ContentValues();
+        initValues(values);
 
-        values.put("category", getString(R.string.wine));
-        
+        values.put("category", String.valueOf(category));
         putName(values, name);
         putImage(values);
         putEvaluate(values);
@@ -523,13 +523,14 @@ public class RegisterActivity extends Activity {
         //DBÇ…ìoò^
         SQLiteDatabase db = mHelper.getWritableDatabase();
         db.insert("logtable", null, values);
+        db.close();
     }
 
-    private void putShData(String name){
+    private void putShData(int category, String name){
         ContentValues values = new ContentValues();
+        initValues(values);
 
-        values.put("category", getString(R.string.shochu));
-        
+        values.put("category", String.valueOf(category));
         putName(values, name);
         putImage(values);
         putEvaluate(values);
@@ -544,13 +545,14 @@ public class RegisterActivity extends Activity {
         //DBÇ…ìoò^
         SQLiteDatabase db = mHelper.getWritableDatabase();
         db.insert("logtable", null, values);   
+        db.close();
     }
     
-    private void putJaData(String name){
+    private void putJaData(int category, String name){
         ContentValues values = new ContentValues();
+        initValues(values);
 
-        values.put("category", getString(R.string.japanese_sake));
-        
+        values.put("category", String.valueOf(category));
         putName(values, name);
         putImage(values);
         putEvaluate(values);
@@ -565,13 +567,14 @@ public class RegisterActivity extends Activity {
         //DBÇ…ìoò^
         SQLiteDatabase db = mHelper.getWritableDatabase();
         db.insert("logtable", null, values);   
+        db.close();
     }
 
-    private void putBrData(String name){
+    private void putBrData(int category, String name){
         ContentValues values = new ContentValues();
+        initValues(values);
 
-        values.put("category", getString(R.string.brandy));
-        
+        values.put("category", String.valueOf(category));
         putName(values, name);
         putImage(values);
         putEvaluate(values);
@@ -587,14 +590,14 @@ public class RegisterActivity extends Activity {
         //DBÇ…ìoò^
         SQLiteDatabase db = mHelper.getWritableDatabase();
         db.insert("logtable", null, values);
-        
+        db.close();        
     }
 
-    private void putBeData(String name){
+    private void putBeData(int category, String name){
         ContentValues values = new ContentValues();
+        initValues(values);
 
-        values.put("category", getString(R.string.beer));
-        
+        values.put("category", String.valueOf(category));
         putName(values, name);
         putImage(values);
         putEvaluate(values);
@@ -609,13 +612,14 @@ public class RegisterActivity extends Activity {
         //DBÇ…ìoò^
         SQLiteDatabase db = mHelper.getWritableDatabase();
         db.insert("logtable", null, values);        
+        db.close();
     }
 
-    private void putOtData(String name){
+    private void putOtData(int category, String name){
         ContentValues values = new ContentValues();
+        initValues(values);
 
-        values.put("category", getString(R.string.other));
-        
+        values.put("category", String.valueOf(category));
         putName(values, name);
         putImage(values);
         putEvaluate(values);
@@ -628,7 +632,17 @@ public class RegisterActivity extends Activity {
         //DBÇ…ìoò^
         SQLiteDatabase db = mHelper.getWritableDatabase();
         db.insert("logtable", null, values);
-        
+        db.close();        
+    }
+    
+    private void initValues(ContentValues values){
+        values.put("image", "none");
+        values.put("comment", "none");
+        values.put("year", "none");
+        values.put("type", "none");
+        values.put("area", "none");
+        values.put("place", "none");
+        values.put("price", "none");    	
     }
 
     private void putName(ContentValues values, String name){
@@ -636,10 +650,7 @@ public class RegisterActivity extends Activity {
     }
     
     private void putImage(ContentValues values){
-        if(mLinkStr == null){
-            values.put("image", "none");
-        }
-        else{
+        if(mLinkStr != null){
             values.put("image", mLinkStr);
         }        
     }
@@ -654,10 +665,7 @@ public class RegisterActivity extends Activity {
     private void putComment(ContentValues values){
         EditText comment_text = (EditText)findViewById(R.id.impression);
         String comment = comment_text.getText().toString();
-        if(comment.length() == 0){
-            values.put("comment", "none");
-        }
-        else{
+        if(comment.length() != 0){
             values.put("comment", comment);
         }
     }
@@ -666,16 +674,10 @@ public class RegisterActivity extends Activity {
         if(mOtherFlag){
             EditText year_text = (EditText)findViewById(R.id.year);
             String year = year_text.getText().toString();
-            if(year.length() == 0){
-                values.put("year", "none");
-            }
-            else{
+            if(year.length() != 0){
                 values.put("year", year);
             }
         }
-        else{
-            values.put("year", "none");            
-        }        
     }
     
     private void putType(ContentValues values){
@@ -688,15 +690,9 @@ public class RegisterActivity extends Activity {
         if(mOtherFlag){
             Spinner area_spinner = (Spinner)findViewById(R.id.spinner);
             String area = area_spinner.getSelectedItem().toString();
-            if(area.equals("")){
-                values.put("area", "none");
-            }
-            else{
+            if(!area.equals("")){
                 values.put("area", area);
             }
-        }
-        else{
-            values.put("area", "none");            
         }
     }
     
@@ -708,15 +704,9 @@ public class RegisterActivity extends Activity {
         if(mOtherFlag){
             EditText place_text = (EditText)findViewById(R.id.place);
             String place = place_text.getText().toString();
-            if(place.length() == 0){
-                values.put("place", "none");
-            }
-            else{
+            if(place.length() != 0){
                 values.put("place", place);
             }
-        }
-        else{
-            values.put("place", "none");            
         }
     }
 
@@ -724,15 +714,9 @@ public class RegisterActivity extends Activity {
         if(mOtherFlag){
             EditText price_text = (EditText)findViewById(R.id.price);
             String price = price_text.getText().toString();
-            if(price.length() == 0){
-                values.put("price", "none");
-            }
-            else{
+            if(price.length() != 0){
                 values.put("price", price);
             }
-        }
-        else{
-            values.put("price", "none");            
         }
     }
     
