@@ -22,10 +22,11 @@
    	<string name="name">名前</string>
 	<string name="vintage">年数</string>
 	<string name="year">年</string>
-   	<string name="area">品種</string>
+   	<string name="area">国(種類)</string>
+   	<string name="type">タイプ</string>
    	<string name="image">画像</string>
-	<string name="picture">画像登録</string>
-	<string name="modify">画像変更</string>
+	<string name="picture">登録</string>
+	<string name="modify">変更</string>
 	<string name="user_canceled">キャンセルしました</string>
 	<string name="get_image_error">画像を取得できませんでした</string>
 	<string name="date">日付</string>
@@ -39,6 +40,8 @@
 	<string name="cancel_confirm_title">確認</string>
 	<string name="cancel_confirm">破棄してタイトルに戻りますか？</string>
 	<string name="other_item">その他の項目を表示</string>
+	
+	<string name="ref_no_comment">コメント無し</string>
 	<string name="ref_other_log">その他のログを表示</string>
 	
 	<string name="whiskey">ウィスキー</string>

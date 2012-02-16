@@ -22,7 +22,8 @@
 	<string name="name">Name</string>
 	<string name="vintage">Year</string>
     <string name="year">year</string>
-    <string name="area">Type</string>
+   	<string name="area">Country(Category)</string>
+   	<string name="type">Type</string>
     <string name="image">Image</string>
    	<string name="picture">Set Image</string>
 	<string name="modify">Modify</string>
@@ -39,6 +40,8 @@
 	<string name="cancel_confirm_title">Confirm</string>
 	<string name="cancel_confirm">Discard?</string>
 	<string name="other_item">Show other items</string>
+	
+   	<string name="ref_no_comment">No comment</string>
 	<string name="ref_other_log">Show other logs</string>
 	    
 	<string name="whiskey">Whiskey</string>

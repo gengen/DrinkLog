@@ -13,20 +13,12 @@
             android:gravity="center"
             android:text="@string/vintage"
             android:layout_weight="2"/>
-        <EditText
-            android:id="@+id/year"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:maxLength="3"
-            android:layout_weight="7">
-        </EditText>
         <TextView
+            android:id="@+id/ref_year"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/year"
-            android:layout_weight="1"/>
+            android:layout_weight="8">
+        </TextView>
     </LinearLayout>
 
     <LinearLayout 
@@ -39,8 +31,8 @@
             android:gravity="center"
             android:text="@string/area"
             android:layout_weight="2"/>
-        <Spinner
-        	android:id="@+id/spinner"
+        <TextView
+        	android:id="@+id/ref_area"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -59,18 +51,11 @@
             android:text="@string/date"
             android:layout_weight="2"/>
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/ref_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_weight="6" />
-        <Button
-            android:id="@+id/date_select"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/date_select"
-            android:layout_weight="2"/>
+            android:layout_weight="8" />
     </LinearLayout>
 
     <LinearLayout 
@@ -83,13 +68,12 @@
             android:gravity="center"
             android:text="@string/place"
             android:layout_weight="2"/>
-        <EditText
-            android:id="@+id/place"
+        <TextView
+            android:id="@+id/ref_place"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:maxLength="20"
             android:layout_weight="8">
-        </EditText>
+        </TextView>
     </LinearLayout>
     
     <LinearLayout 
@@ -102,15 +86,13 @@
             android:gravity="center"
             android:text="@string/price"
             android:layout_weight="2"/>
-        <EditText
-            android:id="@+id/price"
+        <TextView
+            android:id="@+id/ref_price"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="10"
             android:layout_weight="8">
-        </EditText>
+        </TextView>
     </LinearLayout>    
     
-
 </LinearLayout>

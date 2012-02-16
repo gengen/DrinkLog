@@ -261,35 +261,22 @@ public class RegisterActivity extends Activity {
                 LinearLayout linear = (LinearLayout)findViewById(R.id.linearLayout1);
                 final LayoutInflater mInflater;
                 mInflater = (LayoutInflater)RegisterActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                int id = getLayoutID(mCategory);
-                if(id != -1){
-                    mInflater.inflate(id, linear);
-                    setArea();
-                    setDate();
-                }
+                mInflater.inflate(R.layout.register_add, linear);
+                setArea();
+                setDate();
+                //カテゴリごとにいらない項目をマスクする
+                setMask();
             }
         });
     }
     
-    private int getLayoutID(int idx){
-        switch(idx){
-            case DrinkLogActivity.CATEGORY_WHISKEY:
-                return R.layout.add_wh;
-                
-                //TODO:多種類追加
-                
-            default:
-                return -1;
-        }
-    }
-
     private void setArea(){
         int id = getAreaID(mCategory);
         if(id != -1){
             ArrayAdapter adapter = ArrayAdapter.createFromResource(
                     this, id, android.R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
-            Spinner spinner = (Spinner)findViewById(R.id.spinner);
+            Spinner spinner = (Spinner)findViewById(R.id.area_spinner);
             spinner.setAdapter(adapter);        
         }
         else{
@@ -344,6 +331,46 @@ public class RegisterActivity extends Activity {
         return Integer.toString(year) + "/" + month + "/" + day;
     }
     
+    private void setMask(){
+    	LinearLayout year = (LinearLayout)findViewById(R.id.reg_year_layout);
+    	LinearLayout area = (LinearLayout)findViewById(R.id.reg_area_layout);
+    	LinearLayout type = (LinearLayout)findViewById(R.id.reg_type_layout);    	
+
+    	switch(mCategory){
+        case DrinkLogActivity.CATEGORY_WHISKEY:
+            break;
+            
+        case DrinkLogActivity.CATEGORY_COCKTAIL:
+        	//year, area
+            break;
+            
+        case DrinkLogActivity.CATEGORY_WINE:
+            break;
+
+        case DrinkLogActivity.CATEGORY_SHOCHU:
+        	//year
+            break;
+
+        case DrinkLogActivity.CATEGORY_SAKE:
+        	//year
+            break;
+
+        case DrinkLogActivity.CATEGORY_BRANDY:
+            break;
+
+        case DrinkLogActivity.CATEGORY_BEER:
+        	//year
+            break;
+
+        case DrinkLogActivity.CATEGORY_OTHER:
+        	//type,area,year
+            break;
+
+        default:
+            break;
+        }
+    }
+        
     private void setRegister(){
         final Handler handler = new Handler();
         //final ProgressDialog dialog = new ProgressDialog(RegisterActivity.this);
@@ -688,7 +715,7 @@ public class RegisterActivity extends Activity {
     private void putArea(ContentValues values){
         //地域
         if(mOtherFlag){
-            Spinner area_spinner = (Spinner)findViewById(R.id.spinner);
+            Spinner area_spinner = (Spinner)findViewById(R.id.area_spinner);
             String area = area_spinner.getSelectedItem().toString();
             if(!area.equals("")){
                 values.put("area", area);
