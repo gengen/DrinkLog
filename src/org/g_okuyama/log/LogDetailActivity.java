@@ -270,7 +270,7 @@ public class LogDetailActivity extends Activity {
     }
     
     private void edit(){
-    	Intent intent = new Intent();
+    	Intent intent = new Intent(this, RegisterActivity.class);
     	intent.putExtra("category", mCategory);
     	intent.putExtra("from", "LogDetailActivity");
     	intent.putExtra("dbid", mDBID);

@@ -54,7 +54,6 @@ public class RegisterActivity extends Activity {
     
     DatabaseHelper mHelper = null;
     File mSaveFile = null;
-    String mLinkStr = null;
     String mCurDate = "unknown";
     int mCategory;
     boolean mEditFlag = false;
@@ -70,7 +69,7 @@ public class RegisterActivity extends Activity {
     //ï“èWópÉtÉBÅ[ÉãÉh
     private int mDBID = -9876;
 	String mName;
-	String mImageURL;
+    String mImageURL = null;
 	float mRate;
 	String mComment;
 	String mVintage;
@@ -163,10 +162,10 @@ public class RegisterActivity extends Activity {
             }
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
-            
         });
         
         if(mEditFlag){
+        	//TODO:ï“èWéûÇÕåÛï‚Ç™èoÇ»Ç¢ÇÊÇ§Ç…Ç∑ÇÈ
         	view.setText(mName);
         }
     }
@@ -276,7 +275,7 @@ public class RegisterActivity extends Activity {
                 ImageView image = (ImageView)findViewById(R.id.cur_image);
                 Uri uri = data.getData();
                 //ï€ë∂ópï∂éöóÒ
-                mLinkStr = uri.toString();
+                mImageURL = uri.toString();
                 image.setImageBitmap(uri2bmp(this, uri, 160, 120));
                 Button button = (Button)findViewById(R.id.picture);
                 button.setText(R.string.modify);
@@ -294,7 +293,7 @@ public class RegisterActivity extends Activity {
                 Uri uri = Uri.fromFile(mSaveFile);
                 image.setImageBitmap(uri2bmp(this, uri, 160, 120));
                 //ï€ë∂ópï∂éöóÒ
-                mLinkStr = uri.toString();
+                mImageURL = uri.toString();
                 Button button = (Button)findViewById(R.id.picture);
                 button.setText(R.string.modify);
             }
@@ -372,38 +371,90 @@ public class RegisterActivity extends Activity {
                 final LayoutInflater mInflater;
                 mInflater = (LayoutInflater)RegisterActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 mInflater.inflate(R.layout.register_add, linear);
-                
-                /*
-            	mVintage = c.getString(6);
-            	mType = c.getString(7);
-            	mArea = c.getString(8);
-            	mDate = c.getString(9);
-            	mPlace = c.getString(10);
-            	mPrice = c.getString(11);
-            	*/
-                
+        
+                setVintage();
+                setType();
                 setArea();
                 setDate();
+                setPlace();
+                setPrice();
                 //ÉJÉeÉSÉäÇ≤Ç∆Ç…Ç¢ÇÁÇ»Ç¢çÄñ⁄ÇÉ}ÉXÉNÇ∑ÇÈ
                 setMask();
             }
         });
     }
     
-    private void setArea(){
-        int id = getAreaID(mCategory);
+    private void setVintage(){
+    	if(mEditFlag){
+    		if(!mVintage.equals("none")){
+    			TextView view = (TextView)findViewById(R.id.year);
+    			view.setText(mVintage);
+    		}
+    	}
+    }
+    
+    private void setType(){
+    	ArrayAdapter adapter = null;
+    	Spinner spinner = null;
+        int id = getTypeID(mCategory);
         if(id != -1){
-            ArrayAdapter adapter = ArrayAdapter.createFromResource(
+            adapter = ArrayAdapter.createFromResource(
                     this, id, android.R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
-            Spinner spinner = (Spinner)findViewById(R.id.area_spinner);
-            spinner.setAdapter(adapter);        
-        }
-        else{
-            //TODO:íËã`Ç≥ÇÍÇƒÇ¢Ç»Ç¢Ç∆Ç´
+            spinner = (Spinner)findViewById(R.id.type_spinner);
+            spinner.setAdapter(adapter);
         }
         
-        //Ç±Ç±Ç©ÇÁÅ`Å`Å`
+    	if(mEditFlag){
+    		if(!mType.equals("none")){
+    			int i;
+    			for(i=0; i<adapter.getCount(); i++){
+    				String type = (String)adapter.getItem(i);
+    				if(type.equals(mType)){
+    					spinner.setSelection(i);
+    	    			return;
+    				}
+    			}    			
+    		}
+    	}    	
+    }
+    
+    private int getTypeID(int idx){
+        switch(idx){
+            case DrinkLogActivity.CATEGORY_WHISKEY:
+                //return R.array.type_array_wh;
+                
+                //TODO:ëΩéÌóﬁí«â¡
+                
+            default:
+                return -1;
+        }
+    }
+    
+    private void setArea(){
+    	ArrayAdapter adapter = null;
+    	Spinner spinner = null;
+        int id = getAreaID(mCategory);
+        if(id != -1){
+            adapter = ArrayAdapter.createFromResource(
+                    this, id, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
+            spinner = (Spinner)findViewById(R.id.area_spinner);
+            spinner.setAdapter(adapter);        
+        }
+        
+    	if(mEditFlag){
+    		if(!mArea.equals("none")){
+    			int i;
+    			for(i=0; i<adapter.getCount(); i++){
+    				String type = (String)adapter.getItem(i);
+    				if(type.equals(mArea)){
+    					spinner.setSelection(i);
+    	    			return;
+    				}
+    			}    			
+    		}
+    	}    	
     }
     
     private int getAreaID(int idx){
@@ -420,7 +471,12 @@ public class RegisterActivity extends Activity {
     
     private void setDate(){
         TextView text = (TextView)findViewById(R.id.date);
-        text.setText(mCurDate);
+        if(mEditFlag){
+        	text.setText(mDate);
+        }
+        else{
+        	text.setText(mCurDate);
+        }
         
         Button selectBtn = (Button)findViewById(R.id.date_select);
         selectBtn.setOnClickListener(new OnClickListener(){
@@ -451,6 +507,26 @@ public class RegisterActivity extends Activity {
             day = "0" + day;
         }
         return Integer.toString(year) + "/" + month + "/" + day;
+    }
+    
+    private void setPlace(){
+    	if(mEditFlag){
+    		if(!mPlace.equals("none")){
+    			TextView view = (TextView)findViewById(R.id.place);
+    			view.setText(mPlace);
+    		}
+    	}
+	
+    }
+    
+    private void setPrice(){
+    	if(mEditFlag){
+    		if(!mPrice.equals("none")){
+    			TextView view = (TextView)findViewById(R.id.price);
+    			view.setText(mPrice);
+    		}
+    	}
+    	
     }
     
     private void setMask(){
@@ -513,6 +589,8 @@ public class RegisterActivity extends Activity {
                                 .setMessage(R.string.dialog_notify)
                                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
+                        	            Intent intent = new Intent();
+                        	            setResult(RESPONSE_EDIT, intent);
                                         finish();
                                     }
                                 })
@@ -628,10 +706,7 @@ public class RegisterActivity extends Activity {
         putPlace(values);
         putPrice(values);
 
-        //DBÇ…ìoò^
-        SQLiteDatabase db = mHelper.getWritableDatabase();
-        db.insert("logtable", null, values);
-        db.close();
+        registerDB(values);
     }
 
     private void putCoData(int category, String name){
@@ -649,10 +724,7 @@ public class RegisterActivity extends Activity {
         putPlace(values);
         putPrice(values);
 
-        //DBÇ…ìoò^
-        SQLiteDatabase db = mHelper.getWritableDatabase();
-        db.insert("logtable", null, values);        
-        db.close();
+        registerDB(values);
     }
 
     private void putWiData(int category, String name){
@@ -672,10 +744,7 @@ public class RegisterActivity extends Activity {
         putPlace(values);
         putPrice(values);
 
-        //DBÇ…ìoò^
-        SQLiteDatabase db = mHelper.getWritableDatabase();
-        db.insert("logtable", null, values);
-        db.close();
+        registerDB(values);
     }
 
     private void putShData(int category, String name){
@@ -694,10 +763,7 @@ public class RegisterActivity extends Activity {
         putPlace(values);
         putPrice(values);
 
-        //DBÇ…ìoò^
-        SQLiteDatabase db = mHelper.getWritableDatabase();
-        db.insert("logtable", null, values);   
-        db.close();
+        registerDB(values);
     }
     
     private void putJaData(int category, String name){
@@ -716,10 +782,7 @@ public class RegisterActivity extends Activity {
         putPlace(values);
         putPrice(values);
 
-        //DBÇ…ìoò^
-        SQLiteDatabase db = mHelper.getWritableDatabase();
-        db.insert("logtable", null, values);   
-        db.close();
+        registerDB(values);
     }
 
     private void putBrData(int category, String name){
@@ -739,10 +802,7 @@ public class RegisterActivity extends Activity {
         putPlace(values);
         putPrice(values);
 
-        //DBÇ…ìoò^
-        SQLiteDatabase db = mHelper.getWritableDatabase();
-        db.insert("logtable", null, values);
-        db.close();        
+        registerDB(values);
     }
 
     private void putBeData(int category, String name){
@@ -761,10 +821,7 @@ public class RegisterActivity extends Activity {
         putPlace(values);
         putPrice(values);
 
-        //DBÇ…ìoò^
-        SQLiteDatabase db = mHelper.getWritableDatabase();
-        db.insert("logtable", null, values);        
-        db.close();
+        registerDB(values);
     }
 
     private void putOtData(int category, String name){
@@ -781,10 +838,20 @@ public class RegisterActivity extends Activity {
         putPlace(values);
         putPrice(values);
 
-        //DBÇ…ìoò^
+        registerDB(values);
+    }
+    
+    private void registerDB(ContentValues values){
         SQLiteDatabase db = mHelper.getWritableDatabase();
-        db.insert("logtable", null, values);
-        db.close();        
+
+        if(mEditFlag){
+        	db.update("logtable", values, "rowid = ?", new String[]{Integer.toString(mDBID)});
+        }
+        else{
+        	db.insert("logtable", null, values);
+        }
+        
+        db.close();            	
     }
     
     private void initValues(ContentValues values){
@@ -802,8 +869,8 @@ public class RegisterActivity extends Activity {
     }
     
     private void putImage(ContentValues values){
-        if(mLinkStr != null){
-            values.put("image", mLinkStr);
+        if(mImageURL != null){
+            values.put("image", mImageURL);
         }        
     }
     
@@ -830,11 +897,34 @@ public class RegisterActivity extends Activity {
                 values.put("year", year);
             }
         }
+        else{
+            if(mEditFlag){
+            	/*
+            	 * ï“èWéûÅAÇ©Ç¬ÅuÇªÇÃëºÅvÉ{É^ÉìÇ™âüÇ≥ÇÍÇ»Ç¢èÍçáÇÕÅA
+            	 * DBÇ©ÇÁíºê⁄éÊÇËèoÇµÇΩÉfÅ[É^Çìoò^Ç∑ÇÈÅB
+            	 * (à»â∫ÅAputXXXånÇÕìØÇ∂)
+            	 */
+            	values.put("year", mYear);
+            }
+        }        
     }
     
     private void putType(ContentValues values){
-        //TODO:ëºéÌóﬁÇÃÉPÅ[ÉXí«â¡
-        values.put("type", "none");
+        if(mOtherFlag){
+        	//TODO:ÉRÉÅÉìÉgäOÇ∑
+        	/*
+            Spinner type_spinner = (Spinner)findViewById(R.id.type_spinner);
+            String type = type_spinner.getSelectedItem().toString();
+            if(!type.equals("")){
+                values.put("type", type);
+            }
+            */
+        }
+        else{
+            if(mEditFlag){
+            	values.put("year", mType);
+            }
+        }        
     }
     
     private void putArea(ContentValues values){
@@ -846,10 +936,20 @@ public class RegisterActivity extends Activity {
                 values.put("area", area);
             }
         }
+        else{
+            if(mEditFlag){
+            	values.put("year", mArea);
+            }
+        }
     }
     
     private void putDate(ContentValues values){
-        values.put("date", mCurDate);        
+        if(mEditFlag){
+        	values.put("date", mDate);        	 
+        }
+        else{
+        	values.put("date", mCurDate);
+        }
     }
 
     private void putPlace(ContentValues values){
@@ -860,6 +960,11 @@ public class RegisterActivity extends Activity {
                 values.put("place", place);
             }
         }
+        else{
+            if(mEditFlag){
+            	values.put("year", mPlace);
+            }
+        }
     }
 
     private void putPrice(ContentValues values){
@@ -868,6 +973,11 @@ public class RegisterActivity extends Activity {
             String price = price_text.getText().toString();
             if(price.length() != 0){
                 values.put("price", price);
+            }
+        }
+        else{
+            if(mEditFlag){
+            	values.put("year", mPrice);
             }
         }
     }
