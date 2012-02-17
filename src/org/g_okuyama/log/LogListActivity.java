@@ -2,7 +2,9 @@ package org.g_okuyama.log;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
 import android.app.TabActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,12 +16,14 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 
 public class LogListActivity extends TabActivity implements OnTabChangeListener{
 	public static final String TAG = "DrinkLog";
 	public static final int REQUEST_CODE = 1111;
+	public static final int RESPONSE_DELETE = 7777;
 	
     DatabaseHelper dbhelper = null;
     
@@ -108,6 +112,7 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
         listview.setAdapter(adapter);
         
 		listview.setOnItemClickListener(new ClickAdapter());
+		listview.setOnItemLongClickListener(new LongClickAdapter());
     }
 
     public void onTabChanged(String arg0) {
@@ -129,5 +134,83 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
         	intent.putExtra("dbid", logitem.getDBID());
         	startActivityForResult(intent, REQUEST_CODE);
         }
+    }
+    
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+    	if(requestCode == REQUEST_CODE){
+    		if(resultCode == RESPONSE_DELETE){
+    			mLogList.clear();
+    			mDate = "";
+        		//再表示
+        		setLogList();    			
+    		}
+    	}
+    }
+    
+    private class LongClickAdapter implements OnItemLongClickListener{
+    	int position = -1;
+    	
+		public boolean onItemLongClick(AdapterView<?> adapter, View view,
+				int pos, long id) {
+        	//TODO:データがない場合
+			/*
+			if(savedata == null || savedata[0].equalsIgnoreCase("No data")){
+        		return true;
+        	}
+        	*/
+
+			position = pos;
+
+			new AlertDialog.Builder(LogListActivity.this)
+				.setTitle(R.string.list_alert_select)
+				.setItems(R.array.list_alert_array, new DialogInterface.OnClickListener() {
+				
+					public void onClick(DialogInterface dialog, int item) {
+						switch(item){
+						case 0://削除
+							delete(position);
+							break;
+						case 1://キャンセル
+							break;
+						}
+					}
+				}).show();				
+			
+			return true;
+		}
+    }
+    
+    private void delete(int position){
+    	final int pos = position;
+        	
+    	new AlertDialog.Builder(this)
+        	.setTitle(R.string.cancel_confirm_title)
+        	.setMessage(getString(R.string.list_alert_confirm))
+        	.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+    			public void onClick(DialogInterface dialog, int which) {
+    				//ログ削除
+    				removeData(pos);
+    				mLogList.clear();
+    				mDate = "";
+    				//ログリスト再表示
+    				setLogList();
+    			}
+    		})
+    		.setNegativeButton(R.string.ng, new DialogInterface.OnClickListener() {
+    			public void onClick(DialogInterface dialog, int which) {
+    				//何もしない
+    			}
+    		})
+    		.show();    
+    }
+    
+    private void removeData(int position){
+    	DatabaseHelper helper = new DatabaseHelper(this);
+    	SQLiteDatabase db = helper.getWritableDatabase();
+
+    	LogListData logitem = mLogList.get(position);
+    	int id = logitem.getDBID();
+    	
+    	db.delete("logtable", "rowid = ?", new String[]{Integer.toString(id)});
     }
 }

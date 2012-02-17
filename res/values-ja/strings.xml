@@ -2,6 +2,16 @@
 <resources>
 
 	<string name="app_name">飲みログくん</string>
+	
+	<string name="whiskey">ウィスキー</string>
+	<string name="cocktail">カクテル</string>
+	<string name="wine">ワイン</string>
+	<string name="shochu">焼酎</string>
+	<string name="japanese_sake">日本酒</string>
+	<string name="brandy">ブランデー</string>
+	<string name="beer">ビール</string>
+	<string name="other">その他</string>
+	
     <string name="register">飲みログを作る</string>
     <string name="refer">飲みログを見る</string>
 	<string name="finish">アプリの終了</string>
@@ -41,16 +51,16 @@
 	<string name="cancel_confirm">破棄してタイトルに戻りますか？</string>
 	<string name="other_item">その他の項目を表示</string>
 	
+	<string name="list_alert_select">選択</string>
+	<string name="list_alert_confirm">削除しますか？</string>
+	
 	<string name="ref_no_comment">コメント無し</string>
 	<string name="ref_other_log">その他のログを表示</string>
+	<string name="ref_no_setting">設定無し</string>
 	
-	<string name="whiskey">ウィスキー</string>
-	<string name="cocktail">カクテル</string>
-	<string name="wine">ワイン</string>
-	<string name="shochu">焼酎</string>
-	<string name="japanese_sake">日本酒</string>
-	<string name="brandy">ブランデー</string>
-	<string name="beer">ビール</string>
-	<string name="other">その他</string>
-	    
+	<string name="menu_edit">編集</string>
+	<string name="menu_delete">削除</string>
+	<string name="menu_search">Wikipedia</string>
+	<string name="menu_share">Twitter</string>
+	
 </resources>

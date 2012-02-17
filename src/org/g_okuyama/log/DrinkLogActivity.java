@@ -65,6 +65,7 @@ public class DrinkLogActivity extends Activity {
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(DrinkLogActivity.this, RegisterActivity.class);
                 intent.putExtra("category", mItemIdx);
+            	intent.putExtra("from", "DrinkLogActivity");
                 startActivity(intent);
             }
         })

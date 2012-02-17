@@ -2,6 +2,16 @@
 <resources>
 
 	<string name="app_name">DrinkLog</string>
+	
+   	<string name="whiskey">Whiskey</string>
+	<string name="cocktail">Cocktail</string>
+	<string name="wine">Wine</string>
+	<string name="shochu">Shochu</string>
+	<string name="japanese_sake">Japanese Sake</string>
+	<string name="brandy">Brandy</string>
+	<string name="beer">Beer</string>
+	<string name="other">Other</string>
+	    
     <string name="register">Register</string>
     <string name="refer">Reference</string>
 	<string name="finish">Close Application</string>
@@ -41,16 +51,15 @@
 	<string name="cancel_confirm">Discard?</string>
 	<string name="other_item">Show other items</string>
 	
-   	<string name="ref_no_comment">No comment</string>
+   	<string name="list_alert_select">Select</string>
+	<string name="list_alert_confirm">Delete?</string>
+	
+   	<string name="ref_no_comment">No Comment</string>
 	<string name="ref_other_log">Show other logs</string>
-	    
-	<string name="whiskey">Whiskey</string>
-	<string name="cocktail">Cocktail</string>
-	<string name="wine">Wine</string>
-	<string name="shochu">Shochu</string>
-	<string name="japanese_sake">Japanese Sake</string>
-	<string name="brandy">Brandy</string>
-	<string name="beer">Beer</string>
-	<string name="other">Other</string>
-
+	<string name="ref_no_setting">No Setting</string>
+	
+	<string name="menu_edit">Edit</string>
+	<string name="menu_delete">Delete</string>
+	<string name="menu_search">Wikipedia</string>
+	<string name="menu_share">Twitter</string>
 </resources>

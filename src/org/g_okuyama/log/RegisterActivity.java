@@ -15,6 +15,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -49,13 +50,15 @@ public class RegisterActivity extends Activity {
     public static final float RATING_STEP = (float)0.5;
     public static final int REQUEST_CODE_GALLERY = 9999; 
     public static final int REQUEST_CODE_CAMERA = 9998;
+	public static final int RESPONSE_EDIT = 6667;	
     
     DatabaseHelper mHelper = null;
     File mSaveFile = null;
     String mLinkStr = null;
     String mCurDate = "unknown";
     int mCategory;
-    
+    boolean mEditFlag = false;
+        
     int mYear;
     int mMonth;
     int mDay;
@@ -64,33 +67,79 @@ public class RegisterActivity extends Activity {
     //「その他」ボタンが押されたか？
     boolean mOtherFlag = false;
     
+    //編集用フィールド
+    private int mDBID = -9876;
+	String mName;
+	String mImageURL;
+	float mRate;
+	String mComment;
+	String mVintage;
+	String mType;
+	String mArea;
+	String mDate;
+	String mPlace;
+	String mPrice;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
         Bundle extra = getIntent().getExtras();
         mCategory = extra.getInt("category");
+        String flag = extra.getString("from");
+        if(flag.equals("LogDetailActivity")){
+        	mEditFlag = true;
+        	mDBID = extra.getInt("dbid");
+        	getDBData(mDBID);
+        }
         
         //自動でキーボードを出さないように設定
         this.getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);         
         setContentView(R.layout.register);
 
         mHelper = new DatabaseHelper(this);
-        
-        Calendar cal1 = Calendar.getInstance();
-        mYear = cal1.get(Calendar.YEAR);
-        mMonth = cal1.get(Calendar.MONTH);
-        mDay = cal1.get(Calendar.DATE);
-        mCurDate = getDate(mYear, mMonth, mDay);
+
         setLayout();
     }
     
+    private void getDBData(int dbid){
+    	DatabaseHelper helper = new DatabaseHelper(this);
+    	SQLiteDatabase db = helper.getWritableDatabase();
+    	String query = "select * from logtable where rowid = ?;";
+    	Cursor c = db.rawQuery(query, new String[]{Integer.toString(dbid)});
+
+    	c.moveToFirst();
+    	mName = c.getString(2);
+    	mImageURL = c.getString(3);
+    	String rate = c.getString(4);
+    	mRate = Float.valueOf(rate);
+    	mComment = c.getString(5);
+    	mVintage = c.getString(6);
+    	mType = c.getString(7);
+    	mArea = c.getString(8);
+    	mDate = c.getString(9);
+    	mPlace = c.getString(10);
+    	mPrice = c.getString(11);
+    		
+    	c.close();
+    }
+    
     private void setLayout(){
+    	initDate();
         setName();
         setImage();
         setEvaluate();
+        setComment();
         setOther();
         setRegister();
+    }
+    
+    private void initDate(){
+    	Calendar cal1 = Calendar.getInstance();
+    	mYear = cal1.get(Calendar.YEAR);
+    	mMonth = cal1.get(Calendar.MONTH);
+    	mDay = cal1.get(Calendar.DATE);
+    	mCurDate = getDate(mYear, mMonth, mDay);
     }
         
     private void setName(){
@@ -116,6 +165,10 @@ public class RegisterActivity extends Activity {
             }
             
         });
+        
+        if(mEditFlag){
+        	view.setText(mName);
+        }
     }
     
     private int getCategoryID(int idx){
@@ -130,9 +183,7 @@ public class RegisterActivity extends Activity {
     }
     
     private void setImage(){
-        ImageView curSet = (ImageView)findViewById(R.id.cur_image);
-        //TODO:デフォルト画像表示
-        //curSet.setImageURI(uri);
+        ImageView image = (ImageView)findViewById(R.id.cur_image);
         
         final String[] setting_list = getResources().getStringArray(R.array.image_setting_array);        
         Button imageBtn = (Button)findViewById(R.id.picture);
@@ -166,7 +217,53 @@ public class RegisterActivity extends Activity {
                 })
                .show();
             }
-        });            
+        });
+        
+        //デフォルト画像表示
+        switch(mCategory){
+        case DrinkLogActivity.CATEGORY_WHISKEY:
+        	image.setImageResource(R.drawable.whiskey);
+        	break;
+                
+        case DrinkLogActivity.CATEGORY_COCKTAIL:
+        	image.setImageResource(R.drawable.cocktail);
+        	break;
+                
+        case DrinkLogActivity.CATEGORY_WINE:
+        	image.setImageResource(R.drawable.wine);
+        	break;
+
+        case DrinkLogActivity.CATEGORY_SHOCHU:
+        	image.setImageResource(R.drawable.shochu);
+        	break;
+
+        case DrinkLogActivity.CATEGORY_SAKE:
+        	image.setImageResource(R.drawable.sake);
+        	break;
+
+        case DrinkLogActivity.CATEGORY_BRANDY:
+        	image.setImageResource(R.drawable.brandy);
+        	break;
+
+        case DrinkLogActivity.CATEGORY_BEER:
+        	image.setImageResource(R.drawable.beer);
+        	break;
+
+        case DrinkLogActivity.CATEGORY_OTHER:
+        	image.setImageResource(R.drawable.other);
+        	break;
+
+        default:
+        	Log.e(TAG, "Unknown Category");
+        	break;
+        }
+
+        if(mEditFlag){
+        	if(!mImageURL.equals("none")){
+        		Uri uri = Uri.parse(mImageURL);
+                image.setImageBitmap(RegisterActivity.uri2bmp(this, uri, 160, 120));
+        	}
+        }
     }
     
     protected void onActivityResult(int requestCode, int resultCode, Intent data){        
@@ -245,7 +342,20 @@ public class RegisterActivity extends Activity {
     private void setEvaluate(){
         RatingBar bar = (RatingBar)findViewById(R.id.rating);
         bar.setNumStars(RATING_STAR_NUM);
-        //bar.setStepSize(RATING_STEP);
+        
+        if(mEditFlag){
+        	float rate = Float.valueOf(mRate);
+        	bar.setRating(rate);
+        }
+    }
+    
+    private void setComment(){
+    	if(mEditFlag){
+    		if(!mComment.equals("none")){
+    			EditText edit = (EditText)findViewById(R.id.impression);
+    			edit.setText(mComment);
+    		}
+    	}
     }
     
     private void setOther(){
@@ -262,6 +372,16 @@ public class RegisterActivity extends Activity {
                 final LayoutInflater mInflater;
                 mInflater = (LayoutInflater)RegisterActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 mInflater.inflate(R.layout.register_add, linear);
+                
+                /*
+            	mVintage = c.getString(6);
+            	mType = c.getString(7);
+            	mArea = c.getString(8);
+            	mDate = c.getString(9);
+            	mPlace = c.getString(10);
+            	mPrice = c.getString(11);
+            	*/
+                
                 setArea();
                 setDate();
                 //カテゴリごとにいらない項目をマスクする
@@ -282,6 +402,8 @@ public class RegisterActivity extends Activity {
         else{
             //TODO:定義されていないとき
         }
+        
+        //ここから～～～
     }
     
     private int getAreaID(int idx){
@@ -341,29 +463,32 @@ public class RegisterActivity extends Activity {
             break;
             
         case DrinkLogActivity.CATEGORY_COCKTAIL:
-        	//year, area
+        	year.setVisibility(View.GONE);
+        	area.setVisibility(View.GONE);
             break;
             
         case DrinkLogActivity.CATEGORY_WINE:
             break;
 
         case DrinkLogActivity.CATEGORY_SHOCHU:
-        	//year
+        	year.setVisibility(View.GONE);
             break;
 
         case DrinkLogActivity.CATEGORY_SAKE:
-        	//year
+        	year.setVisibility(View.GONE);
             break;
 
         case DrinkLogActivity.CATEGORY_BRANDY:
             break;
 
         case DrinkLogActivity.CATEGORY_BEER:
-        	//year
+        	year.setVisibility(View.GONE);
             break;
 
         case DrinkLogActivity.CATEGORY_OTHER:
-        	//type,area,year
+        	year.setVisibility(View.GONE);
+        	type.setVisibility(View.GONE);
+        	area.setVisibility(View.GONE);
             break;
 
         default:
