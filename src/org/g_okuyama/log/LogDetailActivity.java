@@ -307,7 +307,7 @@ public class LogDetailActivity extends Activity {
 				//‰½‚à‚µ‚È‚¢
 			}
 		})
-		.show();    	
+		.show();
     }
     
     private void search(){
@@ -315,6 +315,10 @@ public class LogDetailActivity extends Activity {
     }
     
     private void share(){
-    	
+    	Intent intent = new Intent(this, TwitterActivity.class);
+    	intent.putExtra("name", mName);
+    	intent.putExtra("rate", String.valueOf(mRate));
+    	intent.putExtra("comment", mComment);
+    	startActivity(intent);
     }
 }
