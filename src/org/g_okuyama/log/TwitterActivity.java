@@ -111,7 +111,10 @@ public class TwitterActivity extends Activity {
     }
     
     private void setLayout(){
-    	String text = mName + ":" + "ï]âø" + mRate + ", " + mComment + " from à˘Ç›ÉçÉOÇ≠ÇÒ";
+    	String text = mName + ":"
+    				+ getString(R.string.evaluate) + mRate + ", "
+    				+ mComment 
+    				+ " from " + getString(R.string.app_name);
     	EditText view = (EditText)findViewById(R.id.tweet_text);
     	view.setText(text);
     	
