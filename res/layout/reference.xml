@@ -40,6 +40,7 @@
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="5dp"
         android:gravity="center">
         <ImageView
             android:id="@+id/ref_image"
@@ -50,22 +51,19 @@
     
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70sp"
-        android:gravity="center"
-        android:orientation="horizontal" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
+            android:gravity="left"
+            android:padding="5dp"
             android:text="@string/evaluate" />
         <FrameLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="8"
             android:gravity="center" >
             <RatingBar
-                style="?android:attr/ratingBarStyleIndicator"
                 android:isIndicator="true"
                 android:id="@+id/ref_rating"
                 android:layout_width="wrap_content"
@@ -76,19 +74,18 @@
 
     <LinearLayout 
         android:layout_width="match_parent"
-        android:layout_height="140sp"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
+            android:gravity="left"
+            android:padding="5dp"
             android:text="@string/impression" />
         <TextView
             android:id="@+id/ref_impression"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="8"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
             android:gravity="top"
             android:inputType="textMultiLine"
             android:maxLength="100"

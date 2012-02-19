@@ -5,93 +5,85 @@
     android:orientation="vertical" >
     <LinearLayout 
         android:layout_width="match_parent"
-        android:layout_height="70sp"
-       	android:gravity="center">
+        android:layout_height="wrap_content"
+       	android:orientation="vertical">
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/vintage"
-            android:layout_weight="2"/>
+            android:gravity="left"
+            android:padding="5dp"
+            android:text="@string/vintage"/>
         <TextView
             android:id="@+id/ref_year"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="8">
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
         </TextView>
     </LinearLayout>
 
     <LinearLayout 
         android:layout_width="match_parent"
-        android:layout_height="70sp"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/area"
-            android:layout_weight="2"/>
+            android:gravity="left"
+            android:padding="5dp"
+            android:text="@string/area"/>
         <TextView
         	android:id="@+id/ref_area"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="8"/>
+            android:layout_width="match_parent"
+            android:layout_height="35dp"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70sp"
-        android:gravity="center"
-        android:orientation="horizontal" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/date"
-            android:layout_weight="2"/>
+            android:gravity="left"
+            android:padding="5dp"
+            android:text="@string/date"/>
         <TextView
             android:id="@+id/ref_date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="8" />
+            android:layout_width="match_parent"
+            android:layout_height="35dp"/>
     </LinearLayout>
 
     <LinearLayout 
         android:layout_width="match_parent"
-        android:layout_height="70sp"
-       	android:gravity="center">
+        android:layout_height="wrap_content"
+       	android:orientation="vertical">
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/place"
-            android:layout_weight="2"/>
+            android:gravity="left"
+            android:padding="5dp"
+            android:text="@string/place"/>
         <TextView
             android:id="@+id/ref_place"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="8">
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
         </TextView>
     </LinearLayout>
     
     <LinearLayout 
         android:layout_width="match_parent"
-        android:layout_height="70sp"
-       	android:gravity="center">
+        android:layout_height="wrap_content"
+       	android:orientation="vertical">"
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/price"
-            android:layout_weight="2"/>
+            android:gravity="left"
+            android:padding="5dp"
+            android:text="@string/price"/>
         <TextView
             android:id="@+id/ref_price"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:layout_weight="8">
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:inputType="number">
         </TextView>
     </LinearLayout>    
     

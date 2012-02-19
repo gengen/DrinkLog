@@ -5,12 +5,15 @@ import java.util.List;
 import org.g_okuyama.log.R;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -46,6 +49,16 @@ public class LogArrayAdapter extends ArrayAdapter<LogListData> {
 			
 			TextView text = (TextView)convertView.findViewById(R.id.item_name);
 			text.setText(data.getTextData());
+			text.setTextSize(Float.valueOf("15.0"));
+			
+			//ÉfÉUÉCÉì
+			//TODO:çÇÇ≥Çí≤êﬂÇµÇΩÇ¢
+			/*
+			convertView.setLayoutParams(
+					new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 35));
+					*/
+			convertView.setBackgroundColor(Color.GRAY);
+			
 			return convertView;
 		}
 		

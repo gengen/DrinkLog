@@ -581,22 +581,42 @@ public class RegisterActivity extends Activity {
             public void onClick(View v) {
                 Thread thread = new Thread() {
                     public void run() {
-                        checkValue();
-                        
-                        handler.post(new Runnable(){
-                            public void run(){
-                                new AlertDialog.Builder(RegisterActivity.this)
-                                .setMessage(R.string.dialog_notify)
-                                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                        	            Intent intent = new Intent();
-                        	            setResult(RESPONSE_EDIT, intent);
-                                        finish();
-                                    }
-                                })
-                                .show();
-                            }
-                        });
+                        //0文字の名前は受け付けない
+                        TextView name_view = (TextView)findViewById(R.id.name);
+                        String name = name_view.getText().toString();
+                        if(name.length() == 0){
+                            handler.post(new Runnable(){
+                                public void run(){            
+                                    new AlertDialog.Builder(RegisterActivity.this)
+                                    .setTitle(R.string.register_warning)
+                                    .setMessage(R.string.input_request)
+                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            return;
+                                        }
+                                    }).show();
+                                }
+                            });
+                        }
+                        else{
+                            register(name);
+                            
+                            //登録完了通知
+                            handler.post(new Runnable(){
+                                public void run(){
+                                    new AlertDialog.Builder(RegisterActivity.this)
+                                    .setMessage(R.string.dialog_notify)
+                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                            	            Intent intent = new Intent();
+                            	            setResult(RESPONSE_EDIT, intent);
+                                            finish();
+                                        }
+                                    })
+                                    .show();
+                                }
+                            });
+                        }
                     }
                 };
                 thread.start();
@@ -623,30 +643,6 @@ public class RegisterActivity extends Activity {
                 .show();
             }
         });
-    }
-    
-    private void checkValue(){
-        //0文字の名前は受け付けない
-        TextView name_view = (TextView)findViewById(R.id.name);
-        String name = name_view.getText().toString();
-        if(name.length() == 0){
-            final Handler handler = new Handler();
-            handler.post(new Runnable(){
-                public void run(){            
-                    new AlertDialog.Builder(RegisterActivity.this)
-                    .setTitle(R.string.register_warning)
-                    .setMessage(R.string.input_request)
-                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            return;
-                        }
-                    }).show();
-                }
-            });
-        }
-        else{
-            register(name);
-        }        
     }
     
     private void register(String name){

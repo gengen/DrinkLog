@@ -19,104 +19,85 @@
         android:layout_height="match_parent" 
         android:orientation="vertical">
 
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="70sp"
-       	android:gravity="center">
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/name"
-            android:layout_weight="2"/>
+            android:gravity="left"
+            android:padding="5dp"
+            android:text="@string/name"/>
         <AutoCompleteTextView
             android:id="@+id/name"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="32"
-            android:layout_weight="8">
-        </AutoCompleteTextView>
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="70sp"
-        android:gravity="center">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/image"
-            android:layout_weight="2"/>
-        <ImageView
-            android:id="@+id/cur_image"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="6"/>
-        <Button
-            android:id="@+id/picture"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/picture"
-            android:layout_weight="2"/>
-    </LinearLayout>
-    
-    <View android:id="@+id/separator_1" 
-	    android:layout_width="wrap_content" 
-    	android:background="#DCDCDC" 
-      	android:layout_height="1px" 
-      	android:layout_marginTop="10dp">
-   	</View>
+            android:maxLength="32"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70sp"
-        android:gravity="center"
-        android:orientation="horizontal" >
+    
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
+            android:gravity="left"
+            android:padding="5dp"
+            android:text="@string/image"/>
+
+        <LinearLayout 
+        	android:layout_width="match_parent"
+        	android:layout_height="70sp"
+        	android:gravity="center">
+        	<ImageView
+            	android:id="@+id/cur_image"
+            	android:layout_width="0dp"
+            	android:layout_height="wrap_content"
+            	android:gravity="center"
+            	android:layout_weight="8"/>
+        	<Button
+            	android:id="@+id/picture"
+	            android:layout_width="0dp"
+    	        android:layout_height="wrap_content"
+        	    android:gravity="center"
+            	android:text="@string/picture"
+            	android:layout_weight="2"/>
+    	</LinearLayout>
+    
+    	<View android:id="@+id/separator_1" 
+	    	android:layout_width="wrap_content" 
+	    	android:background="#DCDCDC" 
+    	  	android:layout_height="1px" 
+      		android:layout_marginTop="10dp">
+   		</View>
+
+	    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="5dp"
             android:text="@string/evaluate" />
         <FrameLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="8"
             android:gravity="center" >
             <RatingBar
-                style="?android:attr/ratingBarStyleIndicator"
                 android:isIndicator="false"
                 android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal" />
         </FrameLayout>
-    </LinearLayout>
 
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="140sp"
-        android:gravity="center">
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
+            android:gravity="left"
+            android:padding="5dp"
             android:text="@string/impression" />
         <EditText
             android:id="@+id/impression"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="8"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
             android:gravity="top"
             android:inputType="textMultiLine"
             android:maxLength="100"
             >
         </EditText>
-    </LinearLayout>
     
     <View android:id="@+id/separator_2" 
 	    android:layout_width="wrap_content" 
