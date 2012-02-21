@@ -120,7 +120,6 @@ public class TwitterActivity extends Activity {
     	
     	Button button = (Button)findViewById(R.id.tweet);
     	button.setOnClickListener(new OnClickListener(){
-			@Override
 			public void onClick(View arg0) {
 		    	EditText edit = (EditText)findViewById(R.id.tweet_text);
 				String text = edit.getText().toString();

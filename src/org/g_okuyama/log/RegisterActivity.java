@@ -19,6 +19,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -328,6 +329,19 @@ public class RegisterActivity extends Activity {
             in=context.getContentResolver().openInputStream(uri);  
             Bitmap bmp = BitmapFactory.decodeStream(in, null, options);
             in.close();
+            
+            //‰ñ“]
+            int w = bmp.getWidth();
+            int h = bmp.getHeight();
+            if(w > h){
+                Matrix matrix = new Matrix();
+                // ‰ñ“]‚³‚¹‚éŠp“x‚ðŽw’è
+                matrix.postRotate(90.0f);   
+                Bitmap bmp2 = Bitmap.createBitmap(bmp, 0, 0, w, h, matrix, true);
+                bmp = null;
+                bmp = bmp2;
+            }
+            
             return bmp;
         } catch (Exception e) {
             try {
