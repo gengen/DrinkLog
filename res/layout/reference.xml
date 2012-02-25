@@ -64,6 +64,7 @@
             android:layout_height="wrap_content"
             android:gravity="center" >
             <RatingBar
+                style="?android:attr/ratingBarStyleIndicator"
                 android:isIndicator="true"
                 android:id="@+id/ref_rating"
                 android:layout_width="wrap_content"
