@@ -21,8 +21,11 @@
         android:layout_weight="1">
     	    <Button
     	    android:id="@+id/register"
+    	    android:background="@drawable/my_button"
+        	android:textColor="#ffffff"
     	    android:drawableLeft="@android:drawable/ic_menu_edit"
         	android:text="@string/register"
+        	android:textSize="15sp"
 	        android:layout_width="wrap_content"
     	    android:layout_height="wrap_content"
         	android:layout_gravity="center"/>
@@ -34,10 +37,18 @@
         android:layout_weight="1">
         <Button
 	        android:id="@+id/refer"
+    	    android:background="@drawable/my_button"
     	    android:drawableLeft="@android:drawable/ic_menu_search"
     	    android:text="@string/refer"
+        	android:textColor="#ffffff"
+        	android:textSize="15sp"
         	android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
     	    android:layout_gravity="center"/>
+    </FrameLayout>
+    <FrameLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
     </FrameLayout>
 </LinearLayout>

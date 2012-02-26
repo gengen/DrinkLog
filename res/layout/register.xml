@@ -128,16 +128,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
         <Button
             android:id="@+id/register_commit"
+            android:background="@drawable/my_button"
+        	android:textColor="#ffffff"
+        	android:paddingTop="10dp"
+        	android:paddingBottom="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:layout_marginRight="10dp"
             android:text="@string/register_commit" />
         <Button
             android:id="@+id/register_cancel"
+            android:background="@drawable/my_button"
+        	android:textColor="#ffffff"
+        	android:paddingTop="10dp"
+        	android:paddingBottom="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

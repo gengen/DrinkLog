@@ -57,7 +57,8 @@ public class LogArrayAdapter extends ArrayAdapter<LogListData> {
 			convertView.setLayoutParams(
 					new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 35));
 					*/
-			convertView.setBackgroundColor(Color.GRAY);
+			//convertView.setBackgroundColor(Color.GRAY);
+			convertView.setBackgroundColor(0xff696969);
 			
 			return convertView;
 		}
