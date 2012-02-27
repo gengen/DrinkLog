@@ -11,6 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
+            android:textSize="20sp"
             android:padding="5dp"
             android:text="@string/vintage"/>
         <TextView
@@ -28,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
+            android:textSize="20sp"
             android:padding="5dp"
             android:text="@string/area"/>
         <TextView
@@ -44,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
+            android:textSize="20sp"
             android:padding="5dp"
             android:text="@string/date"/>
         <TextView
@@ -60,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
+            android:textSize="20sp"
             android:padding="5dp"
             android:text="@string/place"/>
         <TextView
@@ -77,6 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
+            android:textSize="20sp"
             android:padding="5dp"
             android:text="@string/price"/>
         <TextView

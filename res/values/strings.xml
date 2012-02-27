@@ -57,9 +57,10 @@
    	<string name="ref_no_comment">No Comment</string>
 	<string name="ref_other_log">Show other logs</string>
 	<string name="ref_no_setting">No Setting</string>
+	<string name="ref_tweet">Tweet</string>
 	
 	<string name="menu_edit">Edit</string>
 	<string name="menu_delete">Delete</string>
 	<string name="menu_search">Wikipedia</string>
-	<string name="menu_share">Twitter</string>
+	<string name="menu_share">Tweet</string>
 </resources>

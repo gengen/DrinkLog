@@ -91,6 +91,7 @@ public class LogDetailActivity extends Activity {
     	setImage();
     	setRate();
     	setComment();
+    	setTweet();
     	setOtherLayout();
     }
     
@@ -160,6 +161,17 @@ public class LogDetailActivity extends Activity {
     	else{
     		comment.setText(mComment);
     	}
+    }
+    
+    private void setTweet(){
+        /*
+        Button tweetBtn = (Button)findViewById(R.id.ref_tweet);
+        tweetBtn.setOnClickListener(new OnClickListener(){
+            public void onClick(View v) {
+                share();
+            }
+        });
+        */
     }
     
     private void setOtherLayout(){

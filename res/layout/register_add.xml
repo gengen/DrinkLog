@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:padding="5dp"
+            android:textSize="20sp"
             android:text="@string/area"/>
         <Spinner
         	android:id="@+id/area_spinner"
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:text="@string/type"
+            android:textSize="20sp"
             android:padding="5dp"/>
         <Spinner
         	android:id="@+id/type_spinner"
@@ -49,6 +51,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:padding="5dp"
+            android:textSize="20sp"
             android:text="@string/vintage"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,6 +83,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:padding="5dp"
+            android:textSize="20sp"
             android:text="@string/date"/>
         <LinearLayout 
             android:layout_width="match_parent"
@@ -92,6 +96,10 @@
     	        android:layout_weight="8" />
         	<Button
             	android:id="@+id/date_select"
+   	    	    android:background="@drawable/my_button"
+	        	android:textColor="#ffffff"
+        		android:paddingTop="8dp"
+        		android:paddingBottom="8dp"
 	            android:layout_width="0dp"
     	        android:layout_height="wrap_content"
         	    android:gravity="center"
@@ -109,6 +117,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:padding="5dp"
+            android:textSize="20sp"
             android:text="@string/place"/>
         <EditText
             android:id="@+id/place"
@@ -127,6 +136,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:padding="5dp"
+            android:textSize="20sp"
             android:text="@string/price"/>
         <EditText
             android:id="@+id/price"

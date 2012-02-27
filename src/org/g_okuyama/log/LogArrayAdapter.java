@@ -40,7 +40,7 @@ public class LogArrayAdapter extends ArrayAdapter<LogListData> {
 		LogListData data = (LogListData)getItem(position);
 
 		if(!isEnabled(position)){
-			//イメージと評価を非表示にし、区切りとしての日付を入れる
+			//イメージと評価を非表示にし、区切りを入れる(Tab1:日付、Tab2：カテゴリ)
 			ImageView image = (ImageView)convertView.findViewById(R.id.item_image);
 			image.setVisibility(View.INVISIBLE);
 			

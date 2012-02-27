@@ -27,8 +27,14 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
 	
     DatabaseHelper dbhelper = null;
     
+    //起動済みか
+    boolean isLaunched = false;
+    
     String mDate = "";
+    String mCategory = "";
     ArrayList<LogListData> mLogList = null; 
+    
+    String mCurrentTab = "date";
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +42,7 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
         
         setContentView(R.layout.tabs);
         setTab();
-        setLogList();
+        setLogListTab1();
     }
     
     private void setTab(){
@@ -57,7 +63,7 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
         tabs.addTab(tab2);
     }
     
-    private void setLogList(){
+    private void setLogListTab1(){
         if(dbhelper == null){
             dbhelper = new DatabaseHelper(this);
         }
@@ -77,32 +83,32 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
                  * 表示リスト作成
                  * ・カテゴリイメージ、名前、評価
                  */
-            	LogListData logitem = new LogListData();
-            	
-            	String curDate = c.getString(9/*date*/);
-            	if(!curDate.equals(mDate)){
-                	//日付入れる
-            		logitem.setImageID(-9999);
-            		logitem.setTextData(curDate);
-            		mDate = curDate;
-            		mLogList.add(logitem);
-            		i--;
-            		continue;
-            	}
+                LogListData logitem = new LogListData();
+                
+                String curDate = c.getString(9/*date*/);
+                if(!curDate.equals(mDate)){
+                    //日付入れる
+                    logitem.setImageID(-9999);
+                    logitem.setTextData(curDate);
+                    mDate = curDate;
+                    mLogList.add(logitem);
+                    i--;
+                    continue;
+                }
 
-            	int dbid = c.getInt(0/*id*/);
-            	logitem.setDBID(dbid);
-            	int id = Integer.valueOf(c.getString(1/*category*/));
-            	logitem.setImageID(id);
-            	logitem.setTextData(c.getString(2/*name*/));
-            	String rate = c.getString(4/*evaluate*/);
-            	if(!rate.equals("")){
-            		float f = Float.valueOf(rate);
-            		logitem.setRatingData(f);
-            		mLogList.add(logitem);
-            	}
+                int dbid = c.getInt(0/*id*/);
+                logitem.setDBID(dbid);
+                int id = Integer.valueOf(c.getString(1/*category*/));
+                logitem.setImageID(id);
+                logitem.setTextData(c.getString(2/*name*/));
+                String rate = c.getString(4/*evaluate*/);
+                if(!rate.equals("")){
+                    float f = Float.valueOf(rate);
+                    logitem.setRatingData(f);
+                    mLogList.add(logitem);
+                }
 
-            	c.moveToPrevious();
+                c.moveToPrevious();
             }
             c.close();
         }
@@ -111,12 +117,91 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
         ListView listview = (ListView)findViewById(R.id.log_list_tab1);
         listview.setAdapter(adapter);
         
-		listview.setOnItemClickListener(new ClickAdapter());
-		listview.setOnItemLongClickListener(new LongClickAdapter());
+        listview.setOnItemClickListener(new ClickAdapter());
+        listview.setOnItemLongClickListener(new LongClickAdapter());
     }
 
-    public void onTabChanged(String arg0) {
+    private void setLogListTab2(){
+        if(dbhelper == null){
+            dbhelper = new DatabaseHelper(this);
+        }
+        SQLiteDatabase db = dbhelper.getWritableDatabase();
+        //TODO:order by を group by にしたらどうか？
+        String query = "select * from logtable order by category;";
+        Cursor c = db.rawQuery(query, null);
+        int rowcount = c.getCount();
         
+        mLogList = new ArrayList<LogListData>();
+
+        if(rowcount == 0){
+            //保存データがない場合
+        }else{
+            c.moveToFirst();
+            for(int i = 0; i < rowcount; i++){
+                /*
+                 * 表示リスト作成
+                 * ・カテゴリイメージ、名前、評価
+                 */
+                LogListData logitem = new LogListData();
+                
+                String curCategory = c.getString(1/*category*/);
+                if(!curCategory.equals(mCategory)){
+                    mCategory = curCategory;
+                    //カテゴリを入れる
+                    logitem.setImageID(-9999);
+                    int id = Integer.valueOf(curCategory);
+                    logitem.setTextData(getNameFromCategory(id));
+                    mLogList.add(logitem);
+                    i--;
+                    continue;
+                }
+
+                int dbid = c.getInt(0/*id*/);
+                logitem.setDBID(dbid);
+                int id = Integer.valueOf(c.getString(1/*category*/));
+                logitem.setImageID(id);
+                logitem.setTextData(c.getString(2/*name*/));
+                String rate = c.getString(4/*evaluate*/);
+                if(!rate.equals("")){
+                    float f = Float.valueOf(rate);
+                    logitem.setRatingData(f);
+                    mLogList.add(logitem);
+                }
+
+                c.moveToNext();
+            }
+            c.close();
+        }
+        
+        LogArrayAdapter adapter = new LogArrayAdapter(this, android.R.layout.simple_list_item_1, mLogList);
+        ListView listview = (ListView)findViewById(R.id.log_list_tab2);
+        listview.setAdapter(adapter);
+        
+        listview.setOnItemClickListener(new ClickAdapter());
+        listview.setOnItemLongClickListener(new LongClickAdapter());
+    }
+
+    public void onTabChanged(String tabid) {
+        if(!isLaunched){
+            isLaunched = true;
+            return;
+        }
+        
+        mCurrentTab = tabid;
+        if(tabid.equals("tab1")){
+            mLogList.clear();
+            mDate = "";
+            mCategory = "";
+            //Tab1の内容表示
+            setLogListTab1();
+        }
+        else if(tabid.equals("tab2")){
+            mLogList.clear();
+            mDate = "";
+            mCategory = "";
+            //Tab2の内容表示
+            setLogListTab2();            
+        }
     }
     
     
@@ -141,8 +226,14 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
     		if(resultCode == RESPONSE_DELETE){
     			mLogList.clear();
     			mDate = "";
+    			mCategory = "";
         		//再表示
-        		setLogList();    			
+                if(mCurrentTab.equals("tab2")){
+                    setLogListTab2();
+                }
+                else{
+                    setLogListTab1();
+                }
     		}
     	}
     }
@@ -192,8 +283,14 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
     				removeData(pos);
     				mLogList.clear();
     				mDate = "";
-    				//ログリスト再表示
-    				setLogList();
+    				mCategory = "";
+                    //ログリスト再表示
+                    if(mCurrentTab.equals("tab2")){
+                        setLogListTab2();
+                    }
+                    else{
+                        setLogListTab1();
+                    }
     			}
     		})
     		.setNegativeButton(R.string.ng, new DialogInterface.OnClickListener() {
@@ -212,5 +309,37 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
     	int id = logitem.getDBID();
     	
     	db.delete("logtable", "rowid = ?", new String[]{Integer.toString(id)});
+    }
+    
+    private String getNameFromCategory(int category){
+        switch(category){
+            case DrinkLogActivity.CATEGORY_WHISKEY:
+                return getString(R.string.whiskey);
+                
+            case DrinkLogActivity.CATEGORY_COCKTAIL:
+                return getString(R.string.cocktail);
+                
+            case DrinkLogActivity.CATEGORY_WINE:
+                return getString(R.string.wine);
+
+            case DrinkLogActivity.CATEGORY_SHOCHU:
+                return getString(R.string.shochu);
+
+            case DrinkLogActivity.CATEGORY_SAKE:
+                return getString(R.string.japanese_sake);
+
+            case DrinkLogActivity.CATEGORY_BRANDY:
+                return getString(R.string.brandy);
+
+            case DrinkLogActivity.CATEGORY_BEER:
+                return getString(R.string.beer);
+
+            case DrinkLogActivity.CATEGORY_OTHER:
+                return getString(R.string.other);
+
+            default:
+                Log.e(TAG, "Unknown Category");
+                return getString(R.string.other);
+        }
     }
 }

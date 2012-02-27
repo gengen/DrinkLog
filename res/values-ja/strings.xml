@@ -35,7 +35,7 @@
    	<string name="area">国(種類)</string>
    	<string name="type">タイプ</string>
    	<string name="image">画像</string>
-	<string name="picture">登録</string>
+	<string name="picture">参照</string>
 	<string name="modify">変更</string>
 	<string name="user_canceled">キャンセルしました</string>
 	<string name="get_image_error">画像を取得できませんでした</string>
@@ -57,9 +57,10 @@
 	<string name="ref_no_comment">コメント無し</string>
 	<string name="ref_other_log">その他のログを表示</string>
 	<string name="ref_no_setting">設定無し</string>
-	
+	<string name="ref_tweet">つぶやく</string>
+
 	<string name="menu_edit">編集</string>
 	<string name="menu_delete">削除</string>
 	<string name="menu_search">Wikipedia</string>
-	<string name="menu_share">Twitter</string>
+	<string name="menu_share">つぶやく</string>
 </resources>

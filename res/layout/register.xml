@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:padding="5dp"
+            android:textSize="20sp"
             android:text="@string/name"/>
         <AutoCompleteTextView
             android:id="@+id/name"
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:padding="5dp"
+            android:textSize="20sp"
             android:text="@string/image"/>
 
         <LinearLayout 
@@ -51,7 +53,11 @@
             	android:layout_weight="8"/>
         	<Button
             	android:id="@+id/picture"
-	            android:layout_width="0dp"
+   	    	    android:background="@drawable/my_button"
+	        	android:textColor="#ffffff"
+        		android:paddingTop="8dp"
+        		android:paddingBottom="8dp"
+        	    android:layout_width="0dp"
     	        android:layout_height="wrap_content"
         	    android:gravity="center"
             	android:text="@string/picture"
@@ -69,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
+            android:textSize="20sp"
             android:padding="5dp"
             android:text="@string/evaluate" />
         <FrameLayout
@@ -87,6 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
+            android:textSize="20sp"
             android:padding="5dp"
             android:text="@string/impression" />
         <EditText
