@@ -1,20 +1,5 @@
 package org.g_okuyama.log;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.CoreProtocolPNames;
-import org.apache.http.protocol.HTTP;
-
-import oauth.signpost.OAuthProvider;
-import oauth.signpost.basic.DefaultOAuthProvider;
-import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -22,7 +7,6 @@ import twitter4j.auth.AccessToken;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,16 +20,17 @@ public class TwitterActivity extends Activity {
 	public static final String TAG = "DrinkLog";
 	private static final String CONSUMER_KEY = "Xf6Rt9AL8tbzyVpv6D0CIw";
 	private static final String CONSUMER_SECRET = "0HOulWNwBRtxADaAIz5p9f8B6RrYT3tLIacbD7wlm28";
-	private static final String CALLBACK_URL = "myapp://callback";
+	private static final String CALLBACK_URL = "http://neging01.blog87.fc2.com/";
 	
 	private static final int REQUEST_OAUTH = 3333;
-	
-	private CommonsHttpOAuthConsumer mConsumer;
-	private OAuthProvider mProvider;
 	
 	String mName;
 	String mRate;
 	String mComment;
+	
+	String mToken = null;
+	String mTokenSecret = null;
+	Twitter mTwitter;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,130 +55,77 @@ public class TwitterActivity extends Activity {
         Button button = (Button)findViewById(R.id.tweet);
         button.setOnClickListener(new OnClickListener(){
             public void onClick(View arg0) {
-                //doOauth();
-                
-                Intent intent = new Intent(TwitterActivity.this, OAuthActivity.class);
-                intent.putExtra(OAuthActivity.CALLBACK, CALLBACK_URL);
-                intent.putExtra(OAuthActivity.CONSUMER_KEY, CONSUMER_KEY);
-                intent.putExtra(OAuthActivity.CONSUMER_SECRET, CONSUMER_SECRET);
-                startActivityForResult(intent, REQUEST_OAUTH);
+            	if(isAuthenticated()){
+            		tweet();
+            	}
+            	else{
+            		Intent intent = new Intent(TwitterActivity.this, OAuthActivity.class);
+            		intent.putExtra(OAuthActivity.CALLBACK, CALLBACK_URL);
+            		intent.putExtra(OAuthActivity.CONSUMER_KEY, CONSUMER_KEY);
+            		intent.putExtra(OAuthActivity.CONSUMER_SECRET, CONSUMER_SECRET);
+            		startActivityForResult(intent, REQUEST_OAUTH);
+            	}
             }
         });
     }
-
-    private void doOauth() {
-        try {
-            mConsumer = new CommonsHttpOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
-            mProvider = new DefaultOAuthProvider(
-                "https://api.twitter.com/oauth/request_token",
-                "https://api.twitter.com/oauth/access_token",
-                "https://api.twitter.com/oauth/authorize");
-            
-            //トークンの読み込み
-            SharedPreferences pref= getSharedPreferences("token", MODE_PRIVATE);
-            String token      = pref.getString("token", null);
-            String tokenSecret= pref.getString("tokenSecret", null);
-            
-            //認証済み
-            if (token != null && tokenSecret != null) {
-                mConsumer.setTokenWithSecret(token, tokenSecret);
-
-                doTweet();
-                /*
-                Intent i = new Intent();
-                setResult(LogDetailActivity.RESPONSE_TWEET, i);
-                finish();
-                */
-            } 
-            //認証処理のためブラウザ起動
-            else {
-                String authUrl = mProvider.retrieveRequestToken(mConsumer, CALLBACK_URL);
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(authUrl)));
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+    
+    private boolean isAuthenticated(){
+        
+        //トークンの読み込み
+        SharedPreferences pref= getSharedPreferences("token", MODE_PRIVATE);
+        mToken = pref.getString("token", null);
+        mTokenSecret= pref.getString("tokenSecret", null);
+        
+        //認証済み
+        if (mToken != null && mTokenSecret != null) {
+            return true;
         }
+    	
+    	return false;
     }
     
-    @Override
-    protected void onNewIntent(final Intent intent){
-    	super.onNewIntent(intent);
-    	final Uri uri = intent.getData();
-    	// return from Twitter OAuth
-    	if(uri != null && uri.toString().startsWith(CALLBACK_URL)){
-    		try {
-    			String verifier = uri.getQueryParameter(oauth.signpost.OAuth.OAUTH_VERIFIER);
-    			mProvider.retrieveAccessToken(mConsumer, verifier);
-    			// set prefs
-    			SharedPreferences prefs = getSharedPreferences("token", MODE_PRIVATE);
-    			SharedPreferences.Editor editor = prefs.edit();
-    			editor.putString("token", mConsumer.getToken());
-    			editor.putString("tokenSecret", mConsumer.getTokenSecret());
-    			editor.commit();
+    private void tweet(){
+		//twitterオブジェクトの作成 
+		mTwitter = new TwitterFactory().getInstance();
+		//AccessTokenオブジェクトの作成 
+		AccessToken at = new AccessToken(mToken, mTokenSecret);
+		//Consumer keyとConsumer key seacretの設定
+		mTwitter.setOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);   
+		//AccessTokenオブジェクトを設定 
+		mTwitter.setOAuthAccessToken(at);
+		
+        EditText view = (EditText)findViewById(R.id.tweet_text);        
 
-    			doTweet();
-
-    		} catch (Exception e) {
-    			Log.e(TAG, e.getMessage(), e);
-    			Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-    		}   
-    	}
-    }
-    
-    private void doTweet(){
-        EditText edit = (EditText)findViewById(R.id.tweet_text);
-        String text = edit.getText().toString();
-
-        try {
-            HttpPost post=new HttpPost("http://api.twitter.com/1/statuses/update.xml"); 
-            final List<NameValuePair> params=new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("status", text));  
-            post.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));  
-            post.getParams().setBooleanParameter(
-                CoreProtocolPNames.USE_EXPECT_CONTINUE, false);
-            mConsumer.sign(post);
-            DefaultHttpClient http=new DefaultHttpClient();
-            http.execute(post);
-            Toast.makeText(this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
-        } catch (Exception e) {
-        	Log.e(TAG, "failed to tweet");
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-        
-        finish();
-        
-        /*
-        Intent i = new Intent();
-        setResult(LogDetailActivity.RESPONSE_TWEET, i);
-        finish();
-        */
+		try {
+			mTwitter.updateStatus(view.getText().toString());
+			Toast.makeText(this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
+		} catch (TwitterException e){
+			e.printStackTrace();
+			if(e.isCausedByNetworkIssue()){
+				Toast.makeText(this, R.string.tweet_nw_error, Toast.LENGTH_LONG).show();
+			}
+		}
+		
+		finish();
     }
     
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == REQUEST_OAUTH){
-            long userId = data.getLongExtra(OAuthActivity.USER_ID, 0);
-            String screenName = data.getStringExtra(OAuthActivity.SCREEN_NAME);
-            String token = data.getStringExtra(OAuthActivity.TOKEN);
-            String tokenSecret = data.getStringExtra(OAuthActivity.TOKEN_SECRET);
+        	if(resultCode == Activity.RESULT_OK){
+        		//long userId = data.getLongExtra(OAuthActivity.USER_ID, 0);
+        		//String screenName = data.getStringExtra(OAuthActivity.SCREEN_NAME);
+        		mToken = data.getStringExtra(OAuthActivity.TOKEN);
+        		mTokenSecret = data.getStringExtra(OAuthActivity.TOKEN_SECRET);
             
-          //twitterオブジェクトの作成 
-            Twitter tw = new TwitterFactory().getInstance();
-            //AccessTokenオブジェクトの作成 
-            AccessToken at = new AccessToken(token, tokenSecret);
-            //Consumer keyとConsumer key seacretの設定
-            tw.setOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);   
-            //AccessTokenオブジェクトを設定 
-            tw.setOAuthAccessToken(at); 
-
-            //TODO:Preferenceにtoken登録
-            try {     
-                tw.updateStatus("てすと");
-            } catch (TwitterException e){
-                e.printStackTrace();
-                if(e.isCausedByNetworkIssue()){
-                    Toast.makeText(this, "ネットーワークの問題です", Toast.LENGTH_LONG);
-                }
-            } 
+        		//Preferenceにtoken登録
+    			SharedPreferences prefs = getSharedPreferences("token", MODE_PRIVATE);
+    			SharedPreferences.Editor editor = prefs.edit();
+    			editor.putString("token", mToken);
+    			editor.putString("tokenSecret", mTokenSecret);
+    			editor.commit();
+    			
+    			tweet();
+        	}
         }
     }
 }

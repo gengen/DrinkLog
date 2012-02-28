@@ -7,6 +7,7 @@ import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -39,7 +40,7 @@ public class OAuthActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setResult(Activity.RESULT_CANCELED);
+        setResult(Activity.RESULT_CANCELED);
 
         // プログレス表示
         requestWindowFeature(Window.FEATURE_PROGRESS);
@@ -54,8 +55,8 @@ public class OAuthActivity extends Activity {
         setContentView(mWebView);
 
         // TwitterのOAuth認証画面で毎回ユーザ名、アカウントを入力させるために必要
-        CookieManager cookieManager = CookieManager.getInstance();
-        cookieManager.setAcceptCookie(false);
+        //CookieManager cookieManager = CookieManager.getInstance();
+        //cookieManager.setAcceptCookie(false);
 
         Intent intent = getIntent();
         mCallback = intent.getStringExtra(CALLBACK);
@@ -122,7 +123,8 @@ public class OAuthActivity extends Activity {
     private WebViewClient mWebViewClient = new WebViewClient() {
 
         // 特定のページをフック
-        @Override
+    	/*
+    	@Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             boolean result = true;
             if ((url != null) && (url.startsWith(mCallback))) {
@@ -135,7 +137,19 @@ public class OAuthActivity extends Activity {
             }
             return result;
         }
-
+        */
+    	@Override
+        public void onPageStarted(WebView view, String url, Bitmap bitmap) {
+            boolean result = true;
+            if ((url != null) && (url.startsWith(mCallback))) {
+                Uri uri = Uri.parse(url);
+                String oAuthVerifier = uri.getQueryParameter(OAUTH_VERIFIER);
+                PostTask postTask = new PostTask();
+                postTask.execute(oAuthVerifier);
+            } else {
+                super.onPageStarted(view, url, bitmap);
+            }
+        }
     };
 
     // 後処理

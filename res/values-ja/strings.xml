@@ -65,4 +65,5 @@
 	<string name="menu_share">つぶやく</string>
 	<string name="tweet">ツイート</string>
 	<string name="tweet_finish">ツイートしました</string>
+	<string name="tweet_nw_error">ネットワークエラー</string>
 </resources>
