@@ -63,4 +63,6 @@
 	<string name="menu_delete">削除</string>
 	<string name="menu_search">Wikipedia</string>
 	<string name="menu_share">つぶやく</string>
+	<string name="tweet">ツイート</string>
+	<string name="tweet_finish">ツイートしました</string>
 </resources>

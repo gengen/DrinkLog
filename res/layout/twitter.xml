@@ -8,13 +8,14 @@
         android:id="@+id/tweet_text"
         android:layout_width="match_parent"
         android:layout_height="140sp"
+        android:maxLength="140"
     />
     
     <Button 
         android:id="@+id/tweet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ツイート"
+        android:text="@string/tweet"
     />
 
 </LinearLayout>

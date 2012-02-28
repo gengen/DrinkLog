@@ -31,9 +31,11 @@ public class LogDetailActivity extends Activity {
 	private static final int MENU_DELETE = 1;
 	private static final int MENU_SEARCH = 2;
 	private static final int MENU_SHARE = 3;
-	private static final int REQUEST_EDIT = 6666;	
-	private static final int RESPONSE_DELETE = 7777;	
-	private static final int RESPONSE_EDIT = 6667;	
+    public static final int RESPONSE_DELETE = 7777;
+	public static final int REQUEST_EDIT = 6666;	
+	public static final int RESPONSE_EDIT = 6667;
+    public static final int REQUEST_TWEET = 5555; 
+    public static final int RESPONSE_TWEET = 5556; 
 	
 	private int mDBID;
 	
@@ -294,8 +296,11 @@ public class LogDetailActivity extends Activity {
     	if(requestCode == REQUEST_EDIT){
     		if(resultCode == RESPONSE_EDIT){
     			//ï“èWå„ÇÃÉçÉOÇï\é¶
-    			setLayout();
+                setLayout();
     		}
+    	}
+    	else if(requestCode == REQUEST_TWEET){
+    	    //âΩÇ‡ÇµÇ»Ç¢
     	}
     }
     
@@ -331,6 +336,6 @@ public class LogDetailActivity extends Activity {
     	intent.putExtra("name", mName);
     	intent.putExtra("rate", String.valueOf(mRate));
     	intent.putExtra("comment", mComment);
-    	startActivity(intent);
+    	startActivityForResult(intent, REQUEST_TWEET);
     }
 }

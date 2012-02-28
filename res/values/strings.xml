@@ -63,4 +63,6 @@
 	<string name="menu_delete">Delete</string>
 	<string name="menu_search">Wikipedia</string>
 	<string name="menu_share">Tweet</string>
+	<string name="tweet">Tweet</string>
+	<string name="tweet_finish">Tweet finished</string>
 </resources>
