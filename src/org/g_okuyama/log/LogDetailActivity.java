@@ -108,35 +108,35 @@ public class LogDetailActivity extends Activity {
     	if(mImageURL.equals("none")){
     		switch(mCategory){
     		case DrinkLogActivity.CATEGORY_WHISKEY:
-    			image.setImageResource(R.drawable.whiskey);
+    			image.setImageResource(R.drawable.whiskey_mono);
                 break;
                 
             case DrinkLogActivity.CATEGORY_COCKTAIL:
-    			image.setImageResource(R.drawable.cocktail);
+    			image.setImageResource(R.drawable.cocktail_mono);
                 break;
                 
             case DrinkLogActivity.CATEGORY_WINE:
-    			image.setImageResource(R.drawable.wine);
+    			image.setImageResource(R.drawable.wine_mono);
                 break;
 
             case DrinkLogActivity.CATEGORY_SHOCHU:
-    			image.setImageResource(R.drawable.shochu);
+    			image.setImageResource(R.drawable.shochu_mono);
                 break;
 
             case DrinkLogActivity.CATEGORY_SAKE:
-    			image.setImageResource(R.drawable.sake);
+    			image.setImageResource(R.drawable.sake_mono);
                 break;
 
             case DrinkLogActivity.CATEGORY_BRANDY:
-    			image.setImageResource(R.drawable.brandy);
+    			image.setImageResource(R.drawable.brandy_mono);
                 break;
 
             case DrinkLogActivity.CATEGORY_BEER:
-    			image.setImageResource(R.drawable.beer);
+    			image.setImageResource(R.drawable.beer_mono);
                 break;
 
             case DrinkLogActivity.CATEGORY_OTHER:
-    			image.setImageResource(R.drawable.other);
+    			image.setImageResource(R.drawable.other_mono);
                 break;
 
             default:
