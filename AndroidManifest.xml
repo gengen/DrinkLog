@@ -31,10 +31,15 @@
             android:screenOrientation="portrait"/>
         <activity 
             android:name=".OAuthActivity"
-            android:screenOrientation="portrait"/>
-        
+            android:screenOrientation="portrait"/>        
         <activity
             android:name=".TwitterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog"
+            >
+        </activity>
+        <activity
+            android:name=".ImageViewActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog"
             >

@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -62,6 +63,16 @@ public class LogDetailActivity extends Activity {
         setLayout();
     }
     
+    private void setLayout(){
+        getDetailData(mDBID);
+        setName();
+        setImage();
+        setRate();
+        setComment();
+        setTweet();
+        setOtherLayout();
+    }
+    
     private void getDetailData(int dbid){
     	//DB‚ðŽæ“¾
     	DatabaseHelper helper = new DatabaseHelper(this);
@@ -85,16 +96,6 @@ public class LogDetailActivity extends Activity {
 		mPrice = c.getString(11);
 		
 		c.close();
-    }
-    
-    private void setLayout(){
-       	getDetailData(mDBID);
-    	setName();
-    	setImage();
-    	setRate();
-    	setComment();
-    	setTweet();
-    	setOtherLayout();
     }
     
     private void setName(){
@@ -147,7 +148,15 @@ public class LogDetailActivity extends Activity {
     		Log.d(TAG, "URL = " + mImageURL);
     		Uri uri = Uri.parse(mImageURL);
             image.setImageBitmap(RegisterActivity.uri2bmp(this, uri, 160, 120));
-    	}
+            
+            image.setOnClickListener(new OnClickListener(){
+                public void onClick(View arg0) {
+                    Intent intent = new Intent(LogDetailActivity.this, ImageViewActivity.class);
+                    intent.putExtra("imageurl", mImageURL);
+                    startActivity(intent);
+                }
+            });
+    	}    	
     }
     
     private void setRate(){
@@ -166,14 +175,12 @@ public class LogDetailActivity extends Activity {
     }
     
     private void setTweet(){
-        /*
-        Button tweetBtn = (Button)findViewById(R.id.ref_tweet);
+        ImageButton tweetBtn = (ImageButton)findViewById(R.id.tweet_bird);
         tweetBtn.setOnClickListener(new OnClickListener(){
             public void onClick(View v) {
                 share();
             }
         });
-        */
     }
     
     private void setOtherLayout(){

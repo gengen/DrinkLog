@@ -47,7 +47,6 @@
             android:id="@+id/ref_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:gravity="center"/>
     </LinearLayout>
     
@@ -97,7 +96,16 @@
             />
     </LinearLayout>
     
-    <View android:id="@+id/ref_separator_2" 
+    <ImageButton 
+        android:id="@+id/tweet_bird"
+	    android:background="@drawable/tweet_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="5dp"/>
+
+    <View 
+        android:id="@+id/ref_separator_2" 
 	    android:layout_width="wrap_content" 
     	android:background="#DCDCDC" 
       	android:layout_height="1px" 
