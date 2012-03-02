@@ -37,6 +37,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -186,7 +187,7 @@ public class RegisterActivity extends Activity {
         ImageView image = (ImageView)findViewById(R.id.cur_image);
         
         final String[] setting_list = getResources().getStringArray(R.array.image_setting_array);        
-        Button imageBtn = (Button)findViewById(R.id.picture);
+        ImageButton imageBtn = (ImageButton)findViewById(R.id.picture);
         imageBtn.setOnClickListener(new OnClickListener(){
             public void onClick(View v) {
                 new AlertDialog.Builder(RegisterActivity.this)
@@ -492,7 +493,7 @@ public class RegisterActivity extends Activity {
         	text.setText(mCurDate);
         }
         
-        Button selectBtn = (Button)findViewById(R.id.date_select);
+        ImageButton selectBtn = (ImageButton)findViewById(R.id.date_select);
         selectBtn.setOnClickListener(new OnClickListener(){
             public void onClick(View v) {
                 DatePickerDialog dialog = new DatePickerDialog(

@@ -94,12 +94,9 @@
             	android:layout_height="wrap_content"
 	            android:gravity="center"
     	        android:layout_weight="8" />
-        	<Button
+        	<ImageButton
             	android:id="@+id/date_select"
-   	    	    android:background="@drawable/my_button"
-	        	android:textColor="#ffffff"
-        		android:paddingTop="8dp"
-        		android:paddingBottom="8dp"
+   	    	    android:src="@android:drawable/ic_menu_my_calendar"
 	            android:layout_width="0dp"
     	        android:layout_height="wrap_content"
         	    android:gravity="center"

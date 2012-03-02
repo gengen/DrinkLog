@@ -343,6 +343,7 @@ public class LogDetailActivity extends Activity {
     	intent.putExtra("name", mName);
     	intent.putExtra("rate", String.valueOf(mRate));
     	intent.putExtra("comment", mComment);
+    	intent.putExtra("path", mImageURL);
     	startActivityForResult(intent, REQUEST_TWEET);
     }
 }

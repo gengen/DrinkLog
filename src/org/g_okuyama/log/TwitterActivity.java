@@ -1,9 +1,15 @@
 package org.g_okuyama.log;
 
+import java.io.File;
+
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
+import twitter4j.conf.Configuration;
+import twitter4j.conf.ConfigurationBuilder;
+import twitter4j.media.ImageUpload;
+import twitter4j.media.ImageUploadFactory;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,6 +33,7 @@ public class TwitterActivity extends Activity {
 	String mName;
 	String mRate;
 	String mComment;
+	String mPath = "";
 	
 	String mToken = null;
 	String mTokenSecret = null;
@@ -41,6 +48,7 @@ public class TwitterActivity extends Activity {
         mName = extras.getString("name");
         mRate = extras.getString("rate");
         mComment = extras.getString("comment");
+        mPath = extras.getString("path");
         setLayout();
     }
     
@@ -85,26 +93,58 @@ public class TwitterActivity extends Activity {
     }
     
     private void tweet(){
-		//twitterオブジェクトの作成 
-		mTwitter = new TwitterFactory().getInstance();
-		//AccessTokenオブジェクトの作成 
-		AccessToken at = new AccessToken(mToken, mTokenSecret);
-		//Consumer keyとConsumer key seacretの設定
-		mTwitter.setOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);   
-		//AccessTokenオブジェクトを設定 
-		mTwitter.setOAuthAccessToken(at);
-		
-        EditText view = (EditText)findViewById(R.id.tweet_text);        
+        if(mPath.equals("none")){
+            //twitterオブジェクトの作成 
+            mTwitter = new TwitterFactory().getInstance();
+            //AccessTokenオブジェクトの作成 
+            AccessToken at = new AccessToken(mToken, mTokenSecret);
+            //Consumer keyとConsumer key seacretの設定
+            mTwitter.setOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);   
+            //AccessTokenオブジェクトを設定 
+            mTwitter.setOAuthAccessToken(at);
+            
+            EditText view = (EditText)findViewById(R.id.tweet_text);
+            
+            try {
+                mTwitter.updateStatus(view.getText().toString());
+                Toast.makeText(this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
+            } catch (TwitterException e){
+                if(e.isCausedByNetworkIssue()){
+                    Toast.makeText(this, R.string.tweet_nw_error, Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(this, R.string.tweet_error, Toast.LENGTH_LONG).show();
+                }
+            }            
+        }
+        else{
+            ConfigurationBuilder builder = new ConfigurationBuilder();
+            builder.setOAuthConsumerKey(CONSUMER_KEY);
+            builder.setOAuthConsumerSecret(CONSUMER_SECRET);
+            builder.setOAuthAccessToken(mToken);
+            builder.setOAuthAccessTokenSecret(mTokenSecret);
+            // ここでMediaProviderをTWITTERにする
+            builder.setMediaProvider("TWITTER");
 
-		try {
-			mTwitter.updateStatus(view.getText().toString());
-			Toast.makeText(this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
-		} catch (TwitterException e){
-			e.printStackTrace();
-			if(e.isCausedByNetworkIssue()){
-				Toast.makeText(this, R.string.tweet_nw_error, Toast.LENGTH_LONG).show();
-			}
-		}
+            Configuration conf = builder.build();
+            ImageUpload imageUpload = new ImageUploadFactory(conf)
+                    .getInstance();
+
+            File file = new File(mPath);
+            EditText view = (EditText)findViewById(R.id.tweet_text);
+
+            try {
+                imageUpload.upload(file, view.getText().toString());
+                Toast.makeText(this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
+            } catch (TwitterException e) {
+                if(e.isCausedByNetworkIssue()){
+                    Toast.makeText(this, R.string.tweet_nw_error, Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(this, R.string.tweet_error, Toast.LENGTH_LONG).show();
+                }
+            }
+        }
 		
 		finish();
     }

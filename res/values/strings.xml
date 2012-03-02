@@ -65,5 +65,6 @@
 	<string name="menu_share">Tweet</string>
 	<string name="tweet">Tweet</string>
 	<string name="tweet_finish">Tweet finished</string>
+	<string name="tweet_error">Tweet error occured</string>
 	<string name="tweet_nw_error">Network error</string>
 </resources>

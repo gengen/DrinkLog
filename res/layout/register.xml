@@ -51,16 +51,12 @@
             	android:layout_height="wrap_content"
             	android:gravity="center"
             	android:layout_weight="8"/>
-        	<Button
+        	<ImageButton
             	android:id="@+id/picture"
-   	    	    android:background="@drawable/my_button"
-	        	android:textColor="#ffffff"
-        		android:paddingTop="8dp"
-        		android:paddingBottom="8dp"
+   	    	    android:src="@android:drawable/ic_menu_gallery"
         	    android:layout_width="0dp"
     	        android:layout_height="wrap_content"
         	    android:gravity="center"
-            	android:text="@string/picture"
             	android:layout_weight="2"/>
     	</LinearLayout>
     
@@ -140,9 +136,8 @@
         <Button
             android:id="@+id/register_commit"
             android:background="@drawable/my_button"
+       	    android:drawableLeft="@android:drawable/ic_menu_save"
         	android:textColor="#ffffff"
-        	android:paddingTop="10dp"
-        	android:paddingBottom="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -152,9 +147,8 @@
         <Button
             android:id="@+id/register_cancel"
             android:background="@drawable/my_button"
+       	    android:drawableLeft="@android:drawable/ic_menu_close_clear_cancel"
         	android:textColor="#ffffff"
-        	android:paddingTop="10dp"
-        	android:paddingBottom="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
