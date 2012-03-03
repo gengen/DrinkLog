@@ -38,7 +38,80 @@
    	    <item>Canadian</item>
    	    <item>Other</item>
 	</string-array> 
-
+	
+	<string-array name="type_array_wh">
+	    <item></item>
+	    <item>Malt</item>
+	    <item>Grain</item>
+	    <item>Blended</item>
+   	    <item>Other</item>
+	</string-array>
+			    
+	<string-array name="type_array_co">
+	    <item></item>
+	    <item>Gin</item>
+	    <item>Vodka</item>
+	    <item>Tequila</item>
+   	    <item>Rum</item>
+   	    <item>Liqueur</item>
+   	    <item>Wine</item>
+   	    <item>Whiskey</item>
+   	    <item>Brandy</item>
+   	    <item>Beer</item>
+        <item>Other</item>
+	</string-array>
+	
+	<string-array name="type_array_wi">
+	    <item></item>
+	    <item>Red</item>
+	    <item>White</item>
+   	    <item>Rose</item>
+        <item>Other</item>
+	</string-array>
+	
+	<string-array name="type_array_sh">
+	    <item></item>
+	    <item>Wheat</item>
+	    <item>Rice</item>
+   	    <item>Potato</item>
+   	    <item>Muscovado</item>
+   	    <item>Soba</item>
+   	    <item>Shiso</item>
+        <item>Other</item>
+	</string-array>
+	
+	<string-array name="type_array_ja">
+	    <item></item>
+	    <item>Daiginjyo</item>
+	    <item>Ginjyo</item>
+   	    <item>Tokubetu Jyunmai</item>
+   	    <item>Jyunmai</item>
+   	    <item>Gensyu</item>
+   	    <item>Tarusyu</item>
+        <item>Namasyu</item>
+   	    <item>Namatyozou</item>
+   	    <item>Other</item>
+    </string-array>
+	
+	<string-array name="type_array_br">
+	    <item></item>
+	    <item>Cognac</item>
+	    <item>Armagnac</item>
+   	    <item>Marc</item>
+   	    <item>Grappa</item>
+   	    <item>Kirschwasser</item>
+   	    <item>Calvados</item>
+   	    <item>Other</item>
+    </string-array>
+	
+	<string-array name="type_array_be">
+	    <item></item>
+	    <item>Lager</item>
+	    <item>Ale</item>
+   	    <item>Lambic</item>
+   	    <item>Other</item>
+    </string-array>
+    
 	<string-array name="name_array_wh">
 <item>Aberlour</item>
 <item>Allt-a-Bhainne</item>

@@ -1,6 +1,8 @@
 package org.g_okuyama.log;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.OutputStream;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -11,8 +13,11 @@ import twitter4j.conf.ConfigurationBuilder;
 import twitter4j.media.ImageUpload;
 import twitter4j.media.ImageUploadFactory;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -130,12 +135,28 @@ public class TwitterActivity extends Activity {
             ImageUpload imageUpload = new ImageUploadFactory(conf)
                     .getInstance();
 
-            File file = new File(mPath);
-            EditText view = (EditText)findViewById(R.id.tweet_text);
+            Bitmap bitmap = RegisterActivity.uri2bmp(this, Uri.parse(mPath), 240, 320);
+            try {
+                byte[] w = bmp2data(bitmap, Bitmap.CompressFormat.JPEG, 80);
+                writeDataFile("tmp.jpg", w);
 
+            } catch (Exception e) {
+                Log.e(TAG, e.toString());
+            }
+
+            //File file = new File(mPath);
+            //アップロード用のイメージをファイルに書き込み
+            //twitter4jのuploadが引数にfileを取るため、一度書き込む
+            File file = new File(getFilesDir() + "/tmp.jpg");
+            Log.d(TAG, "path = " + file.getPath());
+            
+            EditText view = (EditText)findViewById(R.id.tweet_text);
+            Log.d(TAG, "text = " + view.getText().toString());
+            
             try {
                 imageUpload.upload(file, view.getText().toString());
                 Toast.makeText(this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
+
             } catch (TwitterException e) {
                 if(e.isCausedByNetworkIssue()){
                     Toast.makeText(this, R.string.tweet_nw_error, Toast.LENGTH_LONG).show();
@@ -144,6 +165,9 @@ public class TwitterActivity extends Activity {
                     Toast.makeText(this, R.string.tweet_error, Toast.LENGTH_LONG).show();
                 }
             }
+            
+            //アップロード用のイメージ削除
+            file.delete();
         }
 		
 		finish();
@@ -168,4 +192,29 @@ public class TwitterActivity extends Activity {
         	}
         }
     }
+    
+    //Bitmap→バイトデータ
+    private static byte[] bmp2data(Bitmap src,
+        Bitmap.CompressFormat format,int quality) {
+        ByteArrayOutputStream os=new ByteArrayOutputStream();
+        src.compress(format,quality,os);            
+        return os.toByteArray();
+    }
+   
+    //ファイルへのバイトデータ書き込み
+    private void writeDataFile(String name, byte[] w) throws Exception {
+        OutputStream out=null;
+        try {
+            out= openFileOutput(name, Context.MODE_WORLD_READABLE);
+            out.write(w, 0, w.length);
+            out.close();
+        } catch (Exception e) {
+            try {
+                if (out!=null) out.close();
+            } catch (Exception e2) {
+            }
+            throw e;
+        }
+    }
+
 }

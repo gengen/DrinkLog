@@ -39,6 +39,99 @@
    	    <item>その他</item>
 	</string-array> 
 	
+	<string-array name="area_array_wi">
+	    <item></item>
+	</string-array> 
+	
+	<string-array name="area_array_sh">
+	    <item></item>
+	</string-array> 
+	
+	<string-array name="area_array_ja">
+	    <item></item>
+	</string-array> 
+	
+   	<string-array name="area_array_br">
+	    <item></item>
+	</string-array> 
+	
+   	<string-array name="area_array_be">
+	    <item></item>
+	</string-array> 
+	
+    <string-array name="type_array_wh">
+	    <item></item>
+	    <item>モルト</item>
+	    <item>グレーン</item>
+	    <item>ブレンディッド</item>
+   	    <item>その他</item>
+	</string-array>
+			    
+	<string-array name="type_array_co">
+	    <item></item>
+	    <item>ジン</item>
+	    <item>ウォッカ</item>
+	    <item>テキーラ</item>
+   	    <item>ラム</item>
+   	    <item>リキュール</item>
+   	    <item>ワイン</item>
+   	    <item>ウィスキー</item>
+   	    <item>ブランデー</item>
+   	    <item>ビール</item>
+        <item>その他</item>
+	</string-array>
+	
+	<string-array name="type_array_wi">
+	    <item></item>
+	    <item>赤</item>
+	    <item>白</item>
+   	    <item>ロゼ</item>
+        <item>その他</item>
+	</string-array>
+	
+	<string-array name="type_array_sh">
+	    <item></item>
+	    <item>麦</item>
+	    <item>米</item>
+   	    <item>芋</item>
+   	    <item>黒糖</item>
+   	    <item>そば</item>
+   	    <item>しそ</item>
+        <item>その他</item>
+	</string-array>
+	
+	<string-array name="type_array_ja">
+	    <item></item>
+	    <item>大吟醸酒</item>
+	    <item>吟醸酒</item>
+   	    <item>特別純米酒</item>
+   	    <item>純米酒</item>
+   	    <item>原酒</item>
+   	    <item>樽酒</item>
+        <item>生酒</item>
+   	    <item>生貯蔵</item>
+   	    <item>その他</item>
+    </string-array>
+	
+	<string-array name="type_array_br">
+	    <item></item>
+	    <item>コニャック</item>
+	    <item>アルマニャック</item>
+   	    <item>マール</item>
+   	    <item>グラッパ</item>
+   	    <item>キルシュワッサー</item>
+   	    <item>カルヴァドス</item>
+   	    <item>その他</item>
+    </string-array>
+	
+	<string-array name="type_array_be">
+	    <item></item>
+	    <item>下面発酵ビール</item>
+	    <item>上面発酵ビール</item>
+   	    <item>自然発酵ビール</item>
+   	    <item>その他</item>
+    </string-array>
+	
 	<string-array name="name_array_wh">
 <item>アベラワー</item>
 <item>オルタヴェーン</item>

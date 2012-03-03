@@ -147,12 +147,17 @@ public class RegisterActivity extends Activity {
         AutoCompleteTextView view = (AutoCompleteTextView)findViewById(R.id.name);
 
         int id = getCategoryID(mCategory);
-        if(id != -1){
+        if((id != -1) && !mEditFlag){
             ArrayAdapter name_adapter = ArrayAdapter.createFromResource(
                     this, id, android.R.layout.simple_dropdown_item_1line);
             view.setAdapter(name_adapter);
         }
-        //TODO:“o˜^‚³‚ê‚Ä‚¢‚È‚¢–¼‘O‚Å“o˜^‚³‚ê‚½ê‡‚ÍAname_adapter‚É’Ç‰Á‚·‚é
+        else if(mEditFlag){
+        	//•ÒW‚Í“ü—Í•âŠ®‚Í•K—v‚È‚¢
+        	view.setText(mName);        	
+        }
+
+        //TODO:(option)“o˜^‚³‚ê‚Ä‚¢‚È‚¢–¼‘O‚Å“o˜^‚³‚ê‚½ê‡‚ÍAname_adapter‚É’Ç‰Á‚·‚é
         
         view.addTextChangedListener(new TextWatcher(){
             public void afterTextChanged(Editable edit) {
@@ -165,11 +170,6 @@ public class RegisterActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
-        
-        if(mEditFlag){
-        	//TODO:•ÒW‚ÍŒó•â‚ªo‚È‚¢‚æ‚¤‚É‚·‚é
-        	view.setText(mName);
-        }
     }
     
     private int getCategoryID(int idx){
@@ -296,8 +296,6 @@ public class RegisterActivity extends Activity {
                 image.setImageBitmap(uri2bmp(this, uri, 160, 120));
                 //•Û‘¶—p•¶š—ñ
                 mImageURL = uri.toString();
-                Button button = (Button)findViewById(R.id.picture);
-                button.setText(R.string.modify);
             }
             else if(resultCode == RESULT_CANCELED){
                 Toast.makeText(this, R.string.user_canceled, Toast.LENGTH_SHORT).show();
@@ -437,7 +435,7 @@ public class RegisterActivity extends Activity {
     private int getTypeID(int idx){
         switch(idx){
             case DrinkLogActivity.CATEGORY_WHISKEY:
-                //return R.array.type_array_wh;
+                return R.array.type_array_wh;
                 
                 //TODO:‘½í—Ş’Ç‰Á
                 
