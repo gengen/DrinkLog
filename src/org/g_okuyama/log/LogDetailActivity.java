@@ -30,8 +30,7 @@ public class LogDetailActivity extends Activity {
 	public static final String TAG = "DrinkLog";
 	private static final int MENU_EDIT = 0;
 	private static final int MENU_DELETE = 1;
-	private static final int MENU_SEARCH = 2;
-	private static final int MENU_SHARE = 3;
+	private static final int MENU_SHARE = 2;
     public static final int RESPONSE_DELETE = 7777;
 	public static final int REQUEST_EDIT = 6666;	
 	public static final int RESPONSE_EDIT = 6667;
@@ -255,9 +254,6 @@ public class LogDetailActivity extends Activity {
         MenuItem delete = menu.add(0, MENU_DELETE, 0 ,R.string.menu_delete);
         delete.setIcon(android.R.drawable.ic_menu_delete);
 
-        MenuItem search = menu.add(0, MENU_SEARCH, 0 ,R.string.menu_search);
-        search.setIcon(android.R.drawable.ic_menu_search);
-        
         MenuItem share = menu.add(0, MENU_SHARE, 0 ,R.string.menu_share);
         share.setIcon(android.R.drawable.ic_menu_share);
 
@@ -273,10 +269,6 @@ public class LogDetailActivity extends Activity {
     		
     	case MENU_DELETE:
     		delete();
-    		break;
-    		
-    	case MENU_SEARCH:
-    		search();
     		break;
     		
     	case MENU_SHARE:
@@ -332,10 +324,6 @@ public class LogDetailActivity extends Activity {
 			}
 		})
 		.show();
-    }
-    
-    private void search(){
-    	
     }
     
     private void share(){

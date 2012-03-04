@@ -35,8 +35,6 @@
    	<string name="area">国(種類)</string>
    	<string name="type">タイプ</string>
    	<string name="image">画像</string>
-	<string name="picture">参照</string>
-	<string name="modify">変更</string>
 	<string name="user_canceled">キャンセルしました</string>
 	<string name="get_image_error">画像を取得できませんでした</string>
 	<string name="date">日付</string>
@@ -61,10 +59,13 @@
 
 	<string name="menu_edit">編集</string>
 	<string name="menu_delete">削除</string>
-	<string name="menu_search">Wikipedia</string>
 	<string name="menu_share">つぶやく</string>
 	<string name="tweet">ツイート</string>
 	<string name="tweet_finish">ツイートしました</string>
 	<string name="tweet_error">ツイートに失敗しました</string>
 	<string name="tweet_nw_error">ネットワークエラー</string>
+	
+	<string name="tweet_alert">※飲みログに画像を登録している場合、画像も添付されます。
+	画像を添付しない場合は、トップ画面から「設定」→「Tweet設定」で「画像を添付しない」
+	を設定してください。</string>
 </resources>

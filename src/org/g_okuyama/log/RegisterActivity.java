@@ -279,8 +279,6 @@ public class RegisterActivity extends Activity {
                 //•Û‘¶—p•¶Žš—ñ
                 mImageURL = uri.toString();
                 image.setImageBitmap(uri2bmp(this, uri, 160, 120));
-                Button button = (Button)findViewById(R.id.picture);
-                button.setText(R.string.modify);
             }
             else if(resultCode == RESULT_CANCELED){
                 Toast.makeText(this, R.string.user_canceled, Toast.LENGTH_SHORT).show();
@@ -437,10 +435,26 @@ public class RegisterActivity extends Activity {
             case DrinkLogActivity.CATEGORY_WHISKEY:
                 return R.array.type_array_wh;
                 
-                //TODO:‘½Ží—Þ’Ç‰Á
+            case DrinkLogActivity.CATEGORY_COCKTAIL:
+            	return R.array.type_array_co;
                 
+            case DrinkLogActivity.CATEGORY_WINE:
+            	return R.array.type_array_wi;
+
+            case DrinkLogActivity.CATEGORY_SHOCHU:
+                return R.array.type_array_sh;
+
+            case DrinkLogActivity.CATEGORY_SAKE:
+            	return R.array.type_array_ja;
+
+            case DrinkLogActivity.CATEGORY_BRANDY:
+            	return R.array.type_array_br;
+
+            case DrinkLogActivity.CATEGORY_BEER:
+                return R.array.type_array_be;
+
             default:
-                return -1;
+            	return -1;
         }
     }
     
@@ -475,10 +489,23 @@ public class RegisterActivity extends Activity {
             case DrinkLogActivity.CATEGORY_WHISKEY:
                 return R.array.area_array_wh;
                 
-                //TODO:‘½Ží—Þ’Ç‰Á
-                
+            case DrinkLogActivity.CATEGORY_WINE:
+            	return R.array.area_array_wi;
+
+            case DrinkLogActivity.CATEGORY_SHOCHU:
+                return R.array.area_array_sh;
+
+            case DrinkLogActivity.CATEGORY_SAKE:
+            	return R.array.area_array_ja;
+
+            case DrinkLogActivity.CATEGORY_BRANDY:
+            	return R.array.area_array_br;
+
+            case DrinkLogActivity.CATEGORY_BEER:
+                return R.array.area_array_be;
+
             default:
-                return -1;
+            	return -1;
         }
     }
     

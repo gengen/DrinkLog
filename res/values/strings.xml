@@ -35,15 +35,13 @@
    	<string name="area">Country(Category)</string>
    	<string name="type">Type</string>
     <string name="image">Image</string>
-   	<string name="picture">Set Image</string>
-	<string name="modify">Modify</string>
 	<string name="user_canceled">Canceled</string>
 	<string name="get_image_error">Error</string>
    	<string name="date">Date</string>
 	<string name="date_select">Select</string>
 	<string name="place">Shop</string>
 	<string name="price">Price</string>
-	<string name="evaluate">Evaluate</string>
+	<string name="evaluate">Score</string>
     <string name="impression">Impression</string>
 	<string name="register_commit">Register</string>
 	<string name="register_cancel">Cancel</string>
@@ -61,10 +59,12 @@
 	
 	<string name="menu_edit">Edit</string>
 	<string name="menu_delete">Delete</string>
-	<string name="menu_search">Wikipedia</string>
 	<string name="menu_share">Tweet</string>
 	<string name="tweet">Tweet</string>
 	<string name="tweet_finish">Tweet finished</string>
 	<string name="tweet_error">Tweet error occured</string>
 	<string name="tweet_nw_error">Network error</string>
+	
+	<string name="tweet_alert">If you register image, image will be attached.
+	If you wouldn\'t like to image attaching, please set not image attaching.</string>
 </resources>

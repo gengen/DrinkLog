@@ -4,11 +4,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Camera;
+import android.opengl.Matrix;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class DrinkLogActivity extends Activity {
     public static final String TAG = "DrinkLog";
@@ -31,6 +36,14 @@ public class DrinkLogActivity extends Activity {
         setContentView(R.layout.main);
         
         setListener();
+    }
+    
+    public void onStart(){
+    	super.onStart();
+    	
+        ImageView imageView = (ImageView)findViewById(R.id.sample);
+        animation.setDuration(2000);
+        imageView.startAnimation(animation);
     }
     
     private void setListener(){
@@ -94,4 +107,28 @@ public class DrinkLogActivity extends Activity {
         })
         .show();        
     }
+    
+    Animation animation = new Animation(){
+    	Camera mCamera;
+    	int mWidth;
+    	
+    	public void initialize(int width, int height, int parentWidth, int parentHeight){
+    		super.initialize(width, height, parentWidth, parentHeight);
+    		
+    		mCamera = new Camera();
+    		mWidth = width;
+    	}
+    	
+    	protected void applyTransformation(float interpolatedTime, Transformation t){
+    		android.graphics.Matrix matrix = t.getMatrix();
+    		
+    		mCamera.save();
+    		mCamera.rotateY(360.0f * interpolatedTime);
+    		mCamera.getMatrix(matrix);
+    		mCamera.restore();
+    		
+    		matrix.preTranslate(-mWidth/2, 0);
+    		matrix.postTranslate(mWidth/2, 0);
+    	}
+    };
 }

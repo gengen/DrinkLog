@@ -99,7 +99,7 @@
             android:layout_height="140dp"
             android:gravity="top"
             android:inputType="textMultiLine"
-            android:maxLength="100"
+            android:maxLength="70"
             >
         </EditText>
     

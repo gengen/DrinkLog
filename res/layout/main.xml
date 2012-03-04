@@ -3,18 +3,28 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-    <FrameLayout 
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       	android:gravity="center"
-        android:layout_weight="2">
-    	    <ImageView
-        	android:src="@drawable/logo"
+   	    android:gravity="left"
+        android:layout_weight="1">
+	    <ImageView
+    	    android:id="@+id/sample"
+      		android:src="@drawable/logo_icon"
+        	android:layout_width="wrap_content"
+   	    	android:layout_height="wrap_content"
+   	    	android:layout_marginLeft="15dp"
+    	    android:scaleType="fitCenter"
+       		android:layout_gravity="center_vertical"/>
+   	    <ImageView
+        	android:src="@drawable/logo_noicon"
 	        android:layout_width="fill_parent"
     	    android:layout_height="wrap_content"
     	    android:scaleType="fitCenter"
         	android:layout_gravity="center"/>
-    </FrameLayout>    	    	    
+    </FrameLayout>
+    	    	    
     <FrameLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -32,6 +32,8 @@ public class TwitterActivity extends Activity {
 	private static final String CONSUMER_KEY = "Xf6Rt9AL8tbzyVpv6D0CIw";
 	private static final String CONSUMER_SECRET = "0HOulWNwBRtxADaAIz5p9f8B6RrYT3tLIacbD7wlm28";
 	private static final String CALLBACK_URL = "http://neging01.blog87.fc2.com/";
+
+	private static final String MARKET_URL = "https://market.android.com/details?id=org.g_okuyama.log";
 	
 	private static final int REQUEST_OAUTH = 3333;
 	
@@ -58,10 +60,25 @@ public class TwitterActivity extends Activity {
     }
     
     private void setLayout(){
+    	String comment = "";
+    	if(!mComment.equals("none")){
+    		comment = mComment;
+    	}
         String text = mName + ":"
-                    + getString(R.string.evaluate) + mRate + ", "
-                    + mComment 
+                    + getString(R.string.evaluate) + mRate + "  "
+                    + comment 
                     + " from " + getString(R.string.app_name);
+        int limit;
+        if(!mPath.equals("none")){
+        	limit = 55;/*140(Twitter)-55(マーケットURL分)-30(画像URL分)*/
+        }
+        else{
+        	limit = 85;
+        }
+        if(text.length() < limit){
+        	text = text + " " + MARKET_URL;
+        }
+        
         EditText view = (EditText)findViewById(R.id.tweet_text);
         view.setText(text);
         
