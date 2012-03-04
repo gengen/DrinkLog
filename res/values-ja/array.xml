@@ -41,25 +41,127 @@
 	
 	<string-array name="area_array_wi">
 	    <item></item>
+	    <item>フランス</item>
+		<item>イタリア</item>
+		<item>ドイツ</item>
+		<item>スペイン</item>
+		<item>アメリカ</item>
+		<item>ポルトガル</item>
+		<item>チリ</item>
+		<item>アルゼンチン</item>
+		<item>オーストラリア</item>
+		<item>ニュージーランド</item>
+		<item>南アフリカ</item>
+		<item>日本</item>
+		<item>その他</item>
 	</string-array> 
 	
 	<string-array name="area_array_sh">
 	    <item></item>
+	    <item>鹿児島</item>
+	    <item>宮崎</item>
+	    <item>熊本</item>
+	    <item>大分</item>
+	    <item>長崎</item>
+	    <item>福岡</item>
+	    <item>佐賀</item>
+	    <item>沖縄</item>
+	    <item>その他</item>
 	</string-array> 
 	
 	<string-array name="area_array_ja">
 	    <item></item>
+<item>北海道</item>
+<item>青森県</item>
+<item>岩手県</item>
+<item>宮城県</item>
+<item>秋田県</item>
+<item>山形県</item>
+<item>福島県</item>
+<item>茨城県</item>
+<item>栃木県</item>
+<item>群馬県</item>
+<item>埼玉県</item>
+<item>千葉県</item>
+<item>東京都</item>
+<item>神奈川県</item>
+<item>新潟県</item>
+<item>富山県</item>
+<item>石川県</item>
+<item>福井県</item>
+<item>山梨県</item>
+<item>長野県</item>
+<item>岐阜県</item>
+<item>静岡県</item>
+<item>愛知県</item>
+<item>三重県</item>
+<item>滋賀県</item>
+<item>京都府</item>
+<item>大阪府</item>
+<item>兵庫県</item>
+<item>奈良県</item>
+<item>和歌山県</item>
+<item>鳥取県</item>
+<item>島根県</item>
+<item>岡山県</item>
+<item>広島県</item>
+<item>山口県</item>
+<item>徳島県</item>
+<item>香川県</item>
+<item>愛媛県</item>
+<item>高知県</item>
+<item>福岡県</item>
+<item>佐賀県</item>
+<item>長崎県</item>
+<item>熊本県</item>
+<item>大分県</item>
+<item>宮崎県</item>
+<item>鹿児島県</item>
+<item>沖縄県</item>
 	</string-array> 
 	
    	<string-array name="area_array_br">
-	    <item></item>
+   	    <item></item>
+	    <item>グランドシャンパーニュ</item>
+	    <item>プティットシャンパーニュ</item>
+	    <item>ボルドリ</item>
+	    <item>ファンボア</item>
+	    <item>ボンボア</item>
+	    <item>ボアゾルディネール</item>
 	</string-array> 
 	
    	<string-array name="area_array_be">
 	    <item></item>
+<item>中国</item>
+<item>アメリカ</item>
+<item>ブラジル</item>
+<item>ロシア</item>
+<item>ドイツ</item>
+<item>メキシコ</item>
+<item>日本</item>
+<item>イギリス</item>
+<item>ポーランド</item>
+<item>スペイン</item>
+<item>ウクライナ</item>
+<item>南アフリカ</item>
+<item>ベトナム</item>
+<item>オランダ</item>
+<item>カナダ</item>
+<item>コロンビア</item>
+<item>ベネズエラ</item>
+<item>タイ</item>
+<item>韓国</item>
+<item>ベルギー</item>
+<item>ナイジェリア</item>
+<item>アルゼンチン</item>
+<item>オーストラリア</item>
+<item>チェコ</item>
+<item>ルーマニア</item>
+<item>フィリピン</item>
+<item>その他</item>
 	</string-array> 
 	
-    <string-array name="type_array_wh">
+   	<string-array name="type_array_wh">
 	    <item></item>
 	    <item>モルト</item>
 	    <item>グレーン</item>
@@ -96,8 +198,10 @@
    	    <item>芋</item>
    	    <item>黒糖</item>
    	    <item>そば</item>
+   	    <item>栗</item>
    	    <item>しそ</item>
-        <item>その他</item>
+   	    <item>泡盛</item>
+		<item>その他</item>
 	</string-array>
 	
 	<string-array name="type_array_ja">

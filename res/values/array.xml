@@ -39,7 +39,129 @@
    	    <item>Other</item>
 	</string-array> 
 	
-	<string-array name="type_array_wh">
+	<string-array name="area_array_wi">
+	    <item></item>
+	    <item>France</item>
+		<item>Italy</item>
+		<item>Germany</item>
+		<item>Spain</item>
+		<item>America</item>
+		<item>Portugal</item>
+		<item>Chile</item>
+		<item>Argentina</item>
+		<item>Australia</item>
+		<item>New Zealand</item>
+		<item>South Africa</item>
+		<item>Japan</item>
+		<item>Other</item>
+	</string-array>
+	
+	<string-array name="area_array_sh">
+	    <item></item>
+	    <item>Kagoshima</item>
+	    <item>Miyazaki</item>
+	    <item>Kumamoto</item>
+	    <item>Oita</item>
+	    <item>Nagasaki</item>
+	    <item>Fukuoka</item>
+	    <item>Saga</item>
+	    <item>Okinawa</item>
+	    <item>Other</item>
+	</string-array> 
+	
+	<string-array name="area_array_ja">
+	    <item></item>
+<item>Hokkaidou</item>
+<item>Aomori</item>
+<item>Iwate</item>
+<item>Miyagi</item>
+<item>Akita</item>
+<item>Yamagata</item>
+<item>Fukushima</item>
+<item>Ibaraki</item>
+<item>Totigi</item>
+<item>Gunma</item>
+<item>Saitama</item>
+<item>Chiba</item>
+<item>Tokyo</item>
+<item>Kanagawa</item>
+<item>Niigata</item>
+<item>Toyama</item>
+<item>Ishikawa</item>
+<item>Fukui</item>
+<item>Yamanashi</item>
+<item>Nagano</item>
+<item>Gifu</item>
+<item>Shizuoka</item>
+<item>Aichi</item>
+<item>Mie</item>
+<item>Shiga</item>
+<item>Kyoto</item>
+<item>Osaka</item>
+<item>Hyougo</item>
+<item>Nara</item>
+<item>Wakayama</item>
+<item>Tottori</item>
+<item>Shimane</item>
+<item>Okayama</item>
+<item>Hiroshima</item>
+<item>Yamaguchi</item>
+<item>Tokushima</item>
+<item>Kagawa</item>
+<item>Ehime</item>
+<item>Kochi</item>
+<item>Hukuoka</item>
+<item>Saga</item>
+<item>Nagasaki</item>
+<item>Kumamoto</item>
+<item>Oita</item>
+<item>Miyazaki</item>
+<item>Kagoshima</item>
+<item>Okinawa</item>
+	</string-array> 
+	
+   	<string-array name="area_array_br">
+   	    <item></item>
+	    <item>Grande Champagne</item>
+	    <item>Petite Champagne</item>
+	    <item>Borderies</item>
+	    <item>Fins Bois</item>
+	    <item>Bons Bois</item>
+	    <item>Bois Ordinaires</item>
+	</string-array> 
+					
+   	<string-array name="area_array_be">
+	    <item></item>
+<item>China</item>
+<item>America</item>
+<item>Brazil</item>
+<item>Russia</item>
+<item>Germany</item>
+<item>Mexico</item>
+<item>Japan</item>
+<item>United Kingdom</item>
+<item>Poland</item>
+<item>Spain</item>
+<item>Ukraine</item>
+<item>South Africa</item>
+<item>Vietnam</item>
+<item>Netherlands</item>
+<item>Canada</item>
+<item>Colombia</item>
+<item>Venezuela</item>
+<item>Thailand</item>
+<item>Republic of Korea</item>
+<item>Belgium</item>
+<item>Nigeria</item>
+<item>Argentina</item>
+<item>Australia</item>
+<item>Czech Republic</item>
+<item>Romania</item>
+<item>Philippines</item>
+<item>Other</item>
+	</string-array> 
+	
+   	<string-array name="type_array_wh">
 	    <item></item>
 	    <item>Malt</item>
 	    <item>Grain</item>
@@ -76,7 +198,9 @@
    	    <item>Potato</item>
    	    <item>Muscovado</item>
    	    <item>Soba</item>
+   	    <item>Chestnut</item>
    	    <item>Shiso</item>
+   	    <item>Awamori</item>
         <item>Other</item>
 	</string-array>
 	
