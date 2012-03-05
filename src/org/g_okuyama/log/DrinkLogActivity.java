@@ -1,5 +1,7 @@
 package org.g_okuyama.log;
 
+import java.util.Locale;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -34,6 +36,11 @@ public class DrinkLogActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        ImageView image = (ImageView)findViewById(R.id.logo_noicon);
+        if(!Locale.getDefault().equals(Locale.JAPAN)){
+        	image.setImageResource(R.drawable.logo_eng);
+        }
         
         setListener();
     }
@@ -41,8 +48,8 @@ public class DrinkLogActivity extends Activity {
     public void onStart(){
     	super.onStart();
     	
-        ImageView imageView = (ImageView)findViewById(R.id.sample);
-        animation.setDuration(2000);
+        ImageView imageView = (ImageView)findViewById(R.id.logo_icon);
+        animation.setDuration(1500);
         imageView.startAnimation(animation);
     }
     
