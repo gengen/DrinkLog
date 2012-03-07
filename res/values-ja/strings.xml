@@ -46,7 +46,7 @@
 	<string name="register_commit">登録</string>
 	<string name="register_cancel">キャンセル</string>
 	<string name="cancel_confirm_title">確認</string>
-	<string name="cancel_confirm">破棄してタイトルに戻りますか？</string>
+	<string name="cancel_confirm">破棄して前画面に戻りますか？</string>
 	<string name="other_item">その他の項目を表示</string>
 	
 	<string name="list_alert_select">選択</string>

@@ -58,9 +58,12 @@
 	        android:layout_height="wrap_content"
     	    android:layout_gravity="center"/>
     </FrameLayout>
-    <FrameLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-    </FrameLayout>
+       
+	<LinearLayout
+	    android:id="@+id/adspace"
+    	android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+    >
+    </LinearLayout>
 </LinearLayout>

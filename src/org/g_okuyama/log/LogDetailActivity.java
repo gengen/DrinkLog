@@ -116,6 +116,7 @@ public class LogDetailActivity extends Activity {
                 public void onClick(View arg0) {
                     Intent intent = new Intent(LogDetailActivity.this, ImageViewActivity.class);
                     intent.putExtra("imageurl", mImageURL);
+                    intent.putExtra("name", mName);
                     startActivity(intent);
                 }
             });

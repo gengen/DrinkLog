@@ -24,6 +24,7 @@ public class ImageViewActivity extends Activity {
 
         Bundle extra = getIntent().getExtras();
         mUrl = extra.getString("imageurl");
+        setTitle(extra.getString("name"));
         
         setLayout();
     }

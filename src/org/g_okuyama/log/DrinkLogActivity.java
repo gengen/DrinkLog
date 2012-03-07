@@ -1,6 +1,10 @@
 package org.g_okuyama.log;
 
+import java.io.File;
 import java.util.Locale;
+
+import com.ngigroup.adstir.AdstirTerminate;
+import com.ngigroup.adstir.AdstirView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,6 +22,7 @@ import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class DrinkLogActivity extends Activity {
     public static final String TAG = "DrinkLog";
@@ -36,6 +41,8 @@ public class DrinkLogActivity extends Activity {
 
     private EditText mEditText = null;
     private int mItemIdx = 0;
+    
+    private AdstirView mAdstirView;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,6 +80,11 @@ public class DrinkLogActivity extends Activity {
                 startActivity(intent);
             }
         });
+        
+        //adstir設定
+        LinearLayout layout = (LinearLayout)findViewById(R.id.adspace);
+        mAdstirView = new AdstirView(this, 1);
+        layout.addView(mAdstirView);
     }
     
     private void registerConfirm(){
@@ -137,12 +149,22 @@ public class DrinkLogActivity extends Activity {
         startActivity(pref_intent);
     }
 
+    
+    protected void onPause(){
+    	super.onPause();
+    	if(mAdstirView != null){
+    	    mAdstirView.stop();
+    	}
+    }
+    
     public void finish(){
         new AlertDialog.Builder(this)
         .setTitle(R.string.finish)
         .setMessage(R.string.finish_confirm)
         .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
+                //アプリのキャッシュ削除
+                deleteCache(getCacheDir());
                 System.exit(RESULT_OK);
             }
         })
@@ -154,6 +176,13 @@ public class DrinkLogActivity extends Activity {
         })
         .show();        
     }
+    
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        new AdstirTerminate(this);
+    }
+
     
     Animation animation = new Animation(){
     	Camera mCamera;
@@ -178,4 +207,20 @@ public class DrinkLogActivity extends Activity {
     		matrix.postTranslate(mWidth/2, 0);
     	}
     };
+    
+    public static boolean deleteCache(File dir) {
+        if(dir==null) {
+            return false;
+        }
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteCache(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+        return dir.delete();
+    }
 }

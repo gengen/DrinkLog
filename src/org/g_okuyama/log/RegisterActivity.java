@@ -177,6 +177,9 @@ public class RegisterActivity extends Activity {
             case DrinkLogActivity.CATEGORY_WHISKEY:
                 return R.array.name_array_wh;
                 
+            case DrinkLogActivity.CATEGORY_COCKTAIL:
+            	return R.array.name_array_co;
+            	
                 //TODO:‘½Ží—Þ’Ç‰Á
             default:
                 return -1;

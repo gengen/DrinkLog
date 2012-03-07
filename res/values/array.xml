@@ -592,5 +592,411 @@
 <item>FUJISANROKU</item>
 </string-array> 
     
-
+<string-array name="name_array_co">
+<item>Eye Opener</item>
+<item>Ice Breaker</item>
+<item>Irish Coffee</item>
+<item>Blue Coral Reef</item>
+<item>Acacia</item>
+<item>Agatha Cocktail</item>
+<item>Acapulco</item>
+<item>Aqueduct</item>
+<item>Earthquake</item>
+<item>Up To Date</item>
+<item>Apple Car</item>
+<item>Apple Pie</item>
+<item>Addington</item>
+<item>Adonis</item>
+<item>Affinity</item>
+<item>Abdough</item>
+<item>Americano</item>
+<item>American Lemonade</item>
+<item>Around The World</item>
+<item>Alaska</item>
+<item>Arabian Night</item>
+<item>Arawak</item>
+<item>Algonquin</item>
+<item>Aldila</item>
+<item>Alexander</item>
+<item>Alexander</item>
+<item>Enchante</item>
+<item>Ambassador</item>
+<item>Yes and No</item>
+<item>Yellow Sunset</item>
+<item>Yellow Gin</item>
+<item>Yellow Parrot</item>
+<item>Italian Screw Driver</item>
+<item>Incredible Hulk</item>
+<item>Virgin Colada</item>
+<item>Virgin Chi-Chi</item>
+<item>Virgin Pina Colada</item>
+<item>Virgin Breeze</item>
+<item>Virgin Mary</item>
+<item>Whiskey and Coke</item>
+<item>Whiskey Side Car</item>
+<item>Whiskey and Soda</item>
+<item>Whiskey Toddy</item>
+<item>Whizz Bang</item>
+<item>Vesper</item>
+<item>Vodka Iceberg</item>
+<item>Vodka and Tonic</item>
+<item>Vodka Rickey</item>
+<item>Exposition</item>
+<item>XYZ</item>
+<item>Exocist</item>
+<item>Egg Beer</item>
+<item>El Diablo</item>
+<item>Angel\'s Wing</item>
+<item>Angel\'s Kiss</item>
+<item>Angel Face</item>
+<item>Auvergne</item>
+<item>Orgasm</item>
+<item>Olympic</item>
+<item>Old Pal</item>
+<item>Old Fashioned</item>
+<item>Orange Sakini</item>
+<item>Orange Fizz</item>
+<item>Orange Blossom</item>
+<item>Cardinale</item>
+<item>Caipirinha</item>
+<item>Caipiroska</item>
+<item>Cowboy</item>
+<item>Cactus Banger</item>
+<item>Cassis and Orange</item>
+<item>Cassis and Soda</item>
+<item>Colonel Collins</item>
+<item>Caffe Galliano</item>
+<item>Cafe Calypso</item>
+<item>Cafe Royal</item>
+<item>Kamikaze</item>
+<item>Kahlua and Milk</item>
+<item>Caledonia</item>
+<item>Campari and Orange</item>
+<item>Campari and Grapefrouit</item>
+<item>Campari and Soda</item>
+<item>Campari and Beer</item>
+<item>Kiss in the Dark</item>
+<item>Kiss of Fire</item>
+<item>Kitty</item>
+<item>Gibson</item>
+<item>Gimlet</item>
+<item>Carrol</item>
+<item>Cucumber</item>
+<item>Cuba Libre</item>
+<item>Cuban Screw</item>
+<item>Kir</item>
+<item>Kir Imperial</item>
+<item>Kir Cardinal</item>
+<item>Kir Royale</item>
+<item>King\'s Valley</item>
+<item>Quarter Deck</item>
+<item>Grasshopper</item>
+<item>Grand Marnier and Orange</item>
+<item>Grand Marnier Side Car</item>
+<item>Kriss</item>
+<item>Gluhwein</item>
+<item>Green Alaska</item>
+<item>Green Star</item>
+<item>Green Fields</item>
+<item>Greyhound</item>
+<item>Kleopatra</item>
+<item>Grog</item>
+<item>Clover Club</item>
+<item>Clover Leaf</item>
+<item>Klondike Cooler</item>
+<item>Cablegram</item>
+<item>Gaelic Coffee</item>
+<item>Cointreau and Orange</item>
+<item>Cointreau and Tonic</item>
+<item>Cossack</item>
+<item>Cosmopolitan</item>
+<item>God Father</item>
+<item>Godmother</item>
+<item>Coffee Grasshopper</item>
+<item>Corpse Reviver</item>
+<item>Copenhagen</item>
+<item>Commodore</item>
+<item>Golden Cadillac</item>
+<item>Golden Clipper</item>
+<item>Golden Slipper</item>
+<item>Golden Dream</item>
+<item>Golden Fizz</item>
+<item>Golden Friend</item>
+<item>Corkscrew</item>
+<item>CoNCA D\'oRO</item>
+<item>Conclave</item>
+<item>Side Car</item>
+<item>Silent Third</item>
+<item>Zaza</item>
+<item>Southern Comfort Screw</item>
+<item>Summer Delight</item>
+<item>Saratoga</item>
+<item>Saratoga Cooler</item>
+<item>Sangria</item>
+<item>Xanthia</item>
+<item>San Francisco</item>
+<item>Cyclamen</item>
+<item>Sicilian Kiss</item>
+<item>Citron Wedding</item>
+<item>Citron Swing</item>
+<item>Sea Breaze</item>
+<item>Jack Rose</item>
+<item>Jamaican Mule</item>
+<item>Jamaica Joe</item>
+<item>Jamaican Coffee</item>
+<item>Shamrock</item>
+<item>Shirley Temple</item>
+<item>Chartreuse and Orange</item>
+<item>Chartreuse and Tonic</item>
+<item>Changuirongo</item>
+<item>Shandy Gaff</item>
+<item>Chanpagne Cocktail</item>
+<item>Chanpagne Julep</item>
+<item>Georgia Mint Julep</item>
+<item>John Collins</item>
+<item>Silver Fizz</item>
+<item>Silver Streak</item>
+<item>Silver Bullet</item>
+<item>Sylvia</item>
+<item>Gin and Bitters</item>
+<item>Singapore Sling</item>
+<item>Gin Julep</item>
+<item>Cinderella</item>
+<item>Gin and Tonic</item>
+<item>Gin Buck</item>
+<item>Gin Fizz</item>
+<item>Gin and Lime</item>
+<item>Gin Rickey</item>
+<item>Scarlet Lady</item>
+<item>Scandinavian Coffee</item>
+<item>Screwdriver</item>
+<item>Scotch kilt</item>
+<item>Scorpion</item>
+<item>Suze Spumoni</item>
+<item>Suze and Tonic</item>
+<item>Stinger</item>
+<item>Straw Hat</item>
+<item>Stone Fence</item>
+<item>Snowball</item>
+<item>Spumoni</item>
+<item>Spritzer</item>
+<item>Spring Feeling</item>
+<item>Zoom</item>
+<item>Sledgehammer</item>
+<item>Sloe Gin Cocktail</item>
+<item>Sloe Tequila</item>
+<item>Sloe Driver</item>
+<item>Sex on the Beach</item>
+<item>Seventh Heaven</item>
+<item>Century</item>
+<item>Central Park</item>
+<item>Soul Kiss</item>
+<item>Sonora</item>
+<item>Sol Cubano</item>
+<item>Salty Dog</item>
+<item>Daiquiri</item>
+<item>Dirty Mother</item>
+<item>Turning Point</item>
+<item>Derby</item>
+<item>Tovarisch</item>
+<item>Cherry Blossom</item>
+<item>Chi-Chi</item>
+<item>China Kiss</item>
+<item>China Green</item>
+<item>China Blue</item>
+<item>Czarine</item>
+<item>Diki Diki</item>
+<item>Dita Spumoni</item>
+<item>Tiffin Tiger</item>
+<item>Tijuana Sunrise</item>
+<item>Tequila Sunset</item>
+<item>Tequila Sunrize</item>
+<item>Tequila and Tonic</item>
+<item>Tequonic</item>
+<item>Danish Mary</item>
+<item>Tennessee Cooler</item>
+<item>Devil</item>
+<item>Depth Bomb</item>
+<item>Tailless Dog</item>
+<item>Tom and Jerry</item>
+<item>Tom Collins</item>
+<item>Dry Negroni</item>
+<item>Dragonfly</item>
+<item>Trojan Horse</item>
+<item>Night Cap</item>
+<item>Nikolaschka</item>
+<item>New York</item>
+<item>Negroni</item>
+<item>Nocello Shake</item>
+<item>Knockout</item>
+<item>Bahia</item>
+<item>High Life</item>
+<item>Bacardi</item>
+<item>Passenger List</item>
+<item>Panache</item>
+<item>Panama</item>
+<item>Honeysuckle</item>
+<item>Papagena</item>
+<item>Barbara</item>
+<item>Harvey Wallbanger</item>
+<item>Bourbonella</item>
+<item>Paraisoni</item>
+<item>Balalaika</item>
+<item>Valencia</item>
+<item>Valencia Cobbler</item>
+<item>Baron</item>
+<item>Hunter</item>
+<item>Pancho Villa</item>
+<item>Bamboo</item>
+<item>Beer Spritzer</item>
+<item>B and B</item>
+<item>Pierre Collins</item>
+<item>bijou</item>
+<item>Bee\'s Knees</item>
+<item>Better Orange</item>
+<item>Peachtree and Tonic</item>
+<item>Big Apple</item>
+<item>Between the Sheets</item>
+<item>Pina Colada</item>
+<item>Beautiful</item>
+<item>Pink Gin</item>
+<item>Pink Gin and Lime</item>
+<item>Pink Squirrel</item>
+<item>Pink Daiquiri</item>
+<item>Pink Pineapple</item>
+<item>Pink Lady</item>
+<item>Fuzzy Navel</item>
+<item>Faux Kir</item>
+<item>Faux Kir Royal</item>
+<item>Falkland Island Warmer</item>
+<item>42nd Street</item>
+<item>Fallen Angel</item>
+<item>Bosom Caresser</item>
+<item>Pussy Cat</item>
+<item>Pussyfoot</item>
+<item>Brasil</item>
+<item>Flag</item>
+<item>Black and White</item>
+<item>Blackthorn</item>
+<item>Black Velvet</item>
+<item>Black Hawk</item>
+<item>Black Russian</item>
+<item>Black Rain</item>
+<item>Bloody Sam</item>
+<item>Bloody Caesar</item>
+<item>Bloody Bull</item>
+<item>Bloody Mary</item>
+<item>Blood Transfusion</item>
+<item>Bloodless Mary</item>
+<item>Francis Albert</item>
+<item>Prince Charles</item>
+<item>Princess Mary</item>
+<item>Brandy Eggnog</item>
+<item>Brandy Sour</item>
+<item>Bull shot</item>
+<item>Fruity Dita</item>
+<item>Bull dog</item>
+<item>Blue Hawaii</item>
+<item>Blue Hawaiian</item>
+<item>Blue Monday</item>
+<item>Blue Moon</item>
+<item>Blue Lagoon</item>
+<item>Brave Bull</item>
+<item>Prelude Fizz</item>
+<item>French Connection</item>
+<item>Frozen Daiquiri</item>
+<item>Broadway Thirst</item>
+<item>Florida</item>
+<item>Bronx</item>
+<item>Hair of the Dog</item>
+<item>Pear Cooler</item>
+<item>Pear Flower</item>
+<item>Peyton Place</item>
+<item>Pedro Collins</item>
+<item>Bellini</item>
+<item>Velvet Kiss</item>
+<item>Velvet Hammer</item>
+<item>Boiler Maker</item>
+<item>Boston Cooler</item>
+<item>Horse\'s Neck</item>
+<item>Boccie Ball</item>
+<item>Hot Italian</item>
+<item>Hot Kahlua and Milk</item>
+<item>Hot Dram</item>
+<item>Hot Buttered Rum</item>
+<item>Hot Buttered Rum Cow</item>
+<item>Bohemian Dream</item>
+<item>Polar Short Cut</item>
+<item>Volga</item>
+<item>Volga Boatman</item>
+<item>White Wings</item>
+<item>White Way</item>
+<item>White Cargo</item>
+<item>White Satin</item>
+<item>White Spider</item>
+<item>White Lily</item>
+<item>White Russian</item>
+<item>White Lady</item>
+<item>White Rose</item>
+<item>Pompier</item>
+<item>Miami</item>
+<item>Miami Beach</item>
+<item>MAITAI</item>
+<item>Mgnolia</item>
+<item>Mgnolia Blossam</item>
+<item>Mother Sherman</item>
+<item>Matador</item>
+<item>Mackinnon</item>
+<item>Martini</item>
+<item>Malibu and Orange</item>
+<item>Margarita</item>
+<item>Marquis</item>
+<item>Manhattan</item>
+<item>Misty</item>
+<item>Misty Nail</item>
+<item>Midori and Milk</item>
+<item>Mimosa</item>
+<item>Million Dollar</item>
+<item>Milk Shake</item>
+<item>Mint Julep</item>
+<item>Mint Beer</item>
+<item>Moonlight</item>
+<item>Moonlight Cooler</item>
+<item>Mexican</item>
+<item>Mexican Mule</item>
+<item>Merry Widow</item>
+<item>Melonhopper</item>
+<item>Melonball</item>
+<item>Mocha and Milk</item>
+<item>Moscow Mule</item>
+<item>Mockingbird</item>
+<item>Mojito</item>
+<item>Monte Carlo</item>
+<item>Yang Kuei Fei</item>
+<item>Litchi and Grapefruits</item>
+<item>Litchi and Soda</item>
+<item>Rusty Nail</item>
+<item>Last Kiss</item>
+<item>Rum Julep</item>
+<item>Rumlet</item>
+<item>Little Princess</item>
+<item>Russian Quaalude</item>
+<item>Russian Nail</item>
+<item>Lake Queen</item>
+<item>Reggae Punch</item>
+<item>Red Eye</item>
+<item>Red Viking</item>
+<item>Red Bird</item>
+<item>Lena</item>
+<item>Rail Splitter</item>
+<item>Royal Clover Club</item>
+<item>Royal Coffee</item>
+<item>Royal Fizz</item>
+<item>Road Runner</item>
+<item>Robert Burns</item>
+<item>Rob Roy</item>
+<item>Long Island Iced Tea</item>
+<item>Wild Mule</item>
+<item>Word Eight</item>
+</string-array>
 </resources>
