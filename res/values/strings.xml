@@ -22,7 +22,7 @@
 	<string name="register_title">Title</string>
 	<string name="submit">Submit</string>
 	<string name="register_warning">Warning</string>
-	<string name="input_request">Please input one character or more　at name</string>
+	<string name="input_request">Please input one character or more at name</string>
 	    
 	<string name="dialog_category">Select Category</string>
 	<string name="dialog_image">Select Image</string>
@@ -64,6 +64,12 @@
 	<string name="tweet_finish">Tweet finished</string>
 	<string name="tweet_error">Tweet error occured</string>
 	<string name="tweet_nw_error">Network error</string>
+
+	<string name="pref_tweet">Twitter settings</string>
+	<string name="pref_tweet_image">Image attaching</string>
+	<string name="pref_tweet_image_summary">Image attaching when tweet</string>
+	<string name="pref_tweet_auth">Cancel Authentication</string>
+	<string name="pref_tweet_auth_summary">Canceling Authentication</string>
 	
 	<string name="tweet_alert">If you register image, image will be attached.
 	If you wouldn\'t like to image attaching, please set not image attaching.</string>

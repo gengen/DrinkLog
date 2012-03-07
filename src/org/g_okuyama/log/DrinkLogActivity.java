@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.graphics.Camera;
 import android.opengl.Matrix;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -28,6 +30,9 @@ public class DrinkLogActivity extends Activity {
     public static final int CATEGORY_BRANDY = 5;
     public static final int CATEGORY_BEER = 6;
     public static final int CATEGORY_OTHER = 7;
+    
+    private static final int MENU_SETTINGS = 0;
+    private static final int MENU_LINK = 1;
 
     private EditText mEditText = null;
     private int mItemIdx = 0;
@@ -95,6 +100,41 @@ public class DrinkLogActivity extends Activity {
             }
         })
        .show();        
+    }
+    
+    /*
+     * オプションメニューの作成
+     * ・設定
+     * ・リンク
+     */
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        MenuItem edit = menu.add(0, MENU_SETTINGS, 0 ,R.string.menu_edit);
+        edit.setIcon(android.R.drawable.ic_menu_edit);
+
+        return true;
+    }
+    
+    //オプションメニュー選択時のリスナ
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case MENU_SETTINGS:
+            setting();
+            break;
+            
+            //TODO:有料版へのリンク
+            
+        default:
+            //何もしない
+        }
+
+        return true;
+    }
+    
+    void setting(){
+        Intent pref_intent = new Intent(this, DrinkLogPreference.class);
+        startActivity(pref_intent);
     }
 
     public void finish(){

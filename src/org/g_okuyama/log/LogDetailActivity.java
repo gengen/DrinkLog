@@ -206,7 +206,6 @@ public class LogDetailActivity extends Activity {
      * オプションメニューの作成
      * ・編集
      * ・削除
-     * ・検索(Wikipedia)
      * ・投稿(twitter)
      */
     public boolean onCreateOptionsMenu(Menu menu) {

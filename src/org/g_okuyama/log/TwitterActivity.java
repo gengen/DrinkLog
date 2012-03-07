@@ -115,12 +115,13 @@ public class TwitterActivity extends Activity {
     }
     
     private void tweet(){
-        if(mPath.equals("none")){
+        //画像が登録されていない、もしくは画像を添付しない設定にしている場合
+        if(mPath.equals("none") || !DrinkLogPreference.isAttached(this)){
             //twitterオブジェクトの作成 
             mTwitter = new TwitterFactory().getInstance();
             //AccessTokenオブジェクトの作成 
             AccessToken at = new AccessToken(mToken, mTokenSecret);
-            //Consumer keyとConsumer key seacretの設定
+            //Consumer keyとConsumer key secretの設定
             mTwitter.setOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);   
             //AccessTokenオブジェクトを設定 
             mTwitter.setOAuthAccessToken(at);

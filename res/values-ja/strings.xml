@@ -65,7 +65,12 @@
 	<string name="tweet_error">ツイートに失敗しました</string>
 	<string name="tweet_nw_error">ネットワークエラー</string>
 	
-	<string name="tweet_alert">※飲みログに画像を登録している場合、画像も添付されます。
-	画像を添付しない場合は、トップ画面から「設定」→「Tweet設定」で「画像を添付しない」
-	を設定してください。</string>
+  	<string name="pref_tweet">Twitter設定</string> 
+  	<string name="pref_tweet_image">画像添付</string> 
+  	<string name="pref_tweet_image_summary">ツイート時に画像を添付する</string>
+  	<string name="pref_tweet_auth">認証解除</string>
+  	<string name="pref_tweet_auth_summary">アプリの認証を解除する</string>
+
+    <string name="tweet_alert">※飲みログに画像を登録している場合、画像も添付されます。
+	画像を添付しない場合は、トップ画面から「設定」→「Tweet設定」で「画像を添付しない」を設定してください。</string>
 </resources>
