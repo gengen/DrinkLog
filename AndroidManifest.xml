@@ -49,8 +49,8 @@
             android:screenOrientation="portrait"/>
         
         <meta-data android:name="ADSTIR_APP_ID" android:value="MEDIA-d882f0dc" />
-        <!-- <meta-data android:name="i-mobile_Publisher_ID" android:value="8076" /> -->
-        <meta-data android:name="i-mobile_Testing" android:value="true" />
+        <meta-data android:name="i-mobile_Publisher_ID" android:value="8076" />
+        <!-- <meta-data android:name="i-mobile_Testing" android:value="true" /> -->
         
         
     </application>

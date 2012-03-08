@@ -57,6 +57,7 @@
 	<string name="ref_no_setting">No Setting</string>
 	<string name="ref_tweet">Tweet</string>
 	
+	<string name="menu_settings">Settings</string>
 	<string name="menu_edit">Edit</string>
 	<string name="menu_delete">Delete</string>
 	<string name="menu_share">Tweet</string>
@@ -70,7 +71,9 @@
 	<string name="pref_tweet_image_summary">Image attaching when tweet</string>
 	<string name="pref_tweet_auth">Cancel Authentication</string>
 	<string name="pref_tweet_auth_summary">Canceling Authentication</string>
-	
-	<string name="tweet_alert">If you register image, image will be attached.
+	<string name="pref_dialog_auth_title">Confirm</string>
+	<string name="pref_dialog_auth_confirm">Cancel Authentication?</string>
+
+   	<string name="tweet_alert">If you register image, image will be attached.
 	If you wouldn\'t like to image attaching, please set not image attaching.</string>
 </resources>

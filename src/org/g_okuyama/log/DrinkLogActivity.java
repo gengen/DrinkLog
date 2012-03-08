@@ -122,8 +122,8 @@ public class DrinkLogActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
 
-        MenuItem edit = menu.add(0, MENU_SETTINGS, 0 ,R.string.menu_edit);
-        edit.setIcon(android.R.drawable.ic_menu_edit);
+        MenuItem edit = menu.add(0, MENU_SETTINGS, 0 ,R.string.menu_settings);
+        edit.setIcon(android.R.drawable.ic_menu_preferences);
 
         return true;
     }
