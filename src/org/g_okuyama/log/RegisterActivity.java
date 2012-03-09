@@ -479,6 +479,7 @@ public class RegisterActivity extends Activity {
     private void setDate(){
         TextView text = (TextView)findViewById(R.id.date);
         if(mEditFlag){
+        	mCurDate = mDate;
         	text.setText(mDate);
         }
         else{
@@ -612,6 +613,7 @@ public class RegisterActivity extends Activity {
                             handler.post(new Runnable(){
                                 public void run(){
                                     new AlertDialog.Builder(RegisterActivity.this)
+                                    .setTitle(R.string.dialog_notify_title)
                                     .setMessage(R.string.dialog_notify)
                                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
@@ -947,12 +949,7 @@ public class RegisterActivity extends Activity {
     }
     
     private void putDate(ContentValues values){
-        if(mEditFlag){
-        	values.put("date", mDate);        	 
-        }
-        else{
-        	values.put("date", mCurDate);
-        }
+    	values.put("date", mCurDate);
     }
 
     private void putPlace(ContentValues values){

@@ -27,7 +27,8 @@
 	<string name="dialog_category">Select Category</string>
 	<string name="dialog_image">Select Image</string>
    	<string name="dialog_progress">under registering</string>
-   	<string name="dialog_notify">Registered</string>
+   	<string name="dialog_notify_title">Notify</string>
+	<string name="dialog_notify">Registered</string>
 
 	<string name="name">Name</string>
 	<string name="vintage">Year</string>

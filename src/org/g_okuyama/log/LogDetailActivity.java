@@ -51,6 +51,9 @@ public class LogDetailActivity extends Activity {
 	String mPlace;
 	String mPrice;
 	
+    //「その他」ボタンが押されたか？
+    boolean mOtherFlag = false;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +73,9 @@ public class LogDetailActivity extends Activity {
         setComment();
         setTweet();
         setOtherLayout();
+        if(mOtherFlag){
+            setOtherLog();
+        }
     }
     
     private void getDetailData(int dbid){
@@ -152,6 +158,7 @@ public class LogDetailActivity extends Activity {
         Button other = (Button)findViewById(R.id.ref_other);
         other.setOnClickListener(new OnClickListener(){
             public void onClick(View v) {
+            	mOtherFlag = true;
                 //「その他」ボタンのレイアウトを非表示に
                 otherLayout.setVisibility(View.GONE);
 
