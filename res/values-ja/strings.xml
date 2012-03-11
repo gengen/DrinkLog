@@ -33,7 +33,7 @@
    	<string name="name">名前</string>
 	<string name="vintage">年数</string>
 	<string name="year">年</string>
-   	<string name="area">国(種類)</string>
+   	<string name="area">地域(種類)</string>
    	<string name="type">タイプ</string>
    	<string name="image">画像</string>
 	<string name="user_canceled">キャンセルしました</string>
@@ -70,6 +70,8 @@
   	<string name="pref_tweet">Twitter設定</string> 
   	<string name="pref_tweet_image">画像添付</string> 
   	<string name="pref_tweet_image_summary">ツイート時に画像を添付する</string>
+  	<string name="pref_tweet_same">自動ツイート</string> 
+  	<string name="pref_tweet_same_summary">飲みログの登録時に自動でツイートする</string>
   	<string name="pref_tweet_auth">認証解除</string>
   	<string name="pref_tweet_auth_summary">アプリの認証を解除する</string>
   	<string name="pref_dialog_auth_title">確認</string>

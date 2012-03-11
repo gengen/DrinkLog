@@ -33,7 +33,7 @@
 	<string name="name">Name</string>
 	<string name="vintage">Year</string>
     <string name="year">year</string>
-   	<string name="area">Country(Category)</string>
+   	<string name="area">Area(Category)</string>
    	<string name="type">Type</string>
     <string name="image">Image</string>
 	<string name="user_canceled">Canceled</string>
@@ -70,7 +70,9 @@
 	<string name="pref_tweet">Twitter settings</string>
 	<string name="pref_tweet_image">Image attaching</string>
 	<string name="pref_tweet_image_summary">Image attaching when tweet</string>
-	<string name="pref_tweet_auth">Cancel Authentication</string>
+  	<string name="pref_tweet_same">Auto tweet</string> 
+  	<string name="pref_tweet_same_summary">Auto tweet when register log</string>
+  	<string name="pref_tweet_auth">Cancel Authentication</string>
 	<string name="pref_tweet_auth_summary">Canceling Authentication</string>
 	<string name="pref_dialog_auth_title">Confirm</string>
 	<string name="pref_dialog_auth_confirm">Cancel Authentication?</string>
