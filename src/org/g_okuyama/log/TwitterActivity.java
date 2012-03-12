@@ -19,6 +19,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -115,80 +116,109 @@ public class TwitterActivity extends Activity {
     }
     
     private void tweet(){
-        //画像が登録されていない、もしくは画像を添付しない設定にしている場合
-        if(mPath.equals("none") || !DrinkLogPreference.isAttached(this)){
-            //twitterオブジェクトの作成 
-            mTwitter = new TwitterFactory().getInstance();
-            //AccessTokenオブジェクトの作成 
-            AccessToken at = new AccessToken(mToken, mTokenSecret);
-            //Consumer keyとConsumer key secretの設定
-            mTwitter.setOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);   
-            //AccessTokenオブジェクトを設定 
-            mTwitter.setOAuthAccessToken(at);
-            
-            EditText view = (EditText)findViewById(R.id.tweet_text);
-            
-            try {
-                mTwitter.updateStatus(view.getText().toString());
-                Toast.makeText(this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
-            } catch (TwitterException e){
-                if(e.isCausedByNetworkIssue()){
-                    Toast.makeText(this, R.string.tweet_nw_error, Toast.LENGTH_LONG).show();
+        final Handler handler = new Handler();
+        Thread thread = new Thread(){
+            public void run(){
+                //画像が登録されていない、もしくは画像を添付しない設定にしている場合
+                if(mPath.equals("none") || !DrinkLogPreference.isAttached(TwitterActivity.this)){
+                    //twitterオブジェクトの作成 
+                    mTwitter = new TwitterFactory().getInstance();
+                    //AccessTokenオブジェクトの作成 
+                    AccessToken at = new AccessToken(mToken, mTokenSecret);
+                    //Consumer keyとConsumer key secretの設定
+                    mTwitter.setOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);   
+                    //AccessTokenオブジェクトを設定 
+                    mTwitter.setOAuthAccessToken(at);
+                    
+                    EditText view = (EditText)findViewById(R.id.tweet_text);
+                    
+                    try {
+                        mTwitter.updateStatus(view.getText().toString());
+                        handler.post(new Runnable(){
+                            public void run() {
+                                Toast.makeText(TwitterActivity.this, R.string.tweet_finish, Toast.LENGTH_LONG).show();                                
+                            }
+                        });
+                    } catch (TwitterException e){
+                        if(e.isCausedByNetworkIssue()){
+                            handler.post(new Runnable(){
+                                public void run() {
+                                    Toast.makeText(TwitterActivity.this, R.string.tweet_nw_error, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                        else{
+                            handler.post(new Runnable(){
+                                public void run() {
+                                    Toast.makeText(TwitterActivity.this, R.string.tweet_error, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    }            
                 }
                 else{
-                    Toast.makeText(this, R.string.tweet_error, Toast.LENGTH_LONG).show();
+                    ConfigurationBuilder builder = new ConfigurationBuilder();
+                    builder.setOAuthConsumerKey(CONSUMER_KEY);
+                    builder.setOAuthConsumerSecret(CONSUMER_SECRET);
+                    builder.setOAuthAccessToken(mToken);
+                    builder.setOAuthAccessTokenSecret(mTokenSecret);
+                    // ここでMediaProviderをTWITTERにする
+                    builder.setMediaProvider("TWITTER");
+
+                    Configuration conf = builder.build();
+                    ImageUpload imageUpload = new ImageUploadFactory(conf)
+                            .getInstance();
+
+                    Bitmap bitmap = RegisterActivity.uri2bmp(TwitterActivity.this, Uri.parse(mPath), 240, 320);
+                    try {
+                        byte[] w = bmp2data(bitmap, Bitmap.CompressFormat.JPEG, 80);
+                        writeDataFile("tmp.jpg", w);
+
+                    } catch (Exception e) {
+                        Log.e(TAG, e.toString());
+                    }
+
+                    //アップロード用のイメージをファイルに書き込み
+                    //twitter4jのuploadが引数にfileを取るため、一度書き込む
+                    File file = new File(getFilesDir() + "/tmp.jpg");
+                    Log.d(TAG, "path = " + file.getPath());
+                    
+                    EditText view = (EditText)findViewById(R.id.tweet_text);
+                    Log.d(TAG, "text = " + view.getText().toString());
+                    
+                    try {
+                        imageUpload.upload(file, view.getText().toString());
+                        handler.post(new Runnable(){
+                            public void run() {
+                                Toast.makeText(TwitterActivity.this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                    } catch (TwitterException e) {
+                        if(e.isCausedByNetworkIssue()){
+                            handler.post(new Runnable(){
+                                public void run() {
+                                    Toast.makeText(TwitterActivity.this, R.string.tweet_nw_error, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                        else{
+                            handler.post(new Runnable(){
+                                public void run() {
+                                    Toast.makeText(TwitterActivity.this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            Toast.makeText(TwitterActivity.this, R.string.tweet_error, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    
+                    //アップロード用のイメージ削除
+                    file.delete();
                 }
-            }            
-        }
-        else{
-            ConfigurationBuilder builder = new ConfigurationBuilder();
-            builder.setOAuthConsumerKey(CONSUMER_KEY);
-            builder.setOAuthConsumerSecret(CONSUMER_SECRET);
-            builder.setOAuthAccessToken(mToken);
-            builder.setOAuthAccessTokenSecret(mTokenSecret);
-            // ここでMediaProviderをTWITTERにする
-            builder.setMediaProvider("TWITTER");
-
-            Configuration conf = builder.build();
-            ImageUpload imageUpload = new ImageUploadFactory(conf)
-                    .getInstance();
-
-            Bitmap bitmap = RegisterActivity.uri2bmp(this, Uri.parse(mPath), 240, 320);
-            try {
-                byte[] w = bmp2data(bitmap, Bitmap.CompressFormat.JPEG, 80);
-                writeDataFile("tmp.jpg", w);
-
-            } catch (Exception e) {
-                Log.e(TAG, e.toString());
+                
+                finish();                
             }
-
-            //File file = new File(mPath);
-            //アップロード用のイメージをファイルに書き込み
-            //twitter4jのuploadが引数にfileを取るため、一度書き込む
-            File file = new File(getFilesDir() + "/tmp.jpg");
-            Log.d(TAG, "path = " + file.getPath());
-            
-            EditText view = (EditText)findViewById(R.id.tweet_text);
-            Log.d(TAG, "text = " + view.getText().toString());
-            
-            try {
-                imageUpload.upload(file, view.getText().toString());
-                Toast.makeText(this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
-
-            } catch (TwitterException e) {
-                if(e.isCausedByNetworkIssue()){
-                    Toast.makeText(this, R.string.tweet_nw_error, Toast.LENGTH_LONG).show();
-                }
-                else{
-                    Toast.makeText(this, R.string.tweet_error, Toast.LENGTH_LONG).show();
-                }
-            }
-            
-            //アップロード用のイメージ削除
-            file.delete();
-        }
-		
-		finish();
+        };
     }
     
     public void onActivityResult(int requestCode, int resultCode, Intent data){

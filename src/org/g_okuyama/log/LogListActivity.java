@@ -68,7 +68,7 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
             dbhelper = new DatabaseHelper(this);
         }
         SQLiteDatabase db = dbhelper.getWritableDatabase();
-        String query = "select * from logtable;";
+        String query = "select * from logtable order by date;";
         Cursor c = db.rawQuery(query, null);
         int rowcount = c.getCount();
         
@@ -212,7 +212,7 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
         		return;
         	}
         	
-        	Log.d(TAG, "position = " + position);
+        	//Log.d(TAG, "position = " + position);
 
         	Intent intent = new Intent(LogListActivity.this, LogDetailActivity.class);
         	LogListData logitem = mLogList.get(position);
@@ -223,7 +223,7 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
     
     public void onActivityResult(int requestCode, int resultCode, Intent data){
     	if(requestCode == REQUEST_CODE){
-    		if(resultCode == RESPONSE_DELETE){
+    		if(resultCode == RESPONSE_DELETE || resultCode == LogDetailActivity.RESPONSE_EDIT){
     			mLogList.clear();
     			mDate = "";
     			mCategory = "";
@@ -241,15 +241,7 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
     private class LongClickAdapter implements OnItemLongClickListener{
     	int position = -1;
     	
-		public boolean onItemLongClick(AdapterView<?> adapter, View view,
-				int pos, long id) {
-        	//TODO:ÉfÅ[É^Ç™Ç»Ç¢èÍçá
-			/*
-			if(savedata == null || savedata[0].equalsIgnoreCase("No data")){
-        		return true;
-        	}
-        	*/
-
+		public boolean onItemLongClick(AdapterView<?> adapter, View view, int pos, long id) {
 			position = pos;
 
 			new AlertDialog.Builder(LogListActivity.this)

@@ -3,6 +3,7 @@ package org.g_okuyama.log;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -26,6 +27,11 @@ public class DrinkLogPreference extends PreferenceActivity implements OnPreferen
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         //îFèÿâèú
+                        SharedPreferences prefs = getSharedPreferences("token", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putString("token", null);
+                        editor.putString("tokenSecret", null);
+                        editor.commit();
                     }
                 })
                 .setNegativeButton(R.string.ng, new DialogInterface.OnClickListener() {
@@ -47,5 +53,10 @@ public class DrinkLogPreference extends PreferenceActivity implements OnPreferen
     public static boolean isAttached(Context c){
         return PreferenceManager.getDefaultSharedPreferences(c)
                 .getBoolean("image_attached", true);
+    }
+
+    public static boolean isAutoTweet(Context c){
+        return PreferenceManager.getDefaultSharedPreferences(c)
+                .getBoolean("auto_tweet", false);
     }
 }

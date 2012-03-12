@@ -148,13 +148,18 @@ public class RegisterActivity extends Activity {
 
         int id = getCategoryID(mCategory);
         if((id != -1) && !mEditFlag){
+            /*
+             * TODO:有料版で対応。少なくともワインは追加が必要
+             */
+            /*
             ArrayAdapter name_adapter = ArrayAdapter.createFromResource(
                     this, id, android.R.layout.simple_dropdown_item_1line);
             view.setAdapter(name_adapter);
+            */
         }
         else if(mEditFlag){
         	//編集時は入力補完は必要ない
-        	view.setText(mName);        	
+        	view.setText(mName);
         }
 
         //TODO:(option)登録されていない名前で登録された場合は、name_adapterに追加する
@@ -229,7 +234,13 @@ public class RegisterActivity extends Activity {
         if(mEditFlag){
         	if(!mImageURL.equals("none")){
         		Uri uri = Uri.parse(mImageURL);
-                image.setImageBitmap(RegisterActivity.uri2bmp(this, uri, 160, 120));
+        		Bitmap bmp = RegisterActivity.uri2bmp(this, uri, 160, 120);
+        		if(bmp != null){
+        		    image.setImageBitmap(bmp);
+        		}
+        		else{
+        	        image.setImageResource(R.drawable.default_image);        		    
+        		}
         	}
         }
     }
@@ -245,7 +256,13 @@ public class RegisterActivity extends Activity {
                 Uri uri = data.getData();
                 //保存用文字列
                 mImageURL = uri.toString();
-                image.setImageBitmap(uri2bmp(this, uri, 160, 120));
+                Bitmap bmp = RegisterActivity.uri2bmp(this, uri, 160, 120);
+                if(bmp != null){
+                    image.setImageBitmap(bmp);
+                }
+                else{
+                    image.setImageResource(R.drawable.default_image);
+                }
             }
             else if(resultCode == RESULT_CANCELED){
                 Toast.makeText(this, R.string.user_canceled, Toast.LENGTH_SHORT).show();
@@ -258,7 +275,14 @@ public class RegisterActivity extends Activity {
             if(resultCode == RESULT_OK){
                 ImageView image = (ImageView)findViewById(R.id.cur_image);
                 Uri uri = Uri.fromFile(mSaveFile);
-                image.setImageBitmap(uri2bmp(this, uri, 160, 120));
+                Bitmap bmp = RegisterActivity.uri2bmp(this, uri, 160, 120);
+                if(bmp != null){
+                    image.setImageBitmap(bmp);
+                }
+                else{
+                    image.setImageResource(R.drawable.default_image);
+                }
+
                 //保存用文字列
                 mImageURL = uri.toString();
             }
@@ -617,8 +641,19 @@ public class RegisterActivity extends Activity {
                                     .setMessage(R.string.dialog_notify)
                                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
-                            	            Intent intent = new Intent();
-                            	            setResult(RESPONSE_EDIT, intent);
+                                            //Twitter同時投稿
+                                            if(DrinkLogPreference.isAutoTweet(RegisterActivity.this)){
+                                                Intent intent = new Intent(RegisterActivity.this, TwitterActivity.class);
+                                                intent.putExtra("name", mName);
+                                                intent.putExtra("rate", String.valueOf(mRate));
+                                                intent.putExtra("comment", mComment);
+                                                intent.putExtra("path", mImageURL);
+                                                startActivity(intent);                                             
+                                            }
+                                            
+                                            //タイトルに戻る
+                            	            Intent back_intent = new Intent();
+                            	            setResult(RESPONSE_EDIT, back_intent);
                                             finish();
                                         }
                                     })

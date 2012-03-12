@@ -10,9 +10,18 @@
         	>
         </CheckBoxPreference>
         
+        <CheckBoxPreference 
+        	android:key="auto_tweet"
+            android:title="@string/pref_tweet_auto"
+        	android:summary="@string/pref_tweet_auto_summary"
+        	android:defaultValue="false"
+        	>
+        </CheckBoxPreference>
+        
         <Preference 
             android:key="auth_cancel"
             android:title="@string/pref_tweet_auth"
-            android:summary="@string/pref_tweet_auth_summary"/>
+            android:summary="@string/pref_tweet_auth_summary">
+        </Preference>
 	</PreferenceCategory>
 </PreferenceScreen>

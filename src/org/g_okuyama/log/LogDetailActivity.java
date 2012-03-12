@@ -14,6 +14,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,6 +54,8 @@ public class LogDetailActivity extends Activity {
 	
     //「その他」ボタンが押されたか？
     boolean mOtherFlag = false;
+    //編集したか？
+    boolean mEditFlag = false;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -116,16 +119,21 @@ public class LogDetailActivity extends Activity {
     	else{
     		Log.d(TAG, "URL = " + mImageURL);
     		Uri uri = Uri.parse(mImageURL);
-            image.setImageBitmap(RegisterActivity.uri2bmp(this, uri, 160, 120));
-            
-            image.setOnClickListener(new OnClickListener(){
-                public void onClick(View arg0) {
-                    Intent intent = new Intent(LogDetailActivity.this, ImageViewActivity.class);
-                    intent.putExtra("imageurl", mImageURL);
-                    intent.putExtra("name", mName);
-                    startActivity(intent);
-                }
-            });
+            Bitmap bmp = RegisterActivity.uri2bmp(this, uri, 160, 120);
+            if(bmp != null){
+                image.setImageBitmap(bmp);
+                image.setOnClickListener(new OnClickListener(){
+                    public void onClick(View arg0) {
+                        Intent intent = new Intent(LogDetailActivity.this, ImageViewActivity.class);
+                        intent.putExtra("imageurl", mImageURL);
+                        intent.putExtra("name", mName);
+                        startActivity(intent);
+                    }
+                });
+            }
+            else{
+                image.setImageResource(R.drawable.default_image);
+            }            
     	}    	
     }
     
@@ -267,6 +275,7 @@ public class LogDetailActivity extends Activity {
     		if(resultCode == RESPONSE_EDIT){
     			//編集後のログを表示
                 setLayout();
+                mEditFlag = true;
     		}
     	}
     	else if(requestCode == REQUEST_TWEET){
@@ -305,4 +314,19 @@ public class LogDetailActivity extends Activity {
     	intent.putExtra("path", mImageURL);
     	startActivityForResult(intent, REQUEST_TWEET);
     }
+    
+    
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            if(mEditFlag){
+                Intent intent = new Intent();
+                setResult(RESPONSE_EDIT, intent);
+            }
+            mEditFlag = false;
+            //return true;
+        }
+        else{
+        }
+        return super.onKeyDown(keyCode, event);   
+    }    
 }
