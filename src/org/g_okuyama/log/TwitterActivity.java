@@ -57,6 +57,9 @@ public class TwitterActivity extends Activity {
         mRate = extras.getString("rate");
         mComment = extras.getString("comment");
         mPath = extras.getString("path");
+        
+        setTitle(getString(R.string.tweet_title));
+        
         setLayout();
     }
     

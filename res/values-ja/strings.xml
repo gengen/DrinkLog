@@ -68,8 +68,8 @@
 	<string name="tweet_nw_error">ネットワークエラー</string>
 	
   	<string name="pref_tweet">Twitter設定</string> 
-  	<string name="pref_tweet_image">画像添付</string> 
-  	<string name="pref_tweet_image_summary">ツイート時に画像を添付する</string>
+  	<string name="pref_tweet_image">写真投稿</string> 
+  	<string name="pref_tweet_image_summary">ツイート時に写真を投稿する</string>
   	<string name="pref_tweet_auto">自動ツイート</string> 
   	<string name="pref_tweet_auto_summary">飲みログの登録時に自動でツイートする</string>
   	<string name="pref_tweet_auth">認証解除</string>
@@ -77,6 +77,7 @@
   	<string name="pref_dialog_auth_title">確認</string>
 	<string name="pref_dialog_auth_confirm">認証を解除しますか？</string>
 
-    <string name="tweet_alert">※飲みログに画像を登録している場合、画像も添付されます。
-	画像を添付しない場合は、トップ画面から「設定」→「Tweet設定」で「画像を添付しない」を設定してください。</string>
+	<string name="tweet_title">Twitter投稿</string>
+    <string name="tweet_alert">※飲みログに写真を登録している場合、写真も投稿されます。
+	写真を投稿しない場合は、トップ画面から「設定」→「Tweet設定」で「画像を投稿しない」を設定してください。</string>
 </resources>

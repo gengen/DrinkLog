@@ -77,6 +77,7 @@
 	<string name="pref_dialog_auth_title">Confirm</string>
 	<string name="pref_dialog_auth_confirm">Cancel Authentication?</string>
 
-   	<string name="tweet_alert">If you register image, image will be attached.
+	<string name="tweet_title">Post tweet</string>
+	<string name="tweet_alert">If you register image, image will be attached.
 	If you wouldn\'t like to image attaching, please set not image attaching.</string>
 </resources>

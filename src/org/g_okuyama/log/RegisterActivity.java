@@ -71,9 +71,9 @@ public class RegisterActivity extends Activity {
     //編集用フィールド
     private int mDBID = -9876;
 	String mName;
-    String mImageURL = null;
+    String mImageURL = "none";
 	float mRate;
-	String mComment;
+	String mComment = "none";
 	String mVintage;
 	String mType;
 	String mArea;
