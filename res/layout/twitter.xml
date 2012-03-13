@@ -8,7 +8,7 @@
         android:id="@+id/tweet_text"
         android:layout_width="match_parent"
         android:layout_height="220sp"
-        android:maxLength="140"
+        android:maxLength="75"
     />
     
     <Button 

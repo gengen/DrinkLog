@@ -34,8 +34,8 @@ public class TwitterActivity extends Activity {
 	private static final String CONSUMER_SECRET = "0HOulWNwBRtxADaAIz5p9f8B6RrYT3tLIacbD7wlm28";
 	private static final String CALLBACK_URL = "http://neging01.blog87.fc2.com/";
 
-	private static final String MARKET_URL = "https://market.android.com/details?id=org.g_okuyama.log";
-	
+	//private static final String MARKET_URL = "https://play.google.com/store/apps/details?id=org.g_okuyama.log";
+	private static final String MARKET_URL = "http://goo.gl/m70NO";
 	private static final int REQUEST_OAUTH = 3333;
 	
 	String mName;
@@ -68,20 +68,13 @@ public class TwitterActivity extends Activity {
     	if(!mComment.equals("none")){
     		comment = mComment;
     	}
+    	/*
+    	 * 75文字以内とする
+    	 * (140(Twitter)-20(マーケットURL分(短縮))-30(画像URL分)-15(" from 飲みログくん"))
+    	 */
         String text = mName + ":"
                     + getString(R.string.evaluate) + mRate + "  "
-                    + comment 
-                    + " from " + getString(R.string.app_name);
-        int limit;
-        if(!mPath.equals("none")){
-        	limit = 55;/*140(Twitter)-55(マーケットURL分)-30(画像URL分)*/
-        }
-        else{
-        	limit = 85;
-        }
-        if(text.length() < limit){
-        	text = text + " " + MARKET_URL;
-        }
+                    + comment; 
         
         EditText view = (EditText)findViewById(R.id.tweet_text);
         view.setText(text);
@@ -122,6 +115,12 @@ public class TwitterActivity extends Activity {
         final Handler handler = new Handler();
         Thread thread = new Thread(){
             public void run(){
+                EditText view = (EditText)findViewById(R.id.tweet_text);
+                String tweetText = view.getText().toString();
+                tweetText = tweetText 
+                            + " from " + getString(R.string.app_name)
+                            + " " + MARKET_URL;
+                
                 //画像が登録されていない、もしくは画像を添付しない設定にしている場合
                 if(mPath.equals("none") || !DrinkLogPreference.isAttached(TwitterActivity.this)){
                     //twitterオブジェクトの作成 
@@ -133,10 +132,8 @@ public class TwitterActivity extends Activity {
                     //AccessTokenオブジェクトを設定 
                     mTwitter.setOAuthAccessToken(at);
                     
-                    EditText view = (EditText)findViewById(R.id.tweet_text);
-                    
                     try {
-                        mTwitter.updateStatus(view.getText().toString());
+                        mTwitter.updateStatus(tweetText);
                         handler.post(new Runnable(){
                             public void run() {
                                 Toast.makeText(TwitterActivity.this, R.string.tweet_finish, Toast.LENGTH_LONG).show();                                
@@ -185,12 +182,10 @@ public class TwitterActivity extends Activity {
                     //twitter4jのuploadが引数にfileを取るため、一度書き込む
                     File file = new File(getFilesDir() + "/tmp.jpg");
                     Log.d(TAG, "path = " + file.getPath());
-                    
-                    EditText view = (EditText)findViewById(R.id.tweet_text);
                     Log.d(TAG, "text = " + view.getText().toString());
                     
                     try {
-                        imageUpload.upload(file, view.getText().toString());
+                        imageUpload.upload(file, tweetText);
                         handler.post(new Runnable(){
                             public void run() {
                                 Toast.makeText(TwitterActivity.this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
@@ -222,6 +217,7 @@ public class TwitterActivity extends Activity {
                 finish();                
             }
         };
+        thread.start();
     }
     
     public void onActivityResult(int requestCode, int resultCode, Intent data){

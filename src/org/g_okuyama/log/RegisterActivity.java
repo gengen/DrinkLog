@@ -68,12 +68,14 @@ public class RegisterActivity extends Activity {
     //「その他」ボタンが押されたか？
     boolean mOtherFlag = false;
     
-    //編集用フィールド
+    //登録時の同時tweet用に名前、コメント、評価、パスはクラス変数にする
+    String mName;
+    String mComment;    
+    float mRate;
+    String mImageURL = null;
+    
+    //編集用にその他のログもクラス変数にする
     private int mDBID = -9876;
-	String mName;
-    String mImageURL = "none";
-	float mRate;
-	String mComment = "none";
 	String mVintage;
 	String mType;
 	String mArea;
@@ -558,7 +560,6 @@ public class RegisterActivity extends Activity {
     			view.setText(mPrice);
     		}
     	}
-    	
     }
     
     private void setMask(){
@@ -615,8 +616,8 @@ public class RegisterActivity extends Activity {
                     public void run() {
                         //0文字の名前は受け付けない
                         TextView name_view = (TextView)findViewById(R.id.name);
-                        String name = name_view.getText().toString();
-                        if(name.length() == 0){
+                        mName = name_view.getText().toString();
+                        if(mName.length() == 0){
                             handler.post(new Runnable(){
                                 public void run(){            
                                     new AlertDialog.Builder(RegisterActivity.this)
@@ -631,7 +632,7 @@ public class RegisterActivity extends Activity {
                             });
                         }
                         else{
-                            register(name);
+                            register(mName);
                             
                             //登録完了通知
                             handler.post(new Runnable(){
@@ -646,8 +647,18 @@ public class RegisterActivity extends Activity {
                                                 Intent intent = new Intent(RegisterActivity.this, TwitterActivity.class);
                                                 intent.putExtra("name", mName);
                                                 intent.putExtra("rate", String.valueOf(mRate));
-                                                intent.putExtra("comment", mComment);
-                                                intent.putExtra("path", mImageURL);
+                                                if(mComment.length() != 0){
+                                                    intent.putExtra("comment", mComment);
+                                                }
+                                                else{
+                                                    intent.putExtra("comment", "none");
+                                                }
+                                                if(mImageURL != null){
+                                                    intent.putExtra("path", mImageURL);
+                                                }
+                                                else{
+                                                    intent.putExtra("path", "none");
+                                                }
                                                 startActivity(intent);                                             
                                             }
                                             
@@ -911,21 +922,21 @@ public class RegisterActivity extends Activity {
     private void putImage(ContentValues values){
         if(mImageURL != null){
             values.put("image", mImageURL);
-        }        
+        }
     }
     
     private void putEvaluate(ContentValues values){
         RatingBar bar = (RatingBar)findViewById(R.id.rating);
-        float rate = bar.getRating();
-        String rate_str = String.valueOf(rate);
-        values.put("evaluate", rate_str);        
+        mRate = bar.getRating();
+        String rate_str = String.valueOf(mRate);
+        values.put("evaluate", rate_str);
     }
     
     private void putComment(ContentValues values){
         EditText comment_text = (EditText)findViewById(R.id.impression);
-        String comment = comment_text.getText().toString();
-        if(comment.length() != 0){
-            values.put("comment", comment);
+        mComment = comment_text.getText().toString();
+        if(mComment.length() != 0){
+            values.put("comment", mComment);
         }
     }
     
@@ -951,18 +962,15 @@ public class RegisterActivity extends Activity {
     
     private void putType(ContentValues values){
         if(mOtherFlag){
-        	//TODO:コメント外す
-        	/*
             Spinner type_spinner = (Spinner)findViewById(R.id.type_spinner);
             String type = type_spinner.getSelectedItem().toString();
             if(!type.equals("")){
                 values.put("type", type);
             }
-            */
         }
         else{
             if(mEditFlag){
-            	values.put("year", mType);
+            	values.put("type", mType);
             }
         }        
     }
@@ -978,7 +986,7 @@ public class RegisterActivity extends Activity {
         }
         else{
             if(mEditFlag){
-            	values.put("year", mArea);
+            	values.put("area", mArea);
             }
         }
     }
@@ -997,7 +1005,7 @@ public class RegisterActivity extends Activity {
         }
         else{
             if(mEditFlag){
-            	values.put("year", mPlace);
+            	values.put("place", mPlace);
             }
         }
     }
@@ -1012,7 +1020,7 @@ public class RegisterActivity extends Activity {
         }
         else{
             if(mEditFlag){
-            	values.put("year", mPrice);
+            	values.put("price", mPrice);
             }
         }
     }
