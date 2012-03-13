@@ -69,7 +69,7 @@ public class TwitterActivity extends Activity {
     		comment = mComment;
     	}
     	/*
-    	 * 75文字以内とする
+    	 * 75文字以内とする TODO:有料版は広告除去(110文字までOK)
     	 * (140(Twitter)-20(マーケットURL分(短縮))-30(画像URL分)-15(" from 飲みログくん"))
     	 */
         String text = mName + ":"
