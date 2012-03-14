@@ -4,6 +4,7 @@
   	<string-array name="image_setting_array">
 	    <item>ギャラリーから選択</item>
 	    <item>カメラで撮影</item>
+   	    <item>削除</item>
 	</string-array>
 	    
     <string-array name="list_alert_array">

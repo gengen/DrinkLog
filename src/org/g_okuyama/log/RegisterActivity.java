@@ -194,7 +194,7 @@ public class RegisterActivity extends Activity {
     }
     
     private void setImage(){
-        ImageView image = (ImageView)findViewById(R.id.cur_image);
+        final ImageView image = (ImageView)findViewById(R.id.cur_image);
         
         final String[] setting_list = getResources().getStringArray(R.array.image_setting_array);        
         ImageButton imageBtn = (ImageButton)findViewById(R.id.picture);
@@ -212,7 +212,7 @@ public class RegisterActivity extends Activity {
                             startActivityForResult(
                                     Intent.createChooser(intent, "Select Picture"), REQUEST_CODE_GALLERY);
                         }
-                        else{
+                        else if(which == 1){
                             //camera
                             File file = new File(Environment.getExternalStorageDirectory(), "/DrinkLog");
                             if(file.exists() == false){
@@ -223,6 +223,19 @@ public class RegisterActivity extends Activity {
                             mSaveFile = new File(file, String.valueOf(System.currentTimeMillis() + ".jpg"));
                             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mSaveFile));
                             startActivityForResult(intent, REQUEST_CODE_CAMERA);
+                        }
+                        else{
+                            //delete
+                            //リンクのみ空にする
+                            if(mEditFlag){
+                                mImageURL = "none";                                
+                            }
+                            else{
+                                mImageURL = null;
+                            }
+                            
+                            //デフォルト画像表示
+                            image.setImageResource(R.drawable.default_image);
                         }
                     }
                 })
