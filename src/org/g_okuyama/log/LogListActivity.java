@@ -50,14 +50,14 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
         tabs.setOnTabChangedListener(this);
         
         TabSpec tab1 = tabs.newTabSpec("tab1");
-        tab1.setIndicator("date", 
+        tab1.setIndicator(getString(R.string.list_tab_date), 
                 getResources().getDrawable(android.R.drawable.ic_menu_my_calendar));
         tab1.setContent(R.id.log_list_tab1);
         tabs.addTab(tab1);
         tabs.setCurrentTab(0);
         
         TabSpec tab2 = tabs.newTabSpec("tab2");
-        tab2.setIndicator("category", 
+        tab2.setIndicator(getString(R.string.list_tab_category), 
                 getResources().getDrawable(android.R.drawable.ic_menu_agenda));
         tab2.setContent(R.id.log_list_tab2);
         tabs.addTab(tab2);

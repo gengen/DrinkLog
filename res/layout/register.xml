@@ -99,7 +99,7 @@
             android:layout_height="140dp"
             android:gravity="top"
             android:inputType="textMultiLine"
-            android:maxLength="70"
+            android:maxLength="75"
             >
         </EditText>
     
@@ -138,6 +138,7 @@
             android:background="@drawable/my_button"
        	    android:drawableLeft="@android:drawable/ic_menu_save"
         	android:textColor="#ffffff"
+        	android:textSize="16sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -149,6 +150,7 @@
             android:background="@drawable/my_button"
        	    android:drawableLeft="@android:drawable/ic_menu_close_clear_cancel"
         	android:textColor="#ffffff"
+        	android:textSize="16sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

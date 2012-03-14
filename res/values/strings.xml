@@ -40,7 +40,7 @@
 	<string name="get_image_error">Error</string>
    	<string name="date">Date</string>
 	<string name="date_select">Select</string>
-	<string name="place">Shop</string>
+	<string name="place">Place(Shop)</string>
 	<string name="price">Price</string>
 	<string name="evaluate">Score</string>
     <string name="impression">Impression</string>
@@ -50,6 +50,8 @@
 	<string name="cancel_confirm">Discard?</string>
 	<string name="other_item">Show other items</string>
 	
+	<string name="list_tab_date">Date</string>
+	<string name="list_tab_category">Category</string>
    	<string name="list_alert_select">Select</string>
 	<string name="list_alert_confirm">Delete?</string>
 	

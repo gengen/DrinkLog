@@ -197,6 +197,14 @@ public class LogDetailActivity extends Activity {
     		area.setText(mArea);
     	}
     	
+    	TextView type = (TextView)findViewById(R.id.ref_type);
+    	if(mType.equals("none")){
+    		type.setText(getString(R.string.ref_no_setting));	
+    	}
+    	else{
+    		type.setText(mType);
+    	}
+    	
     	TextView date = (TextView)findViewById(R.id.ref_date);
     	//TODO:‰pŒê•\‹L“ü‚ê‚é
     	date.setText(mDate);

@@ -7,8 +7,9 @@
     <EditText
         android:id="@+id/tweet_text"
         android:layout_width="match_parent"
-        android:layout_height="220sp"
+        android:layout_height="150sp"
         android:maxLength="75"
+        android:gravity="top"
     />
     
     <Button 

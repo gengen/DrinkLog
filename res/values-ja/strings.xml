@@ -50,6 +50,8 @@
 	<string name="cancel_confirm">破棄して前画面に戻りますか？</string>
 	<string name="other_item">その他の項目を表示</string>
 	
+	<string name="list_tab_date">日付</string>
+	<string name="list_tab_category">カテゴリ</string>
 	<string name="list_alert_select">選択</string>
 	<string name="list_alert_confirm">削除しますか？</string>
 	
