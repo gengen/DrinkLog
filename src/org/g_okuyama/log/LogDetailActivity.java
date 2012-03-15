@@ -224,6 +224,52 @@ public class LogDetailActivity extends Activity {
     	else{
     		price.setText(mPrice);
     	}
+    	
+    	//カテゴリごとに不要な項目を消す
+    	setMask();
+    }
+    
+    void setMask(){
+        LinearLayout year = (LinearLayout)findViewById(R.id.ref_year_layout);
+        LinearLayout area = (LinearLayout)findViewById(R.id.ref_area_layout);
+        LinearLayout type = (LinearLayout)findViewById(R.id.ref_type_layout);       
+
+        switch(mCategory){
+        case DrinkLogActivity.CATEGORY_WHISKEY:
+            break;
+            
+        case DrinkLogActivity.CATEGORY_COCKTAIL:
+            year.setVisibility(View.GONE);
+            area.setVisibility(View.GONE);
+            break;
+            
+        case DrinkLogActivity.CATEGORY_WINE:
+            break;
+
+        case DrinkLogActivity.CATEGORY_SHOCHU:
+            year.setVisibility(View.GONE);
+            break;
+
+        case DrinkLogActivity.CATEGORY_SAKE:
+            year.setVisibility(View.GONE);
+            break;
+
+        case DrinkLogActivity.CATEGORY_BRANDY:
+            break;
+
+        case DrinkLogActivity.CATEGORY_BEER:
+            year.setVisibility(View.GONE);
+            break;
+
+        case DrinkLogActivity.CATEGORY_OTHER:
+            year.setVisibility(View.GONE);
+            type.setVisibility(View.GONE);
+            area.setVisibility(View.GONE);
+            break;
+
+        default:
+            break;
+        }
     }
     
     /*

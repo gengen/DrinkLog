@@ -37,6 +37,7 @@ public class TwitterActivity extends Activity {
 	//private static final String MARKET_URL = "https://play.google.com/store/apps/details?id=org.g_okuyama.log";
 	private static final String MARKET_URL = "http://goo.gl/m70NO";
 	private static final int REQUEST_OAUTH = 3333;
+	public static final String HASH_TAG = "#drinklog";
 	
 	String mName;
 	String mRate;
@@ -117,9 +118,7 @@ public class TwitterActivity extends Activity {
             public void run(){
                 EditText view = (EditText)findViewById(R.id.tweet_text);
                 String tweetText = view.getText().toString();
-                tweetText = tweetText 
-                            + " from " + getString(R.string.app_name)
-                            + " " + MARKET_URL;
+                tweetText = tweetText + " " + HASH_TAG + " " + MARKET_URL;
                 
                 //‰æ‘œ‚ª“o˜^‚³‚ê‚Ä‚¢‚È‚¢A‚à‚µ‚­‚Í‰æ‘œ‚ğ“Y•t‚µ‚È‚¢İ’è‚É‚µ‚Ä‚¢‚éê‡
                 if(mPath.equals("none") || !DrinkLogPreference.isAttached(TwitterActivity.this)){
