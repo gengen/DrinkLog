@@ -129,4 +129,10 @@
     </LinearLayout>
     </LinearLayout>
     </ScrollView>
+    	<LinearLayout
+	    android:id="@+id/ref_adspace"
+    	android:layout_width="wrap_content"
+        android:layout_height="50sp"
+    >
+    </LinearLayout>
 </LinearLayout>

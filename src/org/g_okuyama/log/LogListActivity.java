@@ -2,6 +2,9 @@ package org.g_okuyama.log;
 
 import java.util.ArrayList;
 
+import com.ngigroup.adstir.AdstirTerminate;
+import com.ngigroup.adstir.AdstirView;
+
 import android.app.AlertDialog;
 import android.app.TabActivity;
 import android.content.DialogInterface;
@@ -12,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -36,6 +40,8 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
     
     String mCurrentTab = "date";
     
+    private AdstirView mAdstirView;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,11 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
         setContentView(R.layout.tabs);
         setTab();
         setLogListTab1();
+        
+        //adstirê›íË
+        LinearLayout layout = (LinearLayout)findViewById(R.id.list_adspace);
+        mAdstirView = new AdstirView(this, 1);
+        layout.addView(mAdstirView);
     }
     
     private void setTab(){
@@ -333,5 +344,28 @@ public class LogListActivity extends TabActivity implements OnTabChangeListener{
                 Log.e(TAG, "Unknown Category");
                 return getString(R.string.other);
         }
+    } 
+    
+    protected void onPause(){
+    	super.onPause();
+    	if(mAdstirView != null){
+    	    mAdstirView.stop();
+    	}
+    }
+    
+    protected void onResume(){
+    	super.onResume();
+    	
+        //adstirê›íË
+        LinearLayout layout = (LinearLayout)findViewById(R.id.list_adspace);
+        mAdstirView = new AdstirView(this, 1);
+        layout.addView(mAdstirView);
+        mAdstirView.start();
+    }
+    
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        new AdstirTerminate(this);
     }
 }

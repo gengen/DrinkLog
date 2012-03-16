@@ -82,11 +82,9 @@ public class DrinkLogActivity extends Activity {
         });
         
         //adstirê›íË
-        /*
         LinearLayout layout = (LinearLayout)findViewById(R.id.adspace);
         mAdstirView = new AdstirView(this, 1);
         layout.addView(mAdstirView);
-        */
     }
     
     private void registerConfirm(){
@@ -157,6 +155,16 @@ public class DrinkLogActivity extends Activity {
     	if(mAdstirView != null){
     	    mAdstirView.stop();
     	}
+    }
+    
+    protected void onResume(){
+    	super.onResume();
+    	
+        //adstirê›íË
+        LinearLayout layout = (LinearLayout)findViewById(R.id.adspace);
+        mAdstirView = new AdstirView(this, 1);
+        layout.addView(mAdstirView);
+        mAdstirView.start();
     }
     
     public void finish(){

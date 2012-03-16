@@ -2,6 +2,9 @@ package org.g_okuyama.log;
 
 import java.io.InputStream;
 
+import com.ngigroup.adstir.AdstirTerminate;
+import com.ngigroup.adstir.AdstirView;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -56,6 +59,8 @@ public class LogDetailActivity extends Activity {
     boolean mOtherFlag = false;
     //ï“èWÇµÇΩÇ©ÅH
     boolean mEditFlag = false;
+    
+    private AdstirView mAdstirView;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,6 +84,11 @@ public class LogDetailActivity extends Activity {
         if(mOtherFlag){
             setOtherLog();
         }
+        
+        //adstirê›íË
+        LinearLayout layout = (LinearLayout)findViewById(R.id.ref_adspace);
+        mAdstirView = new AdstirView(this, 1);
+        layout.addView(mAdstirView);
     }
     
     private void getDetailData(int dbid){
@@ -386,5 +396,28 @@ public class LogDetailActivity extends Activity {
         else{
         }
         return super.onKeyDown(keyCode, event);   
-    }    
+    }
+    
+    protected void onPause(){
+    	super.onPause();
+    	if(mAdstirView != null){
+    	    mAdstirView.stop();
+    	}
+    }
+    
+    protected void onResume(){
+    	super.onResume();
+    	
+        //adstirê›íË
+        LinearLayout layout = (LinearLayout)findViewById(R.id.ref_adspace);
+        mAdstirView = new AdstirView(this, 1);
+        layout.addView(mAdstirView);
+        mAdstirView.start();
+    }
+    
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        new AdstirTerminate(this);
+    }
 }
