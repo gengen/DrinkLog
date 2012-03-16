@@ -121,6 +121,7 @@ public class TwitterActivity extends Activity {
                 handler.post(new Runnable(){
                     public void run() {
                         mDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                        mDialog.setMessage(getString(R.string.tweet_progress));
                         mDialog.show();                        
                     }
                 });
