@@ -81,5 +81,5 @@
 
 	<string name="tweet_title">Twitter投稿</string>
     <string name="tweet_alert">※飲みログに写真を登録している場合、写真も投稿されます。
-	写真を投稿しない場合は、トップ画面から「設定」→「Tweet設定」で「画像を投稿しない」を設定してください。</string>
+	写真を投稿しない場合は、トップ画面からMENUキー→「設定」→「Tweet設定」で「画像を投稿しない」を設定してください。</string>
 </resources>

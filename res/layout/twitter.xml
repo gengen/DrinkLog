@@ -8,7 +8,7 @@
         android:id="@+id/tweet_text"
         android:layout_width="match_parent"
         android:layout_height="150sp"
-        android:maxLength="75"
+        android:maxLength="80"
         android:gravity="top"
     />
     

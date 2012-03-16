@@ -13,6 +13,7 @@ import twitter4j.conf.ConfigurationBuilder;
 import twitter4j.media.ImageUpload;
 import twitter4j.media.ImageUploadFactory;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,7 +38,8 @@ public class TwitterActivity extends Activity {
 	//private static final String MARKET_URL = "https://play.google.com/store/apps/details?id=org.g_okuyama.log";
 	private static final String MARKET_URL = "http://goo.gl/m70NO";
 	private static final int REQUEST_OAUTH = 3333;
-	public static final String HASH_TAG = "#drinklog";
+	private static final String HASH_TAG = "#drinklog";
+	private ProgressDialog mDialog = null;
 	
 	String mName;
 	String mRate;
@@ -60,8 +62,9 @@ public class TwitterActivity extends Activity {
         mPath = extras.getString("path");
         
         setTitle(getString(R.string.tweet_title));
-        
         setLayout();
+        
+        mDialog = new ProgressDialog(this);
     }
     
     private void setLayout(){
@@ -70,8 +73,8 @@ public class TwitterActivity extends Activity {
     		comment = mComment;
     	}
     	/*
-    	 * 75文字以内とする TODO:有料版は広告除去(110文字までOK)
-    	 * (140(Twitter)-20(マーケットURL分(短縮))-30(画像URL分)-15(" from 飲みログくん"))
+    	 * 80文字以内とする TODO:有料版は広告除去(110文字までOK)
+    	 * (140(Twitter)-20(マーケットURL分(短縮))-30(画像URL分)-10(" #drinklog"))
     	 */
         String text = mName + ":"
                     + getString(R.string.evaluate) + mRate + "  "
@@ -98,7 +101,6 @@ public class TwitterActivity extends Activity {
     }
     
     private boolean isAuthenticated(){
-        
         //トークンの読み込み
         SharedPreferences pref= getSharedPreferences("token", MODE_PRIVATE);
         mToken = pref.getString("token", null);
@@ -116,6 +118,13 @@ public class TwitterActivity extends Activity {
         final Handler handler = new Handler();
         Thread thread = new Thread(){
             public void run(){
+                handler.post(new Runnable(){
+                    public void run() {
+                        mDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                        mDialog.show();                        
+                    }
+                });
+
                 EditText view = (EditText)findViewById(R.id.tweet_text);
                 String tweetText = view.getText().toString();
                 tweetText = tweetText + " " + HASH_TAG + " " + MARKET_URL;
@@ -131,29 +140,32 @@ public class TwitterActivity extends Activity {
                     //AccessTokenオブジェクトを設定 
                     mTwitter.setOAuthAccessToken(at);
                     
+                    String message = getString(R.string.tweet_finish);
                     try {
                         mTwitter.updateStatus(tweetText);
-                        handler.post(new Runnable(){
-                            public void run() {
-                                Toast.makeText(TwitterActivity.this, R.string.tweet_finish, Toast.LENGTH_LONG).show();                                
-                            }
-                        });
                     } catch (TwitterException e){
                         if(e.isCausedByNetworkIssue()){
-                            handler.post(new Runnable(){
-                                public void run() {
-                                    Toast.makeText(TwitterActivity.this, R.string.tweet_nw_error, Toast.LENGTH_LONG).show();
-                                }
-                            });
+                            message = getString(R.string.tweet_nw_error);
                         }
                         else{
+                            message = getString(R.string.tweet_error);
+                        }
+                    } finally{
+                        if(mDialog != null){
                             handler.post(new Runnable(){
                                 public void run() {
-                                    Toast.makeText(TwitterActivity.this, R.string.tweet_error, Toast.LENGTH_LONG).show();
+                                    mDialog.dismiss();
                                 }
                             });
                         }
-                    }            
+                        
+                        final String m = message;
+                        handler.post(new Runnable(){
+                            public void run() {
+                                Toast.makeText(TwitterActivity.this, m, Toast.LENGTH_LONG).show();
+                            }
+                        });                        
+                    }
                 }
                 else{
                     ConfigurationBuilder builder = new ConfigurationBuilder();
@@ -165,8 +177,7 @@ public class TwitterActivity extends Activity {
                     builder.setMediaProvider("TWITTER");
 
                     Configuration conf = builder.build();
-                    ImageUpload imageUpload = new ImageUploadFactory(conf)
-                            .getInstance();
+                    ImageUpload imageUpload = new ImageUploadFactory(conf).getInstance();
 
                     Bitmap bitmap = RegisterActivity.uri2bmp(TwitterActivity.this, Uri.parse(mPath), 240, 320);
                     try {
@@ -183,36 +194,35 @@ public class TwitterActivity extends Activity {
                     Log.d(TAG, "path = " + file.getPath());
                     Log.d(TAG, "text = " + view.getText().toString());
                     
+                    String message = getString(R.string.tweet_finish);
                     try {
                         imageUpload.upload(file, tweetText);
-                        handler.post(new Runnable(){
-                            public void run() {
-                                Toast.makeText(TwitterActivity.this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
-                            }
-                        });
-
-                    } catch (TwitterException e) {
+                    } catch (TwitterException e){
                         if(e.isCausedByNetworkIssue()){
-                            handler.post(new Runnable(){
-                                public void run() {
-                                    Toast.makeText(TwitterActivity.this, R.string.tweet_nw_error, Toast.LENGTH_LONG).show();
-                                }
-                            });
+                            message = getString(R.string.tweet_nw_error);
                         }
                         else{
+                            message = getString(R.string.tweet_error);
+                        }
+                    } finally{
+                        if(mDialog != null){
                             handler.post(new Runnable(){
                                 public void run() {
-                                    Toast.makeText(TwitterActivity.this, R.string.tweet_finish, Toast.LENGTH_LONG).show();
+                                    mDialog.dismiss();
                                 }
                             });
-                            Toast.makeText(TwitterActivity.this, R.string.tweet_error, Toast.LENGTH_LONG).show();
                         }
+                        
+                        final String m = message;
+                        handler.post(new Runnable(){
+                            public void run() {
+                                Toast.makeText(TwitterActivity.this, m, Toast.LENGTH_LONG).show();
+                            }
+                        });                        
                     }
-                    
                     //アップロード用のイメージ削除
                     file.delete();
                 }
-                
                 finish();                
             }
         };

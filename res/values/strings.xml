@@ -14,7 +14,7 @@
 	    
     <string name="register">Register</string>
     <string name="refer">Reference</string>
-	<string name="finish">Close Application</string>
+	<string name="finish">Close application</string>
 	<string name="finish_confirm">Close?</string>         
 	<string name="ok">Yes</string>         
 	<string name="ng">Cancel</string>        
@@ -24,8 +24,8 @@
 	<string name="register_warning">Warning</string>
 	<string name="input_request">Please input one character or more at name</string>
 	    
-	<string name="dialog_category">Select Category</string>
-	<string name="dialog_image">Select Image</string>
+	<string name="dialog_category">Select category</string>
+	<string name="dialog_image">Select image</string>
    	<string name="dialog_progress">under registering</string>
    	<string name="dialog_notify_title">Notify</string>
 	<string name="dialog_notify">Registered</string>
@@ -55,9 +55,9 @@
    	<string name="list_alert_select">Select</string>
 	<string name="list_alert_confirm">Delete?</string>
 	
-   	<string name="ref_no_comment">No Comment</string>
+   	<string name="ref_no_comment">No comment</string>
 	<string name="ref_other_log">Show other logs</string>
-	<string name="ref_no_setting">No Setting</string>
+	<string name="ref_no_setting">No setting</string>
 	<string name="ref_tweet">Tweet</string>
 	
 	<string name="menu_settings">Settings</string>
@@ -74,12 +74,13 @@
 	<string name="pref_tweet_image_summary">Image attaching when tweet</string>
   	<string name="pref_tweet_auto">Auto tweet</string> 
   	<string name="pref_tweet_auto_summary">Auto tweet when register log</string>
-  	<string name="pref_tweet_auth">Cancel Authentication</string>
-	<string name="pref_tweet_auth_summary">Canceling Authentication</string>
+  	<string name="pref_tweet_auth">Cancel authentication</string>
+	<string name="pref_tweet_auth_summary">Canceling authentication</string>
 	<string name="pref_dialog_auth_title">Confirm</string>
-	<string name="pref_dialog_auth_confirm">Cancel Authentication?</string>
+	<string name="pref_dialog_auth_confirm">Cancel authentication?</string>
 
 	<string name="tweet_title">Post tweet</string>
-	<string name="tweet_alert">If you register image, image will be attached.
-	If you wouldn\'t like to image attaching, please set not image attaching.</string>
+	<string name="tweet_alert">If you created DrinkLog with a photo, a tweet includes the photo.
+	If you don\'t need to image attaching, please set via settings on top page.
+	(Menu > Settings > Image attaching)</string>
 </resources>

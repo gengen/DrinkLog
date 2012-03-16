@@ -115,6 +115,10 @@ public class LogDetailActivity extends Activity {
     	ImageView image = (ImageView)findViewById(R.id.ref_image);
     	if(mImageURL.equals("none")){
     		image.setImageResource(R.drawable.default_image);
+    		if(mEditFlag){
+    		    //編集で削除されたため、リスナ解除
+    		    image.setOnClickListener(null);
+    		}
     	}
     	else{
     		Log.d(TAG, "URL = " + mImageURL);
@@ -327,9 +331,9 @@ public class LogDetailActivity extends Activity {
     public void onActivityResult(int requestCode, int resultCode, Intent data){
     	if(requestCode == REQUEST_EDIT){
     		if(resultCode == RESPONSE_EDIT){
+                mEditFlag = true;
     			//編集後のログを表示
                 setLayout();
-                mEditFlag = true;
     		}
     	}
     	else if(requestCode == REQUEST_TWEET){
