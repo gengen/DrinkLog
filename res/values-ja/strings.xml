@@ -83,4 +83,25 @@
     <string name="tweet_alert">※飲みログに写真を登録している場合、写真も投稿されます。
 	写真を投稿しない場合は、トップ画面からMENUキー→「設定」→「Tweet設定」で「画像を投稿しない」を設定してください。</string>
 	<string name="tweet_progress">ツイート中</string>
+	
+    <string name="sc_alert_title">通知</string>
+    <string name="sc_alert_sd">SDカードが利用できません</string>
+    <string name="sc_alert_ok">確認</string>
+
+    <string name="sc_error_title">エラー</string>
+    <string name="sc_error_cam">カメラが起動できません</string>
+    <string name="sc_error_cam_ok">確認</string>
+
+	<string name="category_effect">エフェクト設定</string>
+    <string name="category_display">画面設定</string>
+
+    <string name="color_effect">color_effect</string>
+	<string name="color_effect_title">色合い</string>
+	<string name="dialog_color_effect_title">色合い</string>
+	<string name="color_effect_summary">写真の色合いを変更する</string>
+		
+	<string name="picture_size">picture_size</string>
+	<string name="picture_size_title">画像サイズ</string>
+	<string name="dialog_picture_size_title">画像サイズ</string>
+	<string name="picture_size_summary">画像サイズを設定する</string>
 </resources>

@@ -52,6 +52,7 @@ public class RegisterActivity extends Activity {
     public static final float RATING_STEP = (float)0.5;
     public static final int REQUEST_CODE_GALLERY = 9999; 
     public static final int REQUEST_CODE_CAMERA = 9998;
+    public static final int REQUEST_CODE_SILENT = 9997;
 	public static final int RESPONSE_EDIT = 6667;	
     
     DatabaseHelper mHelper = null;
@@ -206,13 +207,6 @@ public class RegisterActivity extends Activity {
                 .setItems(setting_list, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if(which == 0){
-                            //gallery
-                            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                            intent.setType("image/*");
-                            startActivityForResult(
-                                    Intent.createChooser(intent, "Select Picture"), REQUEST_CODE_GALLERY);
-                        }
-                        else if(which == 1){
                             //camera
                             File file = new File(Environment.getExternalStorageDirectory(), "/DrinkLog");
                             if(file.exists() == false){
@@ -223,6 +217,18 @@ public class RegisterActivity extends Activity {
                             mSaveFile = new File(file, String.valueOf(System.currentTimeMillis() + ".jpg"));
                             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(mSaveFile));
                             startActivityForResult(intent, REQUEST_CODE_CAMERA);
+                        }
+                        else if(which == 1){
+                        	//silent camera
+                        	Intent intent = new Intent(RegisterActivity.this, CameraActivity.class);
+                        	startActivityForResult(intent, REQUEST_CODE_SILENT);
+                        }
+                        else if(which == 2){
+                            //gallery
+                            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                            intent.setType("image/*");
+                            startActivityForResult(
+                                    Intent.createChooser(intent, "Select Picture"), REQUEST_CODE_GALLERY);                        	
                         }
                         else{
                             //delete
@@ -271,6 +277,7 @@ public class RegisterActivity extends Activity {
                 Uri uri = data.getData();
                 //保存用文字列
                 mImageURL = uri.toString();
+                
                 Bitmap bmp = RegisterActivity.uri2bmp(this, uri, 160, 120);
                 if(bmp != null){
                     image.setImageBitmap(bmp);
@@ -308,17 +315,41 @@ public class RegisterActivity extends Activity {
                 Toast.makeText(this, R.string.get_image_error, Toast.LENGTH_SHORT).show();
             }            
         }
+        else if(requestCode == REQUEST_CODE_SILENT){
+        	if(resultCode == 1){
+        		ImageView image = (ImageView)findViewById(R.id.cur_image);
+        		Uri uri = data.getData();
+        		//保存用文字列
+        		mImageURL = uri.toString();
+        		Log.d(TAG, "imageURL = " + mImageURL);
+        		Bitmap bmp = RegisterActivity.uri2bmp(this, uri, 160, 120);
+        		Log.d(TAG, "bmp = " + bmp);
+        		if(bmp != null){
+        			image.setImageBitmap(bmp);
+        		}
+        		else{
+        			image.setImageResource(R.drawable.default_image);
+        		}
+        	}
+        	else{
+        		
+        	}
+        }
     }
     
     public static Bitmap uri2bmp(Context context,Uri uri,int maxW,int maxH) {
         BitmapFactory.Options options;
         InputStream in=null;
         try {
+    		Log.d(TAG, "1");
             //画像サイズの取得
             options=new BitmapFactory.Options();
             options.inJustDecodeBounds=true;
+    		Log.d(TAG, "2");
             in=context.getContentResolver().openInputStream(uri);  
+    		Log.d(TAG, "3");
             BitmapFactory.decodeStream(in,null,options);
+    		Log.d(TAG, "4");
             in.close();
             int scaleW=options.outWidth /maxW+1;
             int scaleH=options.outHeight/maxH+1;
@@ -347,6 +378,8 @@ public class RegisterActivity extends Activity {
             
             return bmp;
         } catch (Exception e) {
+    		Log.d(TAG, "exception");
+
             try {
                 if (in!=null) in.close();
             } catch (Exception e2) {

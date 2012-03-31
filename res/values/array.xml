@@ -2,9 +2,10 @@
 <resources>  
   
    	<string-array name="image_setting_array">
-	    <item>Select from gallery</item>
 	    <item>Take picture</item>
-	    <item>Delete</item>
+	    <item>Take picture(silent)</item>
+	    <item>Select from gallery</item>
+   	    <item>Delete</item>
 	</string-array>
 	
     <string-array name="list_alert_array">

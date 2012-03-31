@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+      <PreferenceCategory android:title="@string/category_display">
+      	<ListPreference 
+    		android:key="@string/picture_size"
+			android:title="@string/picture_size_title"   
+    		android:dialogTitle="@string/dialog_picture_size_title"
+			android:summary="@string/picture_size_summary"
+			>
+		</ListPreference>
+
+   	</PreferenceCategory>
+  
+      <PreferenceCategory android:title="@string/category_effect">
+    	<ListPreference 
+    		android:key="@string/color_effect"
+			android:title="@string/color_effect_title"   
+    		android:dialogTitle="@string/dialog_color_effect_title"
+			android:summary="@string/color_effect_summary"
+			>
+		</ListPreference>
+	</PreferenceCategory>   
+
+</PreferenceScreen>

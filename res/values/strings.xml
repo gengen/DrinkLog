@@ -84,4 +84,25 @@
 	If you don\'t need to image attaching, please set via settings on top page.
 	(Menu > Settings > Image attaching)</string>
 	<string name="tweet_progress">tweet</string>
+	
+    <string name="sc_alert_title">Notify</string>
+    <string name="sc_alert_sd">Please insert a SD card.</string>
+    <string name="sc_alert_ok">OK</string>
+    
+    <string name="sc_error_title">Error</string>
+    <string name="sc_error_cam">Coundn\'t launch camera</string>
+    <string name="sc_error_cam_ok">OK</string>
+
+	<string name="category_effect">Effect settings</string>
+	<string name="category_display">Display settings</string>
+    
+    <string name="color_effect">color_effect</string>
+    <string name="color_effect_title">Color effect</string>
+	<string name="dialog_color_effect_title">Color effect</string>
+	<string name="color_effect_summary">Set color effect</string>
+	
+	<string name="picture_size">picture_size</string>
+	<string name="picture_size_title">Picture size</string>
+	<string name="dialog_picture_size_title">Picture size</string>
+	<string name="picture_size_summary">Set picture size</string>
 </resources>

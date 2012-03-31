@@ -2,8 +2,9 @@
 <resources>  
   
   	<string-array name="image_setting_array">
-	    <item>ギャラリーから選択</item>
 	    <item>カメラで撮影</item>
+	    <item>カメラ(無音)で撮影</item>
+		<item>ギャラリーから選択</item>
    	    <item>削除</item>
 	</string-array>
 	    

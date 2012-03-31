@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="horizontal"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent"
+   >
+>
+       <SurfaceView
+       android:id="@+id/camera"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       >
+       </SurfaceView>
+
+	   <ImageButton
+       android:id="@+id/imgbtn"
+       android:src="@drawable/start"
+       android:background="@null"
+       android:layout_height="75sp"
+       android:layout_width="75sp"
+       android:layout_gravity="right"
+	   android:scaleType="fitXY"
+       >
+       </ImageButton>
+</FrameLayout>
