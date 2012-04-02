@@ -241,7 +241,8 @@ class CameraPreview implements SurfaceHolder.Callback {
     List<String> getSizeList(){
     	List<String> list = new ArrayList<String>();
     	for(int i = mOffset; i<mSupportList.size(); i++){
-    		String size = mSupportList.get(i).width + "x" + mSupportList.get(i).height;
+    		//String size = mSupportList.get(i).width + "x" + mSupportList.get(i).height;
+    		String size = mSupportList.get(i).height + "x" + mSupportList.get(i).width;
     		list.add(size);
     	}
     	return list;
