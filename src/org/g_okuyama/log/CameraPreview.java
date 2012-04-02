@@ -67,20 +67,14 @@ class CameraPreview implements SurfaceHolder.Callback {
 	private String mEffect = null;
 	private String mSizeStr = null;
 	
-	//画面サイズ
-	int mWidth = 0;
-	int mHeight = 0;
-		
     CameraPreview(Context context){
         mContext = context;
 	}
 	
-	public void setField(String effect, String size, int width, int height){
+	public void setField(String effect, String size){
         mEffect = effect;
         //mPicIdx = size;
         mSizeStr = size;
-        mWidth = width;
-        mHeight = height;
 	}
     
     public void surfaceCreated(SurfaceHolder holder) {
@@ -106,6 +100,8 @@ class CameraPreview implements SurfaceHolder.Callback {
     	        }
     	        return;
     	    }
+    	    
+    	    mCamera.setDisplayOrientation(90); 
     	}
     	
     	if(mSupportList == null){
@@ -129,6 +125,7 @@ class CameraPreview implements SurfaceHolder.Callback {
             //降順にソート
             Collections.sort(mSupportList, new PreviewComparator());
             
+            /*
             for(int i = 0; i < mSupportList.size(); i++){
                 if(mSupportList.get(i).width > mWidth){
                     continue;
@@ -142,11 +139,12 @@ class CameraPreview implements SurfaceHolder.Callback {
                 mOffset = i;
                 break;
             }
+            */
 
-            if(mSize == null){
+            //if(mSize == null){
                 mSize = mSupportList.get(0);
                 mOffset = 0;
-            }
+            //}
         }
     }
     
@@ -167,6 +165,10 @@ class CameraPreview implements SurfaceHolder.Callback {
         if(mSetValue != null){
         	if(mSetColor == true){
                 mEffect = mSetValue;
+        	}
+        	else if(mSetSize == true){
+                mPicIdx = mSetInt;
+                mSizeStr = getSizeList().get(mPicIdx);
         	}
         	
             mSetValue = null;
@@ -213,7 +215,8 @@ class CameraPreview implements SurfaceHolder.Callback {
         }
 
         try{
-            mSize = mSupportList.get(mOffset + mPicIdx);        
+        	int i = mOffset + mPicIdx;
+            mSize = mSupportList.get(mOffset + mPicIdx); 
             param.setPreviewSize(mSize.width, mSize.height);
             mCamera.setParameters(param);
         }catch(Exception e){
@@ -252,10 +255,21 @@ class CameraPreview implements SurfaceHolder.Callback {
     void setSizeValue(int value){
     	mSetSize = true;
     	mSetInt = value;
-    	//マークのみ
+    	//この後のsurfaceChangedで設定する用のマークを付ける
     	mSetValue = "hoge";
     }
-    
+
+    void doAutoFocus(){
+        mCamera.setPreviewCallback(null);
+    	if(mCamera != null && mFocus != null){
+    		try{
+    			mCamera.autoFocus(mFocus);
+    		}catch(Exception e){
+    			mPreviewCallback = new PreviewCallback(CameraPreview.this);            
+    		}
+    	}
+    }
+
     void release(){
         if(mCamera != null){
             mCamera.setPreviewCallback(null);
@@ -355,19 +369,6 @@ class CameraPreview implements SurfaceHolder.Callback {
                 }
                 return null;
             }
-
-            //ギャラリーへの登録
-            /*
-			ContentValues values = new ContentValues();
-
-			values.put(Images.Media.MIME_TYPE, "image/jpeg");
-			values.put(Images.Media.DATA, savefile.getAbsolutePath());
-			values.put(Images.Media.SIZE, savefile.length());
-			values.put(Images.Media.DATE_ADDED, datastr);
-			values.put(Images.Media.DATE_TAKEN, datastr);
-			values.put(Images.Media.DATE_MODIFIED, datastr);
-			((CameraActivity)mContext).saveGallery(values);
-			*/
             
             return savefile.getPath();
         } 

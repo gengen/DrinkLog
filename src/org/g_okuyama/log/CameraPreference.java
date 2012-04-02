@@ -18,11 +18,7 @@ public class CameraPreference extends PreferenceActivity implements OnPreference
     public static final String DEFAULT_INTERVAL = "0";
     
     static final int COLOR_EFFECT = 1;
-    static final int SCENE_MODE = 2;
-    static final int WHITE_BALANCE = 3;
-    static final int PICTURE_SIZE = 4;
-    static final int SHOOT_NUM = 5;
-    static final int INTERVAL = 6;
+    static final int PICTURE_SIZE = 2;
     static String[] sSizeList = null;
     
     @Override
@@ -32,8 +28,6 @@ public class CameraPreference extends PreferenceActivity implements OnPreference
         
         Bundle extras = getIntent().getExtras();
         String[] effectList = null;
-        String[] whiteList = null;
-        String[] sceneList = null;
         if(extras != null){
             effectList = extras.getStringArray("effect");
             sSizeList = extras.getStringArray("size");
@@ -96,7 +90,7 @@ public class CameraPreference extends PreferenceActivity implements OnPreference
 		}
 		
 		if(pref.getKey().equals("color_effect")){
-		    //選択されたら、設定画面を終了し、即反映させる
+			//選択されたら、設定画面を終了し、即反映させる
             Intent intent = new Intent();
             intent.putExtra("effect", value);
             this.setResult(COLOR_EFFECT, intent);
@@ -109,9 +103,6 @@ public class CameraPreference extends PreferenceActivity implements OnPreference
             for(int i=0; i<sSizeList.length; i++){
             	if(sSizeList[i].equals(value)){
                     intent.putExtra("size", i);
-                    
-                    //Log.d(TAG, "result data = " + i);
-                    
                     break;
             	}
             }

@@ -49,7 +49,7 @@
             android:screenOrientation="portrait"/>
         <activity 
             android:name=".CameraActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="portrait"/>
         <activity 
             android:name=".CameraPreference"
             android:screenOrientation="portrait"/>

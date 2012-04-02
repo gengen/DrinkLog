@@ -37,20 +37,13 @@ public class CameraActivity extends Activity {
     SurfaceHolder mHolder;
     private CameraPreview mPreview = null;
     
-    private ImageButton mButton = null;
     private ContentResolver mResolver;
-    
-    //全体の画面サイズ
-    int mWidth = 0;
-    int mHeight = 0;
-    //プレビュー枠のサイズ
-    int mPrevWidth = 0;
-    int mPrevHeight = 0;
-    
+        
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.camera);
         
         mResolver = getContentResolver();
@@ -59,19 +52,12 @@ public class CameraActivity extends Activity {
         String effect = CameraPreference.getCurrentEffect(this);
         String size = CameraPreference.getCurrentPictureSize(this);
         
-        WindowManager wm = (WindowManager)getSystemService(Context.WINDOW_SERVICE);
-        Display disp = wm.getDefaultDisplay();
-        mWidth = disp.getWidth();
-        mHeight = disp.getHeight();
-        
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         SurfaceView sv = (SurfaceView)findViewById(R.id.camera);
         mHolder = sv.getHolder();
 
         mPreview = new CameraPreview(this);
-        mPreview.setField(effect, size, mWidth, mHeight);
+        mPreview.setField(effect, size);
         mHolder.addCallback(mPreview);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
@@ -80,11 +66,20 @@ public class CameraActivity extends Activity {
     }
     
     private void setListener(){
-        mButton = (ImageButton)findViewById(R.id.imgbtn);
-        mButton.setOnClickListener(new OnClickListener(){
+        ImageButton shot = (ImageButton)findViewById(R.id.imgbtn);
+        shot.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
 				if(mPreview != null){
 						mPreview.resumePreview();
+				}
+			}
+        });
+        
+        ImageButton focus = (ImageButton)findViewById(R.id.focusbtn);
+        focus.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				if(mPreview != null){
+						mPreview.doAutoFocus();
 				}
 			}
         });
@@ -172,14 +167,6 @@ public class CameraActivity extends Activity {
                 }
             }
         }
-    }
-    
-    public void displayStart(){
-    	mButton.setImageResource(R.drawable.start);
-    }
-    
-    public void saveGallery(ContentValues values){
-		mResolver.insert(Media.EXTERNAL_CONTENT_URI, values);
     }
     
     public static boolean deleteCache(File dir) {
