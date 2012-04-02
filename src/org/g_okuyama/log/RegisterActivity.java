@@ -321,9 +321,7 @@ public class RegisterActivity extends Activity {
         		Uri uri = data.getData();
         		//•Û‘¶—p•¶Žš—ñ
         		mImageURL = uri.toString();
-        		Log.d(TAG, "imageURL = " + mImageURL);
         		Bitmap bmp = RegisterActivity.uri2bmp(this, uri, 160, 120);
-        		Log.d(TAG, "bmp = " + bmp);
         		if(bmp != null){
         			image.setImageBitmap(bmp);
         		}

@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.Size;
@@ -309,9 +310,16 @@ class CameraPreview implements SurfaceHolder.Callback {
 
             decodeYUV420SP(rgb, data, width, height);
             bmp.setPixels(rgb, 0, width, 0, 0, width, height);
+            
+            //‰ñ“]
+            Matrix matrix = new Matrix();
+            // ‰ñ“]‚³‚¹‚éŠp“x‚ðŽw’è
+            matrix.postRotate(90.0f);   
+            Bitmap bmp2 = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+            bmp = null;
 
             ByteArrayOutputStream out = new ByteArrayOutputStream();
-            bmp.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            bmp2.compress(Bitmap.CompressFormat.JPEG, 100, out);
             
             String path = savedata(out.toByteArray());
             
